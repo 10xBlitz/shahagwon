@@ -80,3 +80,20 @@ export const noticeTemp = [
     date: "2025.9.19",
   },
 ];
+
+export const scheduleCardTemp = [
+  {
+    date: "9월 24일 수요일",
+    timeSlots: "수1,2,학등★,사문★, 점법",
+    name: "채희준",
+    description: "(고려대 경영학과)",
+    additionalInfo: "원족상담실 (#암순서부터 신청 #문제해설 진술) - 송파점"
+  },
+  {
+    date: "9월 24일 수요일",
+    timeSlots: "수1,2,미적★,물1★,생1",
+    name: "이동민",
+    description: "(한양대 의대)",
+    additionalInfo: "2층 오른쪽상담실(#암순서부터 신청 #문제해설 진술) - 대치점 전체"
+  }
+];

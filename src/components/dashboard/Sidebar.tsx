@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { sidebarItems } from "@/utils/sidebar_items";
+import { sidebarItems } from "@/etc/sidebar_items";
 import SidebarItemTile from "../common/SidebarItemTile";
 import outside_icon from "../../../public/images/sidebar/outside.svg";
 import sidebar_logo from "../../../public/images/sidebar/just_logo.webp";

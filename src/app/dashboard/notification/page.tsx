@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { noticeTemp } from "@/utils/temp";
+import { noticeTemp } from "@/etc/temp";
 import NoticeCard from "@/components/common/NoticeCard";
 
 export default function AnnouncementsPage() {

@@ -1,4 +1,4 @@
-import { noticeTemp } from "@/utils/temp";
+import { noticeTemp } from "@/etc/temp";
 import NoticeCard from "@/components/common/NoticeCard";
 import StudyScheduleCard from "@/components/home_page/StudyScheduleCard";
 
