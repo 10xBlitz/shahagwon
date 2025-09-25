@@ -1,10 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import Button from "@/components/common/Button";
 import { SquarePen, Trash2 } from "lucide-react";
 
 export default function NotificationDetail() {
+  const router = useRouter();
+
+  const handleBack = () => {
+    router.replace("/dashboard/notification");
+  };
+
   return (
     <div className="flex h-full flex-col bg-[#F5F5F5] p-[48px]">
       <div className="mb-[20px] flex flex-row items-center gap-[12px]">
@@ -38,7 +45,9 @@ export default function NotificationDetail() {
         <p>Content here</p>
       </div>
       <Button
-        onClick={() => {}}
+        onClick={() => {
+          handleBack();
+        }}
         className="mt-[50px] w-fit self-center bg-[#3A3A3A] px-20 py-[12px] text-xl font-medium text-white"
       >
         목록
