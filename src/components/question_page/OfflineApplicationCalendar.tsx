@@ -39,10 +39,10 @@ export default function OfflineCalendar({
   const dayNames = ["일", "월", "화", "수", "목", "금", "토"];
 
   return (
-    <div className="h-[360px] w-[348px] p-4">
-      <div className="mb-4 text-center text-lg font-semibold">
+    <div className="h-[360px] w-[348px] rounded-lg bg-white p-[28px]">
+      <p className="mb-4 text-center text-lg font-medium">
         {year}년 {month}월
-      </div>
+      </p>
 
       <div className="mb-2 grid grid-cols-7 gap-1">
         {dayNames.map((day, i) => (

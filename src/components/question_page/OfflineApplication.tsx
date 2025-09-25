@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Button from "../common/Button";
 import ScheduleCard from "./ScheduleCard";
-import OfflineCalendar from "./OfflineCalendar";
-import { scheduleCardTemp } from "../../etc/temp";
+import OfflineCalendar from "./OfflineApplicationCalendar";
+import { qnaRequestsTemp } from "../../etc/temp";
+import OfflineApplicationTimeSelector from "./OfflineApplicationTimeSelector";
+import OfflineApplicationSendInquiry from "./OfflineApplicationSendInquiry";
 
 const offlineApplicationTabs = [
   {
@@ -34,22 +36,29 @@ export default function OfflineApplication() {
         ))}
       </div>
       {selectedTab === "request" && (
-        <div className="mt-[50px] flex flex-col gap-[20px]">
-          {scheduleCardTemp.map((schedule, index) => (
-            <ScheduleCard
-              key={index}
-              date={schedule.date}
-              timeSlots={schedule.timeSlots}
-              name={schedule.name}
-              description={schedule.description}
-              additionalInfo={schedule.additionalInfo}
-            />
+        <div className="mt-[50px] flex flex-col gap-[80px]">
+          {qnaRequestsTemp.map((request, index) => (
+            <div key={index} className="flex flex-col gap-[36px]">
+              <ScheduleCard
+                key={index}
+                date={request.date}
+                timeSlots={request.timeSlots}
+                name={request.name}
+                description={request.description}
+                additionalInfo={request.additionalInfo}
+              />
+              <div className="mb-[44px] flex flex-row gap-[28px]">
+                <OfflineCalendar
+                  year={request.year}
+                  month={request.month}
+                  selectedDate={request.selectedDate}
+                />
+                <OfflineApplicationTimeSelector />
+                <OfflineApplicationSendInquiry />
+              </div>
+              <div className="h-px bg-[#D7D7D7]" />
+            </div>
           ))}
-          <OfflineCalendar
-            year={2025}
-            month={12}
-            selectedDate={new Date(2025, 11, 15)}
-          />
         </div>
       )}
     </div>
