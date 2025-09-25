@@ -35,7 +35,7 @@ export default function QuestionPage() {
   const [selectedTab, setSelectedTab] = useState("offlineApplication");
 
   return (
-    <div className="h-full w-full bg-[#F5F5F5] p-[48px]">
+    <div className="h-full w-full overflow-y-auto bg-[#F5F5F5] p-[48px]">
       <div className="mb-[28px] flex flex-row items-center gap-[12px]">
         <Image
           src="/images/sidebar/off/question_off.svg"

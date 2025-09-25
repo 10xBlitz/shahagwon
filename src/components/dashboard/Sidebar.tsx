@@ -10,10 +10,8 @@ import sidebar_logo from "../../../public/images/sidebar/just_logo.webp";
 export default function Sidebar() {
   const pathname = usePathname();
 
-  console.log(pathname);
-
   return (
-    <aside className="flex h-full w-[240px] flex-col items-center overflow-y-auto px-[24px] py-[30px]">
+    <aside className="flex h-full w-[240px] flex-shrink-0 flex-col items-center overflow-y-auto px-[24px] py-[30px]">
       <div className="mb-2 flex flex-row items-center gap-2">
         <Image
           src={outside_icon}
@@ -22,7 +20,7 @@ export default function Sidebar() {
         />
         <p className="text-lg font-semibold text-[#818181]">외출중</p>
       </div>
-      <div className="mb-2 flex h-16 w-16 items-center justify-center rounded-full bg-[#EAEAEA]">
+      <div className="mb-2 flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-[#EAEAEA]">
         <Image src={sidebar_logo} alt="Logo" width={36} height={46} />
       </div>
       <p className="text-lg font-medium tracking-tighter">

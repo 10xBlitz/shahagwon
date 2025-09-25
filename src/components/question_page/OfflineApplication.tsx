@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Button from "../common/Button";
 import ScheduleCard from "./ScheduleCard";
-import OfflineCalendar from "./OfflineApplicationCalendar";
+import RequestStatus from "./RequestStatus";
 import { qnaRequestsTemp } from "../../etc/temp";
-import OfflineApplicationTimeSelector from "./OfflineApplicationTimeSelector";
+import OfflineCalendar from "./OfflineApplicationCalendar";
 import OfflineApplicationSendInquiry from "./OfflineApplicationSendInquiry";
+import OfflineApplicationTimeSelector from "./OfflineApplicationTimeSelector";
 
 const offlineApplicationTabs = [
   {
@@ -59,6 +60,11 @@ export default function OfflineApplication() {
               <div className="h-px bg-[#D7D7D7]" />
             </div>
           ))}
+        </div>
+      )}
+      {selectedTab === "status" && (
+        <div className="mt-[50px]">
+          <RequestStatus />
         </div>
       )}
     </div>
