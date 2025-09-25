@@ -1,6 +1,7 @@
 import Post from "./Post";
 import { useState } from "react";
 import Button from "../common/Button";
+import { postsTemp } from "../../etc/temp";
 
 const subTabs = ["ALL", "MY"];
 
@@ -24,8 +25,19 @@ export default function EnglishQuestions() {
           ))}
         </div>
         <div className="flex flex-col gap-[60px]">
-          <Post />
-          <Post />
+          {postsTemp.map((post, index) => (
+            <Post
+              key={index}
+              username={post.username}
+              timestamp={post.timestamp}
+              title={post.title}
+              content={post.content}
+              imageSrc={post.imageSrc}
+              avatarSrc={post.avatarSrc}
+              comments={post.comments}
+              likesCount={post.likesCount}
+            />
+          ))}
         </div>
       </div>
     </div>
