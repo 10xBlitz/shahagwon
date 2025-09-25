@@ -13,7 +13,9 @@ export default function AttendanceRecordPage() {
   const [year, setYear] = useState(today.getFullYear());
   const [month, setMonth] = useState(today.getMonth());
 
-  const [activeDialog, setActiveDialog] = useState<'submission' | 'penalty' | null>(null);
+  const [activeDialog, setActiveDialog] = useState<
+    "submission" | "penalty" | null
+  >(null);
 
   const goToPreviousMonth = () => {
     if (month === 0) {
@@ -60,7 +62,7 @@ export default function AttendanceRecordPage() {
               <ChevronRight size={16} />
             </div>
             <Button
-              onClick={() => setActiveDialog('submission')}
+              onClick={() => setActiveDialog("submission")}
               className="rounded border border-[#CECECE] px-4 py-3 hover:cursor-pointer hover:border-[#1C75D2] hover:bg-[#F6FAFD]"
             >
               정기일정
@@ -73,7 +75,7 @@ export default function AttendanceRecordPage() {
             </Button>
           </div>
           <Button
-            onClick={() => setActiveDialog('penalty')}
+            onClick={() => setActiveDialog("penalty")}
             className="rounded border border-[#7389FF] px-[46px] py-3 font-medium text-[#3D51AF] hover:bg-[#F6FAFD]"
           >
             #총 벌점기록
@@ -81,16 +83,14 @@ export default function AttendanceRecordPage() {
         </div>
         <BigCalendar year={year} month={month + 1} />
       </div>
-      {activeDialog === 'submission' && (
+      {activeDialog === "submission" && (
         <ScheduleSubmissionForm
           title="9월용 정기일정"
           onClose={() => setActiveDialog(null)}
         />
       )}
-      {activeDialog === 'penalty' && (
-        <PenaltyRecordTable
-          onClose={() => setActiveDialog(null)}
-        />
+      {activeDialog === "penalty" && (
+        <PenaltyRecordTable onClose={() => setActiveDialog(null)} />
       )}
     </div>
   );

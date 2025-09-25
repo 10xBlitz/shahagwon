@@ -1,20 +1,10 @@
+import { useState } from "react";
 import Table from "../common/Table";
+import { branchTabs } from "@/etc/tabs";
 import Button from "../common/Button";
 import { CalendarDays } from "lucide-react";
 import { requestStatusTemp } from "@/etc/temp";
 import { requestStatusTableConfig } from "@/etc/table_config";
-import { useState } from "react";
-
-const branchTabs = [
-  { label: "전체 ", value: "entire" },
-  { label: "강남점", value: "gangnam_branch" },
-  { label: "강남2호점 ", value: "gangnam_2nd_branch" },
-  { label: "대치점 ", value: "confrontation_point" },
-  { label: "대치3층 ", value: "daechi_3rd_floor" },
-  { label: "대치6층", value: "daechi_6th_floor" },
-  { label: "송파점", value: "songpa_branch" },
-  { label: "대구점", value: "daegu_branch" },
-];
 
 export default function RequestStatus() {
   const [selectedTab, setSelectedTab] = useState("entire");

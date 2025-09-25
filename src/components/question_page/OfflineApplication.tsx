@@ -70,5 +70,3 @@ export default function OfflineApplication() {
     </div>
   );
 }
-
-// 1095px w 330px h

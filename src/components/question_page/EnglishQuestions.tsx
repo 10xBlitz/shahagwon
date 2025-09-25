@@ -1,9 +1,8 @@
 import Post from "./Post";
 import { useState } from "react";
+import { subTabs } from "@/etc/tabs";
 import Button from "../common/Button";
 import { postsTemp } from "../../etc/temp";
-
-const subTabs = ["ALL", "MY"];
 
 export default function EnglishQuestions() {
   const [selectedTab, setSelectedTab] = useState("ALL");

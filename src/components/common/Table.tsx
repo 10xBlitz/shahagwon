@@ -11,6 +11,7 @@ interface TableProps {
   height?: number;
   density?: "compact" | "standard" | "comfortable";
   className?: string;
+  checkboxSelection?: boolean;
 }
 
 export default function Table({
@@ -22,6 +23,7 @@ export default function Table({
   height,
   density = "standard",
   className = "",
+  checkboxSelection = false,
 }: TableProps) {
   return (
     <div style={{ height: height, width: "100%" }} className={`${className}`}>
@@ -31,6 +33,7 @@ export default function Table({
         hideFooterPagination={hideFooterPagination}
         hideFooterSelectedRowCount={hideFooterSelectedRowCount}
         density={density}
+        checkboxSelection={checkboxSelection}
       />
     </div>
   );

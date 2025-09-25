@@ -6,25 +6,26 @@ import Button from "@/components/common/Button";
 import SmallCalendar from "@/components/edit_page/SmallCalendar";
 import ReasonInputCard from "@/components/edit_page/ReasonInput";
 import StatusSelector from "@/components/edit_page/StatusSelector";
+import TotalSubmissions from "@/components/edit_page/TotalSubmissions";
 import SubmittedReasonsCard from "@/components/edit_page/SubmittedReasonsCard";
 
 const editTabs = [
   {
     label: "# 사유 제출",
-    value: "one",
+    value: "submitReason",
   },
   {
     label: "내 사유 제출 현황",
-    value: "two",
+    value: "submissionStatus",
   },
   {
     label: "전체 제출 현황",
-    value: "three",
+    value: "totalSubmissions",
   },
 ];
 
 export default function AbsenceReasonSubmissionPage() {
-  const [selectedTab, setSelectedTab] = useState("one");
+  const [selectedTab, setSelectedTab] = useState("submitReason");
 
   return (
     <div className="flex h-full flex-col bg-[#F5F5F5] p-[48px]">
@@ -54,19 +55,15 @@ export default function AbsenceReasonSubmissionPage() {
         <p className="font-medium"># 이번달 제출 횟수 - 0회</p>
       </div>
 
-      {selectedTab === "one" && (
+      {selectedTab === "submitReason" && (
         <div className="flex flex-row gap-[30px]">
           <SmallCalendar />
           <StatusSelector />
           <ReasonInputCard />
         </div>
       )}
-      {selectedTab === "two" && <SubmittedReasonsCard />}
-      {selectedTab === "three" && <p>3</p>}
+      {selectedTab === "submissionStatus" && <SubmittedReasonsCard />}
+      {selectedTab === "totalSubmissions" && <TotalSubmissions />}
     </div>
   );
 }
-
-// # 사유 제출
-// 내 사유 제출 현황
-// 전체 제출 현황

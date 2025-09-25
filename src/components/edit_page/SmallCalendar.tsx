@@ -20,11 +20,13 @@ import React, { useState } from "react";
 interface SmallCalendarProps {
   onDateSelect?: (date: Date) => void;
   defaultDate?: Date;
+  sizeClassName?: string;
 }
 
 export default function SmallCalendar({
   onDateSelect,
   defaultDate = new Date(),
+  sizeClassName,
 }: SmallCalendarProps) {
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState<Date>(defaultDate);
@@ -109,10 +111,12 @@ export default function SmallCalendar({
   };
 
   return (
-    <div className="h-[330px] w-[322px] rounded-lg bg-white p-6">
+    <div
+      className={`${sizeClassName ? `${sizeClassName}` : "h-[330px] w-[322px]"} rounded-lg bg-white p-6`}
+    >
       {/* Header with month/year and navigation */}
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-lg font-semibold">
+        <h3 className="text-lg font-medium">
           {currentYear}년 {monthNames[currentMonth]}
         </h3>
         <div className="flex gap-1">
