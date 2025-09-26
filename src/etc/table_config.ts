@@ -113,3 +113,37 @@ export const callTextMessageTableConfig: GridColDef[] = [
   { field: "responseTime", headerName: "대기시간", width: 150 },
   { field: "sender", headerName: "보낸사람", flex: 1 },
 ];
+
+export const suggestionTableConfig: GridColDef[] = [
+  { field: "applicant", headerName: "신청자", width: 100 },
+  { field: "type", headerName: "종류", width: 100 },
+  { field: "content", headerName: "내용", width: 300 },
+  { field: "submissionDate", headerName: "신청일", width: 150 },
+  { field: "processingStatus", headerName: "처리현황", width: 100 },
+  { field: "confirmationNumber", headerName: "확인번", width: 100 },
+  { field: "completionDate", headerName: "완료답변", width: 150 },
+  { field: "outcome", headerName: "경과일", flex: 1 },
+];
+
+export const mySuggestionTableConfig: GridColDef[] = [
+  { field: "type", headerName: "종류", width: 120 },
+  { field: "applicant", headerName: "신청자", width: 120 },
+  { field: "number", headerName: "호점", width: 100 },
+  { field: "content", headerName: "내용", width: 300 },
+  { field: "submissionDate", headerName: "신청일", width: 150 },
+  { field: "processingStatus", headerName: "처리현황", flex: 1 },
+];
+
+export const allSuggestionTableConfig: GridColDef[] = [
+  { field: "type", headerName: "종류", width: 120 },
+  { field: "applicant", headerName: "신청자", width: 120 },
+  { field: "number", headerName: "호점", width: 100 },
+  { field: "content", headerName: "내용", width: 300 },
+  { field: "submissionDate", headerName: "신청일", width: 150 },
+  { field: "processingStatus", headerName: "처리현황", width: 120 },
+  { field: "confirmationNumber", headerName: "확인답번", width: 120 },
+  { field: "completionDate", headerName: "완료답변", width: 150 },
+  { field: "outcome", headerName: "경과일", width: 100 },
+  { field: "deletionDate", headerName: "사진", width: 80 },
+  { field: "deletionDate2", headerName: "사진2", flex: 1 },
+];

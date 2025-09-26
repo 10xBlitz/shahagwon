@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import Button from "@/components/common/Button";
+import CircularTabs from "@/components/common/CircularTabs";
 import SmallCalendar from "@/components/edit_page/SmallCalendar";
 import ReasonInputCard from "@/components/edit_page/ReasonInput";
 import StatusSelector from "@/components/edit_page/StatusSelector";
@@ -39,19 +39,12 @@ export default function AbsenceReasonSubmissionPage() {
         <h1 className="text-[22px] font-extrabold">지각/결석 사유 제출</h1>
       </div>
       <div className="mb-8 flex max-w-[1160px] flex-row items-center justify-between">
-        <div className="flex flex-row gap-[14px]">
-          {editTabs.map((tab, index) => (
-            <Button
-              key={index}
-              onClick={() => {
-                setSelectedTab(tab.value);
-              }}
-              className={`w-[180px] rounded-4xl border border-[#CACACA] py-[12px] font-medium ${tab.value === selectedTab ? "border-[#3D51AF] bg-[#3D51AF] text-white" : "text-[#CACACA]"}`}
-            >
-              {tab.label}
-            </Button>
-          ))}
-        </div>
+        <CircularTabs
+          tabs={editTabs}
+          selectedTab={selectedTab}
+          onClick={(tab) => setSelectedTab(tab)}
+        />
+
         <p className="font-medium"># 이번달 제출 횟수 - 0회</p>
       </div>
 

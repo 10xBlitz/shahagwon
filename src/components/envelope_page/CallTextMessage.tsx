@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Button from "../common/Button";
-import { branchTabs } from "@/etc/tabs";
 import Table from "../common/Table";
+import { branchTabs } from "@/etc/tabs";
+import SquareTabs from "../common/SquareTabs";
 import { callTextMessageTemp } from "@/etc/temp";
 import { callTextMessageTableConfig } from "@/etc/table_config";
 
@@ -29,30 +29,18 @@ export default function CallTextMessage() {
     <div className="mt-[54px] max-w-[1700px]">
       <div className="flex flex-row justify-between">
         <div className="mb-[16px] flex flex-row">
-          {branchTabs.map((tab, index) => (
-            <Button
-              key={index}
-              onClick={() => {
-                setSelectedBranchTab(tab.value);
-              }}
-              className={`border p-3 text-sm font-medium ${index === 0 ? "rounded-l" : index === branchTabs.length - 1 ? "rounded-r" : ""} ${selectedBranchTab === tab.value ? "border-[#D1D6DD] bg-[#EDF4FC] text-[#1C75D2]" : "border-[#DFDFDF] text-[#747474]"}`}
-            >
-              {tab.label}
-            </Button>
-          ))}
+          <SquareTabs
+            tabs={branchTabs}
+            selectedTab={selectedBranchTab}
+            onClick={(tab) => setSelectedBranchTab(tab)}
+          />
         </div>
         <div className="mb-[16px] flex flex-row">
-          {communicationTabs.map((tab, index) => (
-            <Button
-              key={index}
-              onClick={() => {
-                setSelectedCommunicationTab(tab.value);
-              }}
-              className={`border p-3 text-sm font-medium ${index === 0 ? "rounded-l" : index === communicationTabs.length - 1 ? "rounded-r" : ""} ${selectedCommunicationTab === tab.value ? "border-[#D1D6DD] bg-[#EDF4FC] text-[#1C75D2]" : "border-[#DFDFDF] text-[#747474]"}`}
-            >
-              {tab.label}
-            </Button>
-          ))}
+          <SquareTabs
+            tabs={communicationTabs}
+            selectedTab={selectedCommunicationTab}
+            onClick={(tab) => setSelectedCommunicationTab(tab)}
+          />
         </div>
       </div>
       <Table

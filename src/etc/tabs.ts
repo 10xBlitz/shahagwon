@@ -1,6 +1,15 @@
 // Tab options that appears in multiple files
 
-export const subTabs = ["ALL", "MY"];
+export const subTabs = [
+  {
+    label: "ALL",
+    value: "all",
+  },
+  {
+    label: "MY",
+    value: "my",
+  },
+];
 
 export const branchTabs = [
   { label: "전체 ", value: "entire" },
@@ -16,5 +25,5 @@ export const branchTabs = [
 export const lunchSubTabs = [
   { label: "전체", value: "entire" },
   { label: "점심", value: "lunch" },
-  { label: "저녁", value: "dinner" },
+  { label: " 저녁", value: "dinner" },
 ];

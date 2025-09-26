@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import Button from "@/components/common/Button";
 import MessageBox from "@/components/envelope_page/MessageBox";
 import AllMessages from "@/components/envelope_page/AllMessages";
 import SendToGroup from "@/components/envelope_page/SendToGroup";
 import CallTextMessage from "@/components/envelope_page/CallTextMessage";
+import CircularTabs from "@/components/common/CircularTabs";
 
 const tabs = [
   {
@@ -41,19 +41,11 @@ export default function EnvelopePage() {
         />
         <h1 className="text-[22px] font-extrabold">나에게 온 메세지</h1>
       </div>
-      <div className="flex flex-row gap-[14px]">
-        {tabs.map((tab, index) => (
-          <Button
-            key={index}
-            onClick={() => {
-              setSelectedTab(tab.value);
-            }}
-            className={`w-[180px] rounded-4xl border border-[#CACACA] py-[12px] font-medium ${tab.value === selectedTab ? "border-[#3D51AF] bg-[#3D51AF] text-white" : "text-[#878787]"}`}
-          >
-            {tab.label}
-          </Button>
-        ))}
-      </div>
+      <CircularTabs
+        tabs={tabs}
+        selectedTab={selectedTab}
+        onClick={(tab) => setSelectedTab(tab)}
+      />
       {selectedTab === "message_box" && <MessageBox />}
       {selectedTab === "all_messages" && <AllMessages />}
       {selectedTab === "send_to_group" && <SendToGroup />}

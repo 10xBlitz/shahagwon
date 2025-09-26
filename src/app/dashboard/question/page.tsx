@@ -2,11 +2,12 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import Button from "@/components/common/Button";
-import OfflineApplication from "@/components/question_page/OfflineApplication";
-import KoreanQuestions from "@/components/question_page/KoreanQuestions";
+import CircularTabs from "@/components/common/CircularTabs";
 import MathQuestions from "@/components/question_page/MathQuestions";
+import KoreanQuestions from "@/components/question_page/KoreanQuestions";
 import EnglishQuestions from "@/components/question_page/EnglishQuestions";
+import OfflineApplication from "@/components/question_page/OfflineApplication";
+import ExplorationQuestions from "@/components/question_page/ExplorationQuestions";
 
 const editTabs = [
   {
@@ -35,7 +36,7 @@ export default function QuestionPage() {
   const [selectedTab, setSelectedTab] = useState("offlineApplication");
 
   return (
-    <div className="h-full w-full overflow-y-auto bg-[#F5F5F5] p-[48px]">
+    <div className="h-full w-full flex-col overflow-y-auto bg-[#F5F5F5] p-[48px]">
       <div className="mb-[28px] flex flex-row items-center gap-[12px]">
         <Image
           src="/images/sidebar/off/question_off.svg"
@@ -45,24 +46,20 @@ export default function QuestionPage() {
         />
         <h1 className="text-[22px] font-extrabold">질의응답</h1>
       </div>
-      <div className="flex flex-row items-center justify-center gap-[14px]">
-        {editTabs.map((tab, index) => (
-          <Button
-            key={index}
-            onClick={() => {
-              setSelectedTab(tab.value);
-            }}
-            className={`w-[180px] rounded-4xl border border-[#CACACA] py-[12px] font-medium ${tab.value === selectedTab ? "border-[#3D51AF] bg-[#3D51AF] text-white" : "text-[#878787]"}`}
-          >
-            {tab.label}
-          </Button>
-        ))}
+      <div className="flex w-full justify-center">
+        <CircularTabs
+          tabs={editTabs}
+          selectedTab={selectedTab}
+          onClick={(tab) => {
+            setSelectedTab(tab);
+          }}
+        />
       </div>
       {selectedTab === "offlineApplication" && <OfflineApplication />}
       {selectedTab === "koreanQuestions" && <KoreanQuestions />}
       {selectedTab === "mathQuestions" && <MathQuestions />}
       {selectedTab === "englishQuestions" && <EnglishQuestions />}
-      {selectedTab === "explorationQuestions" && <EnglishQuestions />}
+      {selectedTab === "explorationQuestions" && <ExplorationQuestions />}
     </div>
   );
 }

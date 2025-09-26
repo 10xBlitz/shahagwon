@@ -13,7 +13,7 @@ export default function SquareTabs({
   onClick,
 }: SquareTabsProps) {
   return (
-    <div className="mb-[16px] flex flex-row">
+    <div className="flex flex-row">
       {tabs.map((tab, index) => (
         <Button
           key={index}

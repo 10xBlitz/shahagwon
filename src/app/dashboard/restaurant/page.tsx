@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import Button from "@/components/common/Button";
+import CircularTabs from "@/components/common/CircularTabs";
 import ApplyForLunchBox from "@/components/restaurant_page/ApplyForLunchBox";
 import LunchBoxManagement from "@/components/restaurant_page/LunchBoxManagement";
 import TotalLunchBoxStatus from "@/components/question_page/TotalLunchBoxStatus";
@@ -54,19 +54,13 @@ export default function LunchBoxApplicationPage() {
         />
         <h1 className="text-[22px] font-extrabold">도시락 신청</h1>
       </div>
-      <div className="flex flex-row gap-[14px]">
-        {restaurantTabs.map((tab, index) => (
-          <Button
-            key={index}
-            onClick={() => {
-              setSelectedTab(tab.value);
-            }}
-            className={`w-[180px] rounded-4xl border border-[#CACACA] py-[12px] font-medium ${tab.value === selectedTab ? "border-[#3D51AF] bg-[#3D51AF] text-white" : "text-[#878787]"}`}
-          >
-            {tab.label}
-          </Button>
-        ))}
-      </div>
+      <CircularTabs
+        tabs={restaurantTabs}
+        selectedTab={selectedTab}
+        onClick={(tab) => {
+          setSelectedTab(tab);
+        }}
+      />
       {selectedTab == "applyForLunchBox" && <ApplyForLunchBox />}
       {selectedTab == "myApplicationStatus" && <LunchBoxApplicationStatus />}
       {selectedTab == "totalApplicationStatus" && <TotalLunchBoxStatus />}

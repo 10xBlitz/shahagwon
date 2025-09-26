@@ -3,7 +3,9 @@
 import Image from "next/image";
 import { useState } from "react";
 import CircularTabs from "@/components/common/CircularTabs";
+import MySuggestions from "@/components/search_page/MySuggestions";
 import WriteSuggestion from "@/components/search_page/WriteSuggestion";
+import AllSuggestions from "@/components/search_page/AllSuggestions";
 
 const tabs = [
   {
@@ -42,6 +44,8 @@ export default function SendFeedbackPage() {
         }}
       />
       {selectedTab === "write_suggestion" && <WriteSuggestion />}
+      {selectedTab === "my_suggestions" && <MySuggestions />}
+      {selectedTab === "all_suggestions" && <AllSuggestions />}
     </div>
   );
 }
