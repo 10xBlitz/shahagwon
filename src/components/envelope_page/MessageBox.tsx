@@ -1,0 +1,38 @@
+import MessageList from "./MessageList";
+import { messageTemp } from "@/etc/temp";
+import UnresolvedMessageList from "./UnresolvedMessageList";
+
+export default function MessageBox() {
+  return (
+    <div className="mt-[32px] flex w-full flex-row justify-center gap-[32px] rounded-lg bg-white px-[250] py-[50]">
+      <div className="w-full max-w-[900px]">
+        <MessageList
+          messages={messageTemp}
+          onMessageClick={() => {}}
+          className="shadow-sm"
+        />
+      </div>
+      <div className="w-full max-w-[400px]">
+        <UnresolvedMessageList />
+      </div>
+    </div>
+  );
+}
+
+// import React from "react";
+
+// export default function MessageBox() {
+//   const handleMessageClick = (messageId: string) => {
+//     console.log("Message clicked:", messageId);
+//   };
+
+//   return (
+//     <div className="mt-[32px] flex h-[600px] w-full">
+// <MessageList
+//   messages={messageTemp}
+//   onMessageClick={handleMessageClick}
+//   className="shadow-sm"
+// />
+//     </div>
+//   );
+// }

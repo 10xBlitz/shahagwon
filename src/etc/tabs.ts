@@ -16,5 +16,5 @@ export const branchTabs = [
 export const lunchSubTabs = [
   { label: "전체", value: "entire" },
   { label: "점심", value: "lunch" },
-  { label: "저", value: "dinner" },
+  { label: "저녁", value: "dinner" },
 ];

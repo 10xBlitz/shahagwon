@@ -57,3 +57,59 @@ export const restaurantMenuTableConfig: GridColDef[] = [
   { field: "registrant", headerName: "등록자", width: 120 },
   { field: "registrationDate", headerName: "등록일", flex: 1 },
 ];
+
+/* /dashboard/restaurant */
+export const depositHistoryTableConfig: GridColDef[] = [
+  { field: "depositorName", headerName: "입금자명", width: 150 },
+  { field: "depositAmount", headerName: "입금액수", width: 120 },
+  { field: "depositTime", headerName: "입금시간", width: 160 },
+  { field: "sellerInfo", headerName: "매점여부", width: 120 },
+  { field: "seller", headerName: "매점된 사람", width: 150 },
+  { field: "sellTime", headerName: "매점 시간", width: 160 },
+  { field: "recipient", headerName: "수동 매점 책임자", flex: 1 },
+];
+
+export const chargeApplicationTableConfig: GridColDef[] = [
+  { field: "branch", headerName: "지점", width: 120 },
+  { field: "applicationId", headerName: "신청 아이디명", width: 180 },
+  { field: "applicantName", headerName: "신청한 입금자명", width: 150 },
+  { field: "applicationAmount", headerName: "신청 금액", width: 120 },
+  { field: "applicationTime", headerName: "신청 시간", width: 160 },
+  { field: "matchStatus", headerName: "매칭 여부", width: 120 },
+  { field: "matchTime", headerName: "매칭 시간", flex: 1 },
+];
+
+export const refundTableConfig: GridColDef[] = [
+  { field: "name", headerName: "이름", width: 120 },
+  { field: "refundAmount", headerName: "환불금액", width: 120 },
+  { field: "refundDate", headerName: "환불일자", width: 150 },
+  { field: "person", headerName: "책임자", flex: 1 },
+];
+
+export const allMessagesTableConfig: GridColDef[] = [
+  { field: "chatroomId", headerName: "채팅방 ID", width: 120 },
+  { field: "sender", headerName: "보낸 사람", width: 150 },
+  { field: "time", headerName: "시간", width: 180 },
+  { field: "from", headerName: "FROM", width: 120 },
+  { field: "to", headerName: "TO", width: 120 },
+  { field: "content", headerName: "내용", width: 300 },
+  { field: "readStatus", headerName: "읽음여부", flex: 1 },
+];
+
+export const groupSendTableConfig: GridColDef[] = [
+  { field: "branch", headerName: "지점", width: 120 },
+  { field: "studentNumber", headerName: "좌석번호", width: 120 },
+  { field: "name", headerName: "이름", width: 150 },
+  { field: "selection", headerName: "선택", flex: 1 },
+];
+
+export const callTextMessageTableConfig: GridColDef[] = [
+  { field: "direction", headerName: "방향", width: 100 },
+  { field: "type", headerName: "종류", width: 100 },
+  { field: "oppositeParty", headerName: "상대방", width: 150 },
+  { field: "responsiblePerson", headerName: "책임자", width: 120 },
+  { field: "content", headerName: "내용", width: 600 },
+  { field: "callTime", headerName: "통화시간", width: 150 },
+  { field: "responseTime", headerName: "대기시간", width: 150 },
+  { field: "sender", headerName: "보낸사람", flex: 1 },
+];

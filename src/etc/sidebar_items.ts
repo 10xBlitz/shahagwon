@@ -1,8 +1,4 @@
-export interface SidebarItem {
-  label: string;
-  icon: string;
-  route: string;
-}
+import { SidebarItem } from "@/types/types";
 
 export const sidebarItems: SidebarItem[] = [
   {

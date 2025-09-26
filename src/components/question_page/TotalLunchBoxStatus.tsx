@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../common/Button";
-import { branchTabs, lunchSubTabs, subTabs } from "@/etc/tabs";
+import { branchTabs, lunchSubTabs } from "@/etc/tabs";
 import Table from "../common/Table";
 import { lunchOrderTableConfig } from "@/etc/table_config";
 import { lunchOrderTemp } from "@/etc/temp";
@@ -31,7 +31,7 @@ export default function TotalLunchBoxStatus() {
             onClick={() => {
               setSelectedSubTab(tab.value);
             }}
-            className={`border p-3 text-sm font-medium ${index === 0 ? "rounded-l" : index === subTabs.length - 1 ? "rounded-r" : ""} ${selectedSubTab === tab.value ? "border-[#D1D6DD] bg-[#EDF4FC] text-[#1C75D2]" : "border-[#DFDFDF] text-[#747474]"}`}
+            className={`border p-3 text-sm font-medium ${index === 0 ? "rounded-l" : index === lunchSubTabs.length - 1 ? "rounded-r" : ""} ${selectedSubTab === tab.value ? "border-[#D1D6DD] bg-[#EDF4FC] text-[#1C75D2]" : "border-[#DFDFDF] text-[#747474]"}`}
           >
             {tab.label}
           </Button>

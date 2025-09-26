@@ -1,0 +1,17 @@
+import { refundTemp } from "@/etc/temp";
+import Table from "../common/Table";
+import { refundTableConfig } from "@/etc/table_config";
+
+export default function Refund() {
+  return (
+    <div className="mt-[32px]">
+      <Table
+        rows={refundTemp}
+        columns={refundTableConfig}
+        className="max-w-[1500px]"
+        height={560}
+        density="compact"
+      />
+    </div>
+  );
+}

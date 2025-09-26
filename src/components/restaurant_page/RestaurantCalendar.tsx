@@ -15,7 +15,6 @@ export default function RestaurantCalendar() {
             {day}
           </div>
         ))}
-
         <div className="border-r-2 border-[#F2F2F2] p-8 text-center font-medium text-gray-700">
           점<br />심
         </div>
@@ -25,7 +24,6 @@ export default function RestaurantCalendar() {
             className="border-r-2 border-b-2 border-[#F2F2F2] p-8"
           ></div>
         ))}
-
         <div className="border-r-2 border-[#F2F2F2] p-8 text-center font-medium text-gray-700">
           저<br />녁
         </div>

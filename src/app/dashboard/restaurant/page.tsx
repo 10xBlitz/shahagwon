@@ -77,32 +77,3 @@ export default function LunchBoxApplicationPage() {
     </div>
   );
 }
-
-// 26px
-
-// Top-Left
-// 환불 내역
-// 환불 내역(수성점)
-// 충전 신청 내역
-// 환불하기
-
-// Deposit details
-// Deposit details (Susung branch)
-// Recharge application details
-// Refund
-
-// Bottom-Left
-// 전체
-// 비매칭
-// 수동매칭
-
-// entire
-// Non-matching
-// Manual matching
-
-// Right
-// 삭제
-// 수동 매칭
-
-// Disable
-// Manual matching
