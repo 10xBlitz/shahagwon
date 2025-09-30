@@ -8,6 +8,7 @@ interface TableProps {
   columns: GridColDef[];
   hideFooterPagination?: boolean;
   hideFooterSelectedRowCount?: boolean;
+  hideFooter?: boolean;
   height?: number;
   density?: "compact" | "standard" | "comfortable";
   className?: string;
@@ -20,6 +21,7 @@ export default function Table({
   columns,
   hideFooterPagination,
   hideFooterSelectedRowCount,
+  hideFooter,
   height,
   density = "standard",
   className = "",
@@ -34,6 +36,7 @@ export default function Table({
         hideFooterSelectedRowCount={hideFooterSelectedRowCount}
         density={density}
         checkboxSelection={checkboxSelection}
+        hideFooter={hideFooter}
       />
     </div>
   );

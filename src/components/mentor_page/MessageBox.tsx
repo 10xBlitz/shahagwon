@@ -1,9 +1,8 @@
-import MessageList from "./MessageList";
 import { messageTemp } from "@/etc/temp";
-import UnresolvedMessageList from "./UnresolvedMessageList";
 import SearchBar from "../common/SearchBar";
+import MessageList from "../envelope_page/MessageList";
 
-export default function MessageBox() {
+export default function MentorMessageBox() {
   return (
     <div className="mt-[32px] flex w-full flex-row justify-center gap-[32px] rounded-lg bg-white px-[250] py-[50]">
       <div className="flex w-full max-w-[900px] flex-col gap-[22px]">
@@ -13,9 +12,6 @@ export default function MessageBox() {
           onMessageClick={() => {}}
           className="shadow-sm"
         />
-      </div>
-      <div className="w-full max-w-[400px]">
-        <UnresolvedMessageList />
       </div>
     </div>
   );
