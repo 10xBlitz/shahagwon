@@ -497,3 +497,57 @@ export const infoSessionReservationTableConfig: GridColDef[] = [
   { field: "memo1", headerName: "메모1", width: 200 },
   { field: "memo2", headerName: "메모2", flex: 1 },
 ];
+
+export const operationScheduleTableConfig: GridColDef[] = [
+  { field: "active", headerName: "확성", width: 80 },
+  { field: "week", headerName: "주기", width: 80 },
+  { field: "details", headerName: "상세날짜", width: 120 },
+  { field: "time", headerName: "시간", width: 80 },
+  { field: "method", headerName: "방향", width: 80 },
+  { field: "location", headerName: "지점", width: 250 },
+  { field: "creator", headerName: "작성자", width: 100 },
+  { field: "creationDate", headerName: "작성일", flex: 1 },
+];
+
+export const circleCheckTodoTableConfig: GridColDef[] = [
+  { field: "number", headerName: "번쩍", width: 100 },
+  { field: "instructions", headerName: "전달사항", width: 600 },
+  { field: "completionDate", headerName: "완고사진", width: 150 },
+  { field: "confirmationAction", headerName: "담당자 확인", width: 150 },
+  { field: "manager", headerName: "담당자", width: 120 },
+  { field: "author", headerName: "작성자", width: 120 },
+  { field: "filter", headerName: "필터", flex: 1 },
+];
+
+export const todoManagementTableConfig: GridColDef[] = [
+  { field: "group", headerName: "Group", width: 120 },
+  { field: "content", headerName: "내용", width: 400 },
+  { field: "deadline", headerName: "기한", width: 150 },
+  { field: "status", headerName: "상태", width: 100 },
+  { field: "assignedBy", headerName: "처리할 사람", width: 150 },
+  { field: "comment", headerName: "댓글", width: 100 },
+  { field: "author", headerName: "작성자", width: 120 },
+  { field: "priority", headerName: "우선순위", width: 120 },
+  { field: "completionDate", headerName: "생성일", flex: 1 },
+];
+
+export const phoneManagementTableConfig: GridColDef[] = [
+  { field: "direction", headerName: "방향", width: 100 },
+  { field: "category", headerName: "종류", width: 100 },
+  { field: "location", headerName: "상대방", width: 150 },
+  { field: "responsible", headerName: "책임자", width: 120 },
+  { field: "content", headerName: "내용", width: 600 },
+  { field: "callTime", headerName: "통화시간", width: 150 },
+  { field: "waitTime", headerName: "대기시간", width: 150 },
+  { field: "note", headerName: "날짜", flex: 1 },
+];
+
+export const recurringTodoTableConfig: GridColDef[] = [
+  { field: "cycle", headerName: "주기", width: 100 },
+  { field: "detailedTime", headerName: "상세시각", width: 150 },
+  { field: "project", headerName: "프로젝트", width: 150 },
+  { field: "color", headerName: "색선", width: 100 },
+  { field: "content", headerName: "내용", width: 400 },
+  { field: "author", headerName: "작성자", width: 120 },
+  { field: "createdDate", headerName: "작성일", flex: 1 },
+];

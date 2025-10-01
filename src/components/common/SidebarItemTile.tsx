@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { SidebarItem } from "@/utils/sidebar_items";
+import { SidebarItem } from "@/types/types";
 
 interface SidebarItemProps {
   isActive: boolean;

@@ -2,18 +2,23 @@
 
 import { useState } from "react";
 import { TabItem } from "@/types/types";
+import PageView from "@/components/circle_check_page/PageView";
 import BorderlessTabs from "@/components/common/BorderlessTabs";
+import TodoTable from "@/components/circle_check_page/TodoTable";
+import RecurringTodo from "@/components/circle_check_page/RecurringTodo";
+import RecurringKakao from "@/components/circle_check_page/RecurringKakao";
+import PhoneManagement from "@/components/circle_check_page/PhoneManagement";
 
 const tabs: TabItem[] = [
-  { label: "TODO 테이블", value: "todo-table" },
-  { label: "핸드폰 관리", value: "phone-management" },
-  { label: "반복 TODO 등록", value: "recurring-todo" },
-  { label: "반복 카톡 메시지 등록", value: "recurring-kakao" },
-  { label: "페이지 보기", value: "page-view" },
+  { label: "TODO 테이블", value: "todo_table" },
+  { label: "핸드폰 관리", value: "phone_management" },
+  { label: "반복 TODO 등록", value: "recurring_todo" },
+  { label: "반복 카톡 메시지 등록", value: "recurring_kakao" },
+  { label: "페이지 보기", value: "page_view" },
 ];
 
 export default function HeadquartersStaffPage() {
-  const [selectedTab, setSelectedTab] = useState("todo-table");
+  const [selectedTab, setSelectedTab] = useState("todo_table");
 
   return (
     <div className="flex w-full flex-col p-[44px]">
@@ -25,6 +30,11 @@ export default function HeadquartersStaffPage() {
           alignment="start"
         />
       </div>
+      {selectedTab === "todo_table" && <TodoTable />}
+      {selectedTab === "phone_management" && <PhoneManagement />}
+      {selectedTab === "recurring_todo" && <RecurringTodo />}
+      {selectedTab === "recurring_kakao" && <RecurringKakao />}
+      {selectedTab === "page_view" && <PageView />}
     </div>
   );
 }

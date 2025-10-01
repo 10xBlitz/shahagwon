@@ -12,7 +12,7 @@ export const subTabs = [
 ];
 
 export const branchTabs = [
-  { label: "전체 ", value: "entire" },
+  { label: "전체 ", value: "all" },
   { label: "강남점", value: "gangnam_branch" },
   { label: "강남2호점 ", value: "gangnam_2nd_branch" },
   { label: "대치점 ", value: "confrontation_point" },
@@ -23,7 +23,7 @@ export const branchTabs = [
 ];
 
 export const lunchSubTabs = [
-  { label: "전체", value: "entire" },
+  { label: "전체", value: "all" },
   { label: "점심", value: "lunch" },
   { label: " 저녁", value: "dinner" },
 ];
@@ -31,7 +31,7 @@ export const lunchSubTabs = [
 export const deskTabs = [
   {
     label: "전체",
-    value: "entire",
+    value: "all",
   },
   {
     label: "강남 데스크",

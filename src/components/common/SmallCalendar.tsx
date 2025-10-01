@@ -14,8 +14,8 @@ import {
   startOfMonth,
   eachDayOfInterval,
 } from "date-fns";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface SmallCalendarProps {
   onDateSelect?: (date: Date) => void;
@@ -40,7 +40,6 @@ export default function SmallCalendar({
 
   const days = eachDayOfInterval({ start: startDate, end: endDate });
 
-  // chunk into weeks (arrays of 7 days)
   const weeks: Date[][] = [];
   for (let i = 0; i < days.length; i += 7) {
     weeks.push(days.slice(i, i + 7));

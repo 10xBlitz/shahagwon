@@ -4,6 +4,7 @@ import { branchTabs } from "@/etc/tabs";
 import { groupSendTemp } from "@/etc/temp";
 import SquareTabs from "../common/SquareTabs";
 import { groupSendTableConfig } from "@/etc/table_config";
+import Input from "../common/Input";
 
 const userTabs = [
   {
@@ -48,7 +49,7 @@ export default function SendToGroup() {
           onClick={(tab) => setSelectedModeTab(tab)}
         />
       </div>
-      <div className="mb-[16px] flex flex-row">
+      <div className="mb-[16px] flex flex-row justify-between">
         <SquareTabs
           tabs={branchTabs}
           selectedTab={selectedBranchTab}
@@ -56,6 +57,7 @@ export default function SendToGroup() {
             setSelectedBranchTab(tab);
           }}
         />
+        <Input placeholder="이름" />
       </div>
       <Table
         rows={groupSendTemp}

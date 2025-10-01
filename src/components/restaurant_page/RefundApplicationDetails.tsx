@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Input from "../common/Input";
 import Table from "../common/Table";
 import SquareTabs from "../common/SquareTabs";
 import { chargeApplicationTemp } from "@/etc/temp";
@@ -19,18 +20,18 @@ export default function RefundApplicationDetails() {
   const [selectedSubTab, setSelectedSubTab] = useState("matching");
 
   return (
-    <div className="mt-[32px]">
-      <div className="mb-[12px] flex flex-row">
+    <div className="mt-[32px] max-w-[1500px]">
+      <div className="mb-[12px] flex flex-row justify-between">
         <SquareTabs
           tabs={subTabs}
           selectedTab={selectedSubTab}
           onClick={(tab) => setSelectedSubTab(tab)}
         />
+        <Input placeholder="신청 아이디명" />
       </div>
       <Table
         rows={chargeApplicationTemp}
         columns={chargeApplicationTableConfig}
-        className="max-w-[1500px]"
         density="standard"
         height={560}
       />

@@ -63,10 +63,10 @@ export default function LunchBoxApplicationPage() {
       />
       {selectedTab == "applyForLunchBox" && <ApplyForLunchBox />}
       {selectedTab == "myApplicationStatus" && <LunchBoxApplicationStatus />}
-      {selectedTab == "totalApplicationStatus" && <TotalLunchBoxStatus />}
       {selectedTab == "chargingApplicationStatus" && (
         <ChargingApplicationStatus />
       )}
+      {selectedTab == "totalApplicationStatus" && <TotalLunchBoxStatus />}
       {selectedTab == "lunchBoxMenuManagement" && <LunchBoxManagement />}
     </div>
   );

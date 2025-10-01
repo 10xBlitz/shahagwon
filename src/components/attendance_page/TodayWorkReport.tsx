@@ -18,14 +18,14 @@ const statusTabs = [
   },
   {
     label: "전체",
-    value: "entire",
+    value: "all",
   },
 ];
 
 const shiftTabs = [
   {
     label: "전체",
-    value: "entire",
+    value: "all",
   },
   {
     label: "오전 데스크",
@@ -51,9 +51,9 @@ const shiftTabs = [
 
 export default function TodayWorkReport() {
   const [selectedStatusTab, setSelectedStatusTab] = useState("incomplete");
-  const [selectedBranchTab, setSelectedBranchTab] = useState("entire");
-  const [selectedShiftTab, setSelectedShiftTab] = useState("entire");
-  const [selectedDeskTab, setSelectedDeskTab] = useState("entire");
+  const [selectedBranchTab, setSelectedBranchTab] = useState("all");
+  const [selectedShiftTab, setSelectedShiftTab] = useState("all");
+  const [selectedDeskTab, setSelectedDeskTab] = useState("all");
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handlePreviousDate = () => {

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import CircularTabs from "@/components/common/CircularTabs";
-import SmallCalendar from "@/components/edit_page/SmallCalendar";
+import SmallCalendar from "@/components/common/SmallCalendar";
 import ReasonInputCard from "@/components/edit_page/ReasonInput";
 import StatusSelector from "@/components/edit_page/StatusSelector";
 import TotalSubmissions from "@/components/edit_page/TotalSubmissions";

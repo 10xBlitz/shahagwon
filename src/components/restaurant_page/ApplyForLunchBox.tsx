@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../common/Button";
-import SmallCalendar from "../edit_page/SmallCalendar";
+import SmallCalendar from "../common/SmallCalendar";
 import FoodCard from "./FoodCard";
 
 export default function ApplyForLunchBox() {

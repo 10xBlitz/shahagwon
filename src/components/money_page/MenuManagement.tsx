@@ -8,13 +8,12 @@ export default function MenuManagement() {
     <div className="mt-[36px] flex w-full max-w-[1800px] flex-col">
       <div className="mb-[24px] flex w-full flex-row items-center justify-between">
         <Input placeholder="이름 검색" />
-
         <div className="flex flex-row gap-4">
           <Button
             onClick={() => {}}
             className="rounded-sm bg-[#FBFCFE] px-[14px] py-[8px] text-sm font-semibold"
           >
-            메뉴 생성
+            비활성화
           </Button>
           <Button
             onClick={() => {}}
