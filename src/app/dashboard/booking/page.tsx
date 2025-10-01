@@ -17,7 +17,7 @@ const consultationTabs = [
 
 export default function CounselingAppointmentManagementPage() {
   const [selectedConsultationTab, setSelectedConsultationTab] =
-    useState("reservation_list");
+    useState(consultationTabs[0].value);
 
   return (
     <div className="flex h-full flex-col overflow-y-auto bg-[#F5F5F5] p-[48px]">

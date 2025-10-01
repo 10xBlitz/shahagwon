@@ -172,3 +172,19 @@ export const reservationBranchTabs = [
   { label: "분당점", value: "bundang_branch" },
   { label: "송파점", value: "songpa_branch" },
 ];
+
+export const enrollmentStatusTabs = [
+  { label: "재원생", value: "current_student" },
+  { label: "비재원생", value: "non_enrolled_student" },
+];
+
+export const userTypeTabs = [
+  { label: "ALL", value: "all" },
+  { label: "학생", value: "student" },
+  { label: "선생님", value: "teacher" },
+];
+
+export const completionStatusTabs = [
+  { label: "미완료", value: "incomplete" },
+  { label: "전체", value: "all" },
+];

@@ -11,7 +11,7 @@ import {
 import DateNavigator from "../common/DateNavigator";
 
 export default function AllWorkReport() {
-  const [selectedDeskTab, setSelectedDeskTab] = useState("entire");
+  const [selectedDeskTab, setSelectedDeskTab] = useState(deskTabs[0].value);
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handlePreviousDate = () => {

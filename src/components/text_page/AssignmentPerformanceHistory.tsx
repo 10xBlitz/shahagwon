@@ -17,8 +17,8 @@ const statusTabs = [
 ];
 
 export default function AssignmentPerformanceHistory() {
-  const [selectedTab, setSelectedTab] = useState("entire");
-  const [selectedStatusTab, setSelectedStatusTab] = useState("all");
+  const [selectedTab, setSelectedTab] = useState(branchTabs[0].value);
+  const [selectedStatusTab, setSelectedStatusTab] = useState(statusTabs[0].value);
 
   return (
     <div className="w-full max-w-[1200px]">

@@ -41,7 +41,7 @@ const restaurantTabs = [
 ];
 
 export default function LunchBoxApplicationPage() {
-  const [selectedTab, setSelectedTab] = useState("applyForLunchBox");
+  const [selectedTab, setSelectedTab] = useState(restaurantTabs[0].value);
 
   return (
     <div className="flex h-full flex-col overflow-y-auto bg-[#F5F5F5] p-[48px]">

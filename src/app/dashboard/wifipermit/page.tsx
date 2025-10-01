@@ -13,7 +13,7 @@ const wifiPermitTabs = [
 
 export default function FirewallReleasePage() {
   const [selectedWifiPermitTab, setSelectedWifiPermitTab] =
-    useState("release_list");
+    useState(wifiPermitTabs[0].value);
 
   return (
     <div className="flex h-full flex-col overflow-y-auto bg-[#F5F5F5] p-[48px]">

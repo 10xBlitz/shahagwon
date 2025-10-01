@@ -24,7 +24,7 @@ const tabs = [
 ];
 
 export default function ChargingApplicationStatus() {
-  const [selectedTab, setSelectedTab] = useState("deposit_history");
+  const [selectedTab, setSelectedTab] = useState(tabs[0].value);
 
   return (
     <div className="mt-[26px] flex w-full flex-col">

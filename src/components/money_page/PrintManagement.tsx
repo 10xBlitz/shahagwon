@@ -4,6 +4,7 @@ import { branchTabs } from "@/etc/tabs";
 import Button from "../common/Button";
 import Table from "../common/Table";
 import { printManagementTableConfig } from "@/etc/table_config";
+import DateRangePicker from "../common/DateRangePicker";
 
 const paymentStatusTabs = [
   {
@@ -17,13 +18,17 @@ const paymentStatusTabs = [
 ];
 
 export default function PrintManagement() {
-  const [selectedPaymentStatusTab, setSelectedPaymentStatusTab] =
-    useState("unpaid");
-  const [selectedBranchTab, setSelectedBranchTab] = useState("entire");
+  const [selectedPaymentStatusTab, setSelectedPaymentStatusTab] = useState(
+    paymentStatusTabs[0].value,
+  );
+  const [selectedBranchTab, setSelectedBranchTab] = useState(
+    branchTabs[0].value,
+  );
 
   return (
     <div className="mt-[50px] flex max-w-[1700px] flex-col">
-      <div className="mb-[12px] flex w-full flex-row items-center justify-between">
+      <DateRangePicker />
+      <div className="mt-[24px] mb-[12px] flex w-full flex-row items-center justify-between">
         <div className="flex flex-row items-center gap-[32px]">
           <SquareTabs
             tabs={paymentStatusTabs}

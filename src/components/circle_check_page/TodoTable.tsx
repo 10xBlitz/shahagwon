@@ -70,13 +70,13 @@ const branchManagementTabs = [
 ];
 
 export default function TodoTable() {
-  const [selectedStatusTab, setSelectedStatusTab] = useState("incomplete");
-  const [selectedNameTab, setSelectedNameTab] = useState("all");
+  const [selectedStatusTab, setSelectedStatusTab] = useState(statusTabs[0].value);
+  const [selectedNameTab, setSelectedNameTab] = useState(nameTabs[0].value);
   const [selectedTodoStatusTab, setSelectedTodoStatusTab] =
-    useState("incomplete");
-  const [selectedTodoFilterTab, setSelectedTodoFilterTab] = useState("all");
+    useState(todoStatusTabs[0].value);
+  const [selectedTodoFilterTab, setSelectedTodoFilterTab] = useState(todoFilterTabs[0].value);
   const [selectedBranchManagementTab, setSelectedBranchManagementTab] =
-    useState("management_gangnam");
+    useState(branchManagementTabs[0].value);
 
   return (
     <div className="mt-[36px] flex w-full max-w-[1850px] flex-col">

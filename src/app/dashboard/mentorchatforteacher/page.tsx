@@ -10,7 +10,7 @@ import CoachingHistory from "@/components/mentor_page/CoachingHistory";
 import CoachingManagement from "@/components/mentor_page/CoachingManagement";
 
 export default function MenteeChatRoomPage() {
-  const [selectedCoachingTab, setSelectedCoachingTab] = useState("message_box");
+  const [selectedCoachingTab, setSelectedCoachingTab] = useState(coachingTabs[0].value);
 
   return (
     <div className="flex h-full flex-col overflow-y-auto bg-[#F5F5F5] p-[48px]">

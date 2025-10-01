@@ -31,7 +31,7 @@ const attendanceTabs = [
 
 export default function Attendance() {
   const [selectedAttendanceTab, setSelectedAttendanceTab] =
-    useState("attendance_check");
+    useState(attendanceTabs[0].value);
 
   return (
     <div className="flex flex-col">

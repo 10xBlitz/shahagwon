@@ -551,3 +551,104 @@ export const recurringTodoTableConfig: GridColDef[] = [
   { field: "author", headerName: "작성자", width: 120 },
   { field: "createdDate", headerName: "작성일", flex: 1 },
 ];
+
+export const chartTableConfig: GridColDef[] = [
+  { field: "no", headerName: "NO", width: 80 },
+  { field: "subject", headerName: "과목", width: 100 },
+  { field: "type", headerName: "분류 (중단원명 > 소단원명)", width: 250 },
+  { field: "trialOutput", headerName: "시험 출치", width: 150 },
+  { field: "version", headerName: "배점", width: 100 },
+  { field: "answer", headerName: "정답률", width: 100 },
+  { field: "lastExclusionDate", headerName: "마지막 출제일", width: 150 },
+  { field: "firstSido", headerName: "첫번째 시도", width: 120 },
+  { field: "secondSido", headerName: "두번째 시도", width: 120 },
+  { field: "correctAnswer", headerName: "정답", flex: 1 },
+];
+
+export const todayPenaltyPointsTableConfig: GridColDef[] = [
+  { field: "seat", headerName: "좌석", width: 50 },
+  { field: "name", headerName: "이름", width: 75 },
+  { field: "notSeen", headerName: "미검수", width: 50 },
+  { field: "notSubmitted", headerName: "미전송", flex: 1 },
+];
+
+export const penaltyDetailsTableConfig: GridColDef[] = [
+  { field: "penaltyReason", headerName: "벌점사유", width: 100 },
+  { field: "checkInRecord", headerName: "출입기록", width: 100 },
+  { field: "reasonSubmission", headerName: "사유제출", width: 100 },
+  { field: "regularSchedule", headerName: "정기일정", flex: 1 },
+];
+
+export const penaltyReasonExampleTableConfig: GridColDef[] = [
+  { field: "penaltyReasonExample", headerName: "벌점사유(예상)", width: 150 },
+  { field: "penaltyReasonConfirmed", headerName: "벌점사유(확정)", width: 150 },
+  { field: "penaltyValue", headerName: "벌점값", width: 120 },
+  { field: "detailedReason", headerName: "상세사유", width: 150 },
+  { field: "inspection", headerName: "검수하기", width: 120 },
+  { field: "penaltyDistribution", headerName: "벌점부여", width: 120 },
+  { field: "goToClassMemo", headerName: "근무자메모", width: 120 },
+  { field: "deactivate", headerName: "비활성화", width: 120 },
+  { field: "reason", headerName: "사유", flex: 1 },
+];
+
+export const relatedTimeRangeTableConfig: GridColDef[] = [
+  { field: "relatedTimeRange", headerName: "관련시간대", width: 150 },
+  { field: "content", headerName: "내용", flex: 1 },
+];
+
+export const studentParentInfoTableConfig: GridColDef[] = [
+  { field: "studentParentInfo", headerName: "학부모승인", width: 150 },
+  { field: "date", headerName: "요일", width: 120 },
+  { field: "content", headerName: "내용", width: 200 },
+  { field: "monthlyMemo", headerName: "월별 메모", flex: 1 },
+];
+
+export const attendanceTimeTableConfig2: GridColDef[] = [
+  { field: "category", headerName: "종류", width: 120 },
+  { field: "attendee", headerName: "승인", width: 120 },
+  { field: "exitTime", headerName: "출발시간", width: 150 },
+  { field: "arrivalTime", headerName: "도착시간", width: 150 },
+  { field: "reason", headerName: "사유", width: 200 },
+  { field: "submissionTime", headerName: "제출시간", flex: 1 },
+];
+
+export const allStudentInfoTableConfig: GridColDef[] = [
+  { field: "serialId", headerName: "서비ID", width: 80 },
+  { field: "name", headerName: "이름", width: 100 },
+  { field: "group", headerName: "구분", width: 80 },
+  { field: "enrollmentStatus", headerName: "재원중", width: 100 },
+  { field: "phoneNumber", headerName: "전화번호", width: 120 },
+  { field: "title", headerName: "호칭", width: 100 },
+  { field: "position", headerName: "직책", width: 100 },
+  { field: "seat", headerName: "자리", width: 80 },
+  { field: "room", headerName: "방정", width: 100 },
+  { field: "parentPhoneNumber", headerName: "부모님번호", width: 120 },
+  { field: "homeroom", headerName: "담임", width: 100 },
+  { field: "assignmentDate", headerName: "단임 배정 이후", width: 120 },
+  { field: "totalBalance", headerName: "총잔금액", width: 100 },
+  { field: "mealVoucherBalance", headerName: "식권잔유", width: 100 },
+  { field: "materialId", headerName: "자료안식ID", width: 120 },
+  { field: "firstAttendance", headerName: "첫 등원", width: 100 },
+  { field: "membershipDate", headerName: "회원가입일", width: 120 },
+  { field: "email", headerName: "이메일", flex: 1 },
+];
+
+export const viewPenaltyHistoryTableConfig: GridColDef[] = [
+  { field: "studentName", headerName: "학생 이름", width: 150 },
+  { field: "penaltyPoints", headerName: "벌점", width: 100 },
+  { field: "reason", headerName: "사유", width: 300 },
+  { field: "submitter", headerName: "제출자", width: 120 },
+  { field: "submissionDate", headerName: "벌점 제출 날짜", width: 150 },
+  { field: "totalPoints", headerName: "총점", width: 100 },
+  { field: "today", headerName: "오늘", flex: 1 },
+];
+
+export const recurringKakaoTableConfig: GridColDef[] = [
+  { field: "cycle", headerName: "주기", width: 100 },
+  { field: "detailedTime", headerName: "상세날짜", width: 150 },
+  { field: "time", headerName: "시간", width: 100 },
+  { field: "chatRoom", headerName: "채팅방", width: 250 },
+  { field: "content", headerName: "내용", width: 600 },
+  { field: "author", headerName: "작성자", width: 120 },
+  { field: "createdDate", headerName: "작성일", flex: 1 },
+];

@@ -7,7 +7,7 @@ import { requestStatusTemp } from "@/etc/temp";
 import { requestStatusTableConfig } from "@/etc/table_config";
 
 export default function RequestStatus() {
-  const [selectedTab, setSelectedTab] = useState("entire");
+  const [selectedTab, setSelectedTab] = useState(branchTabs[0].value);
 
   return (
     <div className="h-auto w-[1166px] rounded-lg bg-white p-[54px]">

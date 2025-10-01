@@ -11,8 +11,8 @@ const activeTabs = [
 ];
 
 export default function OperationSchedule() {
-  const [selectedActiveTab, setSelectedActiveTab] = useState("active");
-  const [selectedBranchTab, setSelectedBranchTab] = useState("entire");
+  const [selectedActiveTab, setSelectedActiveTab] = useState(activeTabs[0].value);
+  const [selectedBranchTab, setSelectedBranchTab] = useState(branchTabs[0].value);
 
   return (
     <div className="mt-[50px] flex flex-col">

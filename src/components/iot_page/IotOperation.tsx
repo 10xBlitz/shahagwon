@@ -3,7 +3,7 @@ import { branchTabs } from "@/etc/tabs";
 import SquareTabs from "../common/SquareTabs";
 
 export default function IotOperation() {
-  const [selectedCoachingTab, setSelectedCoachingTab] = useState("entire");
+  const [selectedCoachingTab, setSelectedCoachingTab] = useState(branchTabs[0].value);
 
   return (
     <div className="flex flex-col">

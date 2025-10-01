@@ -6,7 +6,7 @@ import OptionManagement from "../money_page/OptionManagement";
 
 export default function MockExamMenuManagement() {
   const [selectedContentMenuTab, setSelectedContentMenuTab] =
-    useState("menu_management");
+    useState(managementTabs[0].value);
 
   return (
     <div className="flex w-full max-w-[1790px] flex-col">

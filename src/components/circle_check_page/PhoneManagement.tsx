@@ -2,6 +2,7 @@ import { useState } from "react";
 import SquareTabs from "../common/SquareTabs";
 import Table from "../common/Table";
 import { phoneManagementTableConfig } from "@/etc/table_config";
+import Input from "../common/Input";
 
 const locationTabs = [
   { label: "전체", value: "all" },
@@ -27,20 +28,25 @@ const communicationTypeTabs = [
 ];
 
 export default function PhoneManagement() {
-  const [selectedLocationTab, setSelectedLocationTab] = useState("all");
+  const [selectedLocationTab, setSelectedLocationTab] = useState(
+    locationTabs[0].value,
+  );
   const [selectedCommunicationTypeTab, setSelectedCommunicationTypeTab] =
-    useState("all");
+    useState(communicationTypeTabs[0].value);
 
   return (
     <div className="mt-[20px] flex w-full max-w-[1700px] flex-col">
       <div className="mb-[22px] flex w-full flex-row justify-between">
-        <SquareTabs
-          tabs={locationTabs}
-          selectedTab={selectedLocationTab}
-          onClick={(tab) => {
-            setSelectedLocationTab(tab);
-          }}
-        />
+        <div className="flex flex-row items-center gap-[32px]">
+          <SquareTabs
+            tabs={locationTabs}
+            selectedTab={selectedLocationTab}
+            onClick={(tab) => {
+              setSelectedLocationTab(tab);
+            }}
+          />
+          <Input placeholder="상대방 검색" />
+        </div>
         <SquareTabs
           tabs={communicationTypeTabs}
           selectedTab={selectedCommunicationTypeTab}

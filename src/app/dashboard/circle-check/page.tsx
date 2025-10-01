@@ -18,7 +18,7 @@ const tabs: TabItem[] = [
 ];
 
 export default function HeadquartersStaffPage() {
-  const [selectedTab, setSelectedTab] = useState("todo_table");
+  const [selectedTab, setSelectedTab] = useState(tabs[0].value);
 
   return (
     <div className="flex w-full flex-col p-[44px]">

@@ -49,7 +49,7 @@ const dropdownOptions = [
 ];
 
 export default function WriteSuggestion() {
-  const [selectedTab, setSelectedTab] = useState("real_name");
+  const [selectedTab, setSelectedTab] = useState(tabs[0].value);
   const [selectedCategory, setSelectedCategory] = useState("");
 
   return (

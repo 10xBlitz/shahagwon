@@ -6,6 +6,7 @@ import Button from "@/components/common/Button";
 import SquareTabs from "@/components/common/SquareTabs";
 import Table from "@/components/common/Table";
 import { todoTableConfig } from "@/etc/table_config";
+import Input from "@/components/common/Input";
 
 const checkStatusTabs = [
   { label: "미완료", value: "incomplete" },
@@ -14,8 +15,9 @@ const checkStatusTabs = [
 ];
 
 export default function TodoPage() {
-  const [selectedCheckStatusTab, setSelectedCheckStatusTab] =
-    useState("incomplete");
+  const [selectedCheckStatusTab, setSelectedCheckStatusTab] = useState(
+    checkStatusTabs[0].value,
+  );
 
   return (
     <div className="flex h-full flex-col overflow-y-auto bg-[#F5F5F5] p-[48px]">
@@ -28,6 +30,13 @@ export default function TodoPage() {
             height={18}
           />
           <h1 className="text-[22px] font-extrabold">ToDo</h1>
+          <Button
+            onClick={() => {}}
+            hasPlus
+            className="gap-2 rounded bg-[#0C6CCB] px-[12px] py-[8px] text-sm font-bold text-white"
+          >
+            새로운 ToDo
+          </Button>
         </div>
         <div className="mt-[36px] mb-[18px] flex flex-row items-center justify-between">
           <div className="flex flex-row gap-[36px]">
@@ -36,6 +45,8 @@ export default function TodoPage() {
               selectedTab={selectedCheckStatusTab}
               onClick={(tab) => setSelectedCheckStatusTab(tab)}
             />
+            <Input placeholder="책임자 검색" />
+            <Input placeholder="제목, 내용 검색 " />
           </div>
           <div className="flex flex-row gap-4">
             <Button

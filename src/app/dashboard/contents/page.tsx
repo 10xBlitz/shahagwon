@@ -17,7 +17,7 @@ const contentsTabs: TabItem[] = [
 ];
 
 export default function MockExamApplicationPage() {
-  const [selectedTab, setSelectedTab] = useState("mock_exam_application");
+  const [selectedTab, setSelectedTab] = useState(contentsTabs[0].value);
 
   return (
     <div className="flex h-full flex-col overflow-y-auto bg-[#F5F5F5] p-[48px]">

@@ -11,7 +11,7 @@ import Button from "../common/Button";
 import Input from "../common/Input";
 
 export default function AllTestRecords() {
-  const [selectedTab, setSelectedTab] = useState("entire");
+  const [selectedTab, setSelectedTab] = useState(branchTabs[0].value);
 
   return (
     <div className="w-full max-w-[1200px]">

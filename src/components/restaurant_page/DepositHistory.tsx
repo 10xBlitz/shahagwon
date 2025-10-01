@@ -25,7 +25,7 @@ const subTabs = [
 ];
 
 export default function DepositHistory() {
-  const [selectedSubTab, setSelectedSubTab] = useState("all");
+  const [selectedSubTab, setSelectedSubTab] = useState(subTabs[0].value);
 
   return (
     <div className="mt-[32px] w-full max-w-[1500px]">

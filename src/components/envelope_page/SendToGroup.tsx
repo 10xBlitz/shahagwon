@@ -29,9 +29,9 @@ const modeTabs = [
 ];
 
 export default function SendToGroup() {
-  const [selectedUserTab, setSelectedUserTab] = useState("student");
-  const [selectedModeTab, setSelectedModeTab] = useState("all");
-  const [selectedBranchTab, setSelectedBranchTab] = useState("entire");
+  const [selectedUserTab, setSelectedUserTab] = useState(userTabs[0].value);
+  const [selectedModeTab, setSelectedModeTab] = useState(modeTabs[0].value);
+  const [selectedBranchTab, setSelectedBranchTab] = useState(branchTabs[0].value);
 
   return (
     <div className="mt-[32px] flex w-full flex-col rounded-lg bg-white px-[342px] py-[50px]">

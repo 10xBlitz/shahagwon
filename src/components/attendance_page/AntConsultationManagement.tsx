@@ -21,7 +21,7 @@ const mentorTabs = [
 
 export default function AntConsultationManagement() {
   const [selectedMentorTab, setSelectedMentorTab] =
-    useState("view_mentor_todo");
+    useState(mentorTabs[0].value);
 
   return (
     <div className="flex flex-col">

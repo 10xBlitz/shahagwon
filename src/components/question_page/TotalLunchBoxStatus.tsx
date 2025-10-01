@@ -8,8 +8,8 @@ import DateRangePicker from "../common/DateRangePicker";
 import { lunchOrderTableConfig } from "@/etc/table_config";
 
 export default function TotalLunchBoxStatus() {
-  const [selectedBranchTab, setSelectedBranchTab] = useState("entire");
-  const [selectedSubTab, setSelectedSubTab] = useState("entire");
+  const [selectedBranchTab, setSelectedBranchTab] = useState(branchTabs[0].value);
+  const [selectedSubTab, setSelectedSubTab] = useState(lunchSubTabs[0].value);
 
   return (
     <div className="mt-[32px] flex w-full flex-col">

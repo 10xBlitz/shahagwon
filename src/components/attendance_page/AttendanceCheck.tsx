@@ -15,9 +15,12 @@ import {
   penaltyMemoTableConfig,
 } from "@/etc/table_config";
 import { attendanceCheckTemp } from "@/etc/temp";
+import Input from "../common/Input";
 
 export default function AttendanceCheck() {
-  const [selectedPeriodtab, setSelectedPeriodTab] = useState("period_0");
+  const [selectedPeriodtab, setSelectedPeriodTab] = useState(
+    periodTabs[0].value,
+  );
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handlePreviousDate = () => {
@@ -62,16 +65,25 @@ export default function AttendanceCheck() {
           {periodTabs.find((tab) => tab.value === selectedPeriodtab)?.time}
         </p>
       </div>
-      <div className="mt-[32px] mb-[16px] flex flex-row gap-[10px]">
-        <div className="rounded bg-[#FBFCFE] px-4 py-2 text-[#A0A6AD]">
-          <Phone color="#32383F" size={18} />
+      <div className="mt-[32px] mb-[16px] flex w-full max-w-[600px] flex-row justify-between">
+        <div className="flex flex-row items-center gap-[10px]">
+          <div className="rounded bg-[#FBFCFE] px-4 py-2 text-[#A0A6AD]">
+            <Phone color="#32383F" size={18} />
+          </div>
+          <div className="rounded bg-[#FBFCFE] px-4 py-2 text-[#A0A6AD]">
+            <Mail color="#32383F" size={18} />
+          </div>
+          <div className="rounded bg-[#FBFCFE] px-4 py-2 text-[#A0A6AD]">
+            <MessageSquare color="#32383F" size={18} />
+          </div>
+          <Input placeholder="학생 이름 검색" />
         </div>
-        <div className="rounded bg-[#FBFCFE] px-4 py-2 text-[#A0A6AD]">
-          <Mail color="#32383F" size={18} />
-        </div>
-        <div className="rounded bg-[#FBFCFE] px-4 py-2 text-[#A0A6AD]">
-          <MessageSquare color="#32383F" size={18} />
-        </div>
+        <Button
+          onClick={() => {}}
+          className="rounded bg-[#FBFCFE] px-[12px] py-[6px] font-semibold tracking-tighter text-[#9FA5AC]"
+        >
+          폰 미제출 메세지
+        </Button>
       </div>
       <div className="flex w-full flex-row">
         <div className="flex max-w-[600px] flex-1 flex-col">

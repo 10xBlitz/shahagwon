@@ -41,7 +41,7 @@ const recurringTodoTabs = [
 
 export default function RecurringTodo() {
   const [selectedRecurringTodoTab, setSelectedRecurringTodoTab] =
-    useState("all");
+    useState(recurringTodoTabs[0].value);
 
   return (
     <div className="flex flex-col">

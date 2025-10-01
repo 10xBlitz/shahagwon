@@ -25,7 +25,7 @@ const editTabs = [
 ];
 
 export default function AbsenceReasonSubmissionPage() {
-  const [selectedTab, setSelectedTab] = useState("submitReason");
+  const [selectedTab, setSelectedTab] = useState(editTabs[0].value);
 
   return (
     <div className="flex h-full flex-col bg-[#F5F5F5] p-[48px]">

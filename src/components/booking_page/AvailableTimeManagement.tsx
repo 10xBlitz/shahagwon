@@ -45,9 +45,9 @@ const timeSlots = [
 ];
 
 export default function AvailableTimeManagement() {
-  const [selectedBranch, setSelectedBranch] = useState("daegu");
+  const [selectedBranch, setSelectedBranch] = useState(branches[0].value);
   const [selectedConsultationType, setSelectedConsultationType] =
-    useState("phone");
+    useState(consultationTypes[0].value);
   const [weekdayTimes, setWeekdayTimes] = useState<string[]>([]);
   const [saturdayTimes, setSaturdayTimes] = useState<string[]>([]);
   const [sundayTimes, setSundayTimes] = useState<string[]>([]);

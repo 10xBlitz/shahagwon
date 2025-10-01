@@ -27,7 +27,7 @@ const tabs = [
 ];
 
 export default function TaskManagementPage() {
-  const [selectedTab, setSelectedTab] = useState("today_work_report");
+  const [selectedTab, setSelectedTab] = useState(tabs[0].value);
 
   return (
     <div className="flex h-full flex-col overflow-y-auto bg-[#F5F5F5] p-[48px]">

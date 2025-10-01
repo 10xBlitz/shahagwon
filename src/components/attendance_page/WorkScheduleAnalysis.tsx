@@ -16,7 +16,7 @@ const analysisTabs = [
 
 export default function WorkScheduleAnalysis() {
   const [selectedAnalysisTab, setSelectedAnalysisTab] =
-    useState("ai_inspection");
+    useState(analysisTabs[0].value);
 
   return (
     <div className="flex flex-col">

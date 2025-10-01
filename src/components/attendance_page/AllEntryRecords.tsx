@@ -3,6 +3,7 @@ import DateNavigator from "../common/DateNavigator";
 import Table from "../common/Table";
 import { entryExitRecordTableConfig } from "@/etc/table_config";
 import { entryExitRecordTemp } from "@/etc/temp";
+import Input from "../common/Input";
 
 export default function AllEntryRecords() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -28,6 +29,7 @@ export default function AllEntryRecords() {
           onPreviousDate={handlePreviousDate}
           onNextDate={handleNextDate}
         />
+        <Input placeholder="이름을 검색하세요" />
       </div>
       <Table
         rows={entryExitRecordTemp}

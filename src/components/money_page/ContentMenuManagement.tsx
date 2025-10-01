@@ -6,7 +6,7 @@ import BorderlessTabs from "../common/BorderlessTabs";
 
 export default function ContentMenuManagement() {
   const [selectedContentMenuTab, setSelectedContentMenuTab] =
-    useState("menu_management");
+    useState(managementTabs[0].value);
 
   return (
     <div className="flex w-full flex-col">

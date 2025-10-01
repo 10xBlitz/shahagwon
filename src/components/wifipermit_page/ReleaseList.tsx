@@ -4,15 +4,17 @@ import { branchTabs } from "@/etc/tabs";
 import SquareTabs from "../common/SquareTabs";
 import Table from "../common/Table";
 import { wifiReleaseListTableConfig } from "@/etc/table_config";
+import DateRangePicker from "../common/DateRangePicker";
 
 export default function ReleaseList() {
-  const [selectedBranchTab, setSelectedBranch] = useState("entire");
+  const [selectedBranchTab, setSelectedBranch] = useState(branchTabs[0].value);
 
   return (
     <div className="mt-[32px] flex w-full max-w-[1500px] flex-col items-start">
+      <DateRangePicker />
       <Button
         onClick={() => {}}
-        className="rounded bg-[#E0E0E0] px-[32px] py-[6px] font-medium text-[#A2A2A2]"
+        className="mt-[24px] rounded bg-[#E0E0E0] px-[32px] py-[6px] font-medium text-[#A2A2A2]"
       >
         조회하기
       </Button>

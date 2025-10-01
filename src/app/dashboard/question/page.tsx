@@ -33,7 +33,7 @@ const editTabs = [
 ];
 
 export default function QuestionPage() {
-  const [selectedTab, setSelectedTab] = useState("offlineApplication");
+  const [selectedTab, setSelectedTab] = useState(editTabs[0].value);
 
   return (
     <div className="h-full w-full flex-col overflow-y-auto bg-[#F5F5F5] p-[48px]">

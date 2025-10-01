@@ -19,7 +19,7 @@ const offlineApplicationTabs = [
 ];
 
 export default function OfflineApplication() {
-  const [selectedTab, setSelectedTab] = useState("request");
+  const [selectedTab, setSelectedTab] = useState(offlineApplicationTabs[0].value);
 
   return (
     <div className="mt-2 flex flex-col items-center">

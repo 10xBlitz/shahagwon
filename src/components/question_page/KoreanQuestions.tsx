@@ -5,7 +5,7 @@ import { postsTemp } from "../../etc/temp";
 import SquareTabs from "../common/SquareTabs";
 
 export default function KoreanQuestions() {
-  const [selectedTab, setSelectedTab] = useState("all");
+  const [selectedTab, setSelectedTab] = useState(subTabs[0].value);
 
   return (
     <div className="flex flex-col items-center">

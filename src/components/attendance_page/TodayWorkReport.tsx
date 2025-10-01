@@ -50,10 +50,14 @@ const shiftTabs = [
 ];
 
 export default function TodayWorkReport() {
-  const [selectedStatusTab, setSelectedStatusTab] = useState("incomplete");
-  const [selectedBranchTab, setSelectedBranchTab] = useState("all");
-  const [selectedShiftTab, setSelectedShiftTab] = useState("all");
-  const [selectedDeskTab, setSelectedDeskTab] = useState("all");
+  const [selectedStatusTab, setSelectedStatusTab] = useState(
+    statusTabs[0].value,
+  );
+  const [selectedBranchTab, setSelectedBranchTab] = useState(
+    branchTabs[0].value,
+  );
+  const [selectedShiftTab, setSelectedShiftTab] = useState(shiftTabs[0].value);
+  const [selectedDeskTab, setSelectedDeskTab] = useState(deskTabs[0].value);
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handlePreviousDate = () => {
@@ -80,7 +84,7 @@ export default function TodayWorkReport() {
           추가하기
         </Button>
       </div>
-      <div className="mt-[26px] mb-[18px] flex flex-row items-center">
+      <div className="mt-[26px] mb-[18px] flex w-full flex-row items-center justify-between">
         <div className="flex flex-row items-center gap-[38px]">
           <SquareTabs
             tabs={statusTabs}
@@ -103,6 +107,20 @@ export default function TodayWorkReport() {
               setSelectedShiftTab(tab);
             }}
           />
+        </div>
+        <div className="flex flex-row items-center gap-[12px]">
+          <Button
+            onClick={() => {}}
+            className="rounded bg-[#FBFCFE] px-[12px] py-[6px] text-sm font-bold text-[#9FA5AC]"
+          >
+            사진 업로드
+          </Button>
+          <Button
+            onClick={() => {}}
+            className="rounded bg-[#FBFCFE] px-[12px] py-[6px] text-sm font-bold text-[#9FA5AC]"
+          >
+            삭제하기{" "}
+          </Button>
         </div>
       </div>
       <Table

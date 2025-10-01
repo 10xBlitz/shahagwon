@@ -9,7 +9,7 @@ import Button from "../common/Button";
 import Input from "../common/Input";
 
 export default function TotalSubmissions() {
-  const [selectedTab, setSelectedTab] = useState("entire");
+  const [selectedTab, setSelectedTab] = useState(branchTabs[0].value);
 
   return (
     <div className="flex w-full max-w-[1500px] flex-col">

@@ -17,7 +17,7 @@ const paymentManagementTabs = [
 
 export default function PaymentManagementPage() {
   const [selectedPaymentManagementTab, setSelectedPaymentManagemenTab] =
-    useState("absence_status");
+    useState(paymentManagementTabs[0].value);
 
   return (
     <div className="flex h-full flex-col overflow-y-auto bg-[#F5F5F5] p-[48px]">

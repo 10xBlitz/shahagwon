@@ -23,7 +23,7 @@ const tabs = [
 ];
 
 export default function SendFeedbackPage() {
-  const [selectedTab, setSelectedTab] = useState("write_suggestion");
+  const [selectedTab, setSelectedTab] = useState(tabs[0].value);
 
   return (
     <div className="flex h-full flex-col overflow-y-auto bg-[#F5F5F5] p-[48px]">

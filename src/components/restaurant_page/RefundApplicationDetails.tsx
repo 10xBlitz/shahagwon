@@ -17,7 +17,7 @@ const subTabs = [
 ];
 
 export default function RefundApplicationDetails() {
-  const [selectedSubTab, setSelectedSubTab] = useState("matching");
+  const [selectedSubTab, setSelectedSubTab] = useState(subTabs[0].value);
 
   return (
     <div className="mt-[32px] max-w-[1500px]">

@@ -28,7 +28,7 @@ const tabs = [
 ];
 
 export default function EnvelopePage() {
-  const [selectedTab, setSelectedTab] = useState("message_box");
+  const [selectedTab, setSelectedTab] = useState(tabs[0].value);
 
   return (
     <div className="flex h-full flex-col overflow-y-auto bg-[#F5F5F5] p-[48px]">

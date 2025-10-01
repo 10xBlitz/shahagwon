@@ -4,12 +4,16 @@ import { branchTabs } from "@/etc/tabs";
 import SquareTabs from "../common/SquareTabs";
 import { paymentStatusTemp } from "@/etc/temp";
 import { paymentStatusTableConfig } from "@/etc/table_config";
+import SearchBar from "../common/SearchBar";
 
 export default function AbsenceStatus() {
-  const [selectedBranchTab, setSelectedBranchTab] = useState("entire");
+  const [selectedBranchTab, setSelectedBranchTab] = useState(
+    branchTabs[0].value,
+  );
 
   return (
     <div className="flex w-full flex-col">
+      <SearchBar className="max-w-[1750px]" placeHolder="" />
       <div className="my-[22px]">
         <SquareTabs
           tabs={branchTabs}

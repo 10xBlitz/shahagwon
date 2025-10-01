@@ -9,8 +9,8 @@ import { reservationListTableConfig } from "@/etc/table_config";
 
 export default function ReservationList() {
   const [selectedHistoryTab, setSelectedHistoryTab] =
-    useState("current_history");
-  const [selectedBranchTab, setSelectedBranchTab] = useState("all");
+    useState(historyTabs[0].value);
+  const [selectedBranchTab, setSelectedBranchTab] = useState(reservationBranchTabs[0].value);
 
   return (
     <div className="mt-[32px] flex w-full max-w-[1500px] flex-col">

@@ -14,7 +14,7 @@ const memberDataTabs = [
 
 export default function ActualHistory() {
   const [selectedMemberDataTab, setSelectedMemberDataTab] =
-    useState("entry_exit_records");
+    useState(memberDataTabs[0].value);
 
   return (
     <div>

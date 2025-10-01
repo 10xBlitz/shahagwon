@@ -21,9 +21,9 @@ const communicationTabs = [
 ];
 
 export default function CallTextMessage() {
-  const [selectedBranchTab, setSelectedBranchTab] = useState("entire");
+  const [selectedBranchTab, setSelectedBranchTab] = useState(branchTabs[0].value);
   const [selectedCommunicationTab, setSelectedCommunicationTab] =
-    useState("all");
+    useState(communicationTabs[0].value);
 
   return (
     <div className="mt-[54px] max-w-[1700px]">

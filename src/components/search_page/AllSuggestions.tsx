@@ -6,7 +6,7 @@ import { allSuggestionTemp } from "@/etc/temp";
 import { allSuggestionTableConfig } from "@/etc/table_config";
 
 export default function AllSuggestions() {
-  const [selectedBranchTab, setSelectedBranchTab] = useState("entire");
+  const [selectedBranchTab, setSelectedBranchTab] = useState(branchTabs[0].value);
 
   return (
     <div className="mt-[38px] flex w-full max-w-[1200px] flex-col">

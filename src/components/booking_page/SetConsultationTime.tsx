@@ -16,8 +16,8 @@ const branches = [
 
 export default function SetConsultationTime() {
   const [selectedConsultationType, setSelectedConsultationType] =
-    useState("in_person");
-  const [selectedBranch, setSelectedBranch] = useState("gangnam");
+    useState(consultationTypes[0].value);
+  const [selectedBranch, setSelectedBranch] = useState(branches[0].value);
 
   return (
     <div className="mt-[40px] w-full space-y-6">

@@ -17,7 +17,7 @@ const tabs: TabItem[] = [
 ];
 
 export default function IoTPage() {
-  const [selectedTab, setSelectedTab] = useState("turngate_operation");
+  const [selectedTab, setSelectedTab] = useState(tabs[0].value);
 
   return (
     <div className="flex h-full flex-col overflow-y-auto bg-[#F5F5F5] p-[48px]">
