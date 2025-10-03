@@ -2,17 +2,36 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import Button from "../common/Button";
+import { useRouter } from "next/navigation";
 import { TextField } from "../common/TextField";
+import { signInWithEmail } from "@/lib/supabase/auth";
 import ForgotPasswordDialogue from "./ForgotPasswordDialogue";
 
 export default function LoginForm() {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
 
-  const handleLogin = () => {
-    console.log("Login attempted with:", { email, password });
+  const handleLogin = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    try {
+      const data = await signInWithEmail(
+        "shahagwon_admin@gmail.com",
+        "qwertyuiop",
+      );
+
+      // router.replace("/dashboard");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error);
+      } else {
+        console.log("Something went wrong!");
+      }
+    } finally {
+    }
   };
 
   const handleForgotPasswordToggle = () => {
@@ -64,12 +83,12 @@ export default function LoginForm() {
         className="mt-[28px] hidden sm:block"
         labelClassName="text-[#606060] text-lg font-medium"
       />
-      <Button
+      <button
         onClick={handleLogin}
-        className="mt-[18px] w-full rounded-none bg-[#343953] py-[24px] font-bold text-white sm:mt-[40px] sm:rounded-4xl sm:bg-[#3D51B0] sm:py-[16px] sm:text-xl"
+        className="mt-[18px] flex w-full items-center justify-around rounded-none bg-[#343953] py-[24px] font-bold text-white hover:cursor-pointer sm:mt-[40px] sm:rounded-4xl sm:bg-[#3D51B0] sm:py-[16px] sm:text-xl"
       >
         로그인
-      </Button>
+      </button>
       <p
         className="mt-[18px] block self-start hover:cursor-pointer sm:hidden"
         onClick={handleForgotPasswordToggle}
@@ -87,7 +106,7 @@ export default function LoginForm() {
       <p className="mt-[24px] text-base font-medium sm:mt-[12px] sm:block sm:text-xl">
         수능선배가 처음이신가요?{" "}
         <span className="text-black underline sm:text-[#551A8A] sm:no-underline">
-          <Link href="/signup">회원가입</Link>
+          <Link href="/auth/signup">회원가입</Link>
         </span>
       </p>
       <div />

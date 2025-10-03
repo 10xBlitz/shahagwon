@@ -21,12 +21,14 @@ interface SmallCalendarProps {
   onDateSelect?: (date: Date) => void;
   defaultDate?: Date;
   sizeClassName?: string;
+  allowPastDates?: boolean;
 }
 
 export default function SmallCalendar({
   onDateSelect,
   defaultDate = new Date(),
   sizeClassName,
+  allowPastDates = false,
 }: SmallCalendarProps) {
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState<Date>(defaultDate);
@@ -63,6 +65,16 @@ export default function SmallCalendar({
   ];
 
   const goToPreviousMonth = () => {
+    if (allowPastDates) {
+      if (currentMonth === 0) {
+        setCurrentYear(currentYear - 1);
+        setCurrentMonth(11);
+      } else {
+        setCurrentMonth(currentMonth - 1);
+      }
+      return;
+    }
+
     const prevMonth = currentMonth === 0 ? 11 : currentMonth - 1;
     const prevYear = currentMonth === 0 ? currentYear - 1 : currentYear;
 
@@ -90,17 +102,19 @@ export default function SmallCalendar({
   };
 
   const handleDateClick = (date: Date) => {
-    if (!isBefore(startOfDay(date), startOfDay(today))) {
+    if (allowPastDates || !isBefore(startOfDay(date), startOfDay(today))) {
       setSelectedDate(date);
       onDateSelect?.(date);
     }
   };
 
   const isPastDate = (date: Date) => {
-    return isBefore(startOfDay(date), startOfDay(today));
+    return !allowPastDates && isBefore(startOfDay(date), startOfDay(today));
   };
 
   const canGoToPreviousMonth = () => {
+    if (allowPastDates) return true;
+
     const prevMonth = currentMonth === 0 ? 11 : currentMonth - 1;
     const prevYear = currentMonth === 0 ? currentYear - 1 : currentYear;
     const prevMonthDate = new Date(prevYear, prevMonth);

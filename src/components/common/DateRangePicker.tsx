@@ -38,6 +38,7 @@ export default function DateRangePicker() {
                 setShowStartCalendar(false);
               }}
               defaultDate={startDate || new Date()}
+              allowPastDates
             />
           </div>
         )}
@@ -63,6 +64,7 @@ export default function DateRangePicker() {
                 setShowEndCalendar(false);
               }}
               defaultDate={endDate || new Date()}
+              allowPastDates
             />
           </div>
         )}
