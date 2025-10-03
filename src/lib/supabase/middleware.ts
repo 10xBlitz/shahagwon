@@ -35,7 +35,7 @@ export async function updateSession(request: NextRequest) {
 
   // IMPORTANT: DO NOT REMOVE auth.getUser()
 
-  const publicPaths = ["/", "/auth/login", "/auth/signup"];
+  const publicPaths = ["/auth/login", "/auth/signup"];
   const isPublic = publicPaths.some((path) =>
     request.nextUrl.pathname.startsWith(path),
   );

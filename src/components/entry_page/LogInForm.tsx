@@ -23,7 +23,7 @@ export default function LoginForm() {
         "qwertyuiop",
       );
 
-      // router.replace("/dashboard");
+      router.replace("/dashboard");
     } catch (error: unknown) {
       if (error instanceof Error) {
         console.log(error);
