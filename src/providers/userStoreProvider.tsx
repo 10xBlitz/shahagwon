@@ -6,14 +6,7 @@ import {
   createUserStore,
   UserProfileState,
 } from "@/stores/userStore";
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { createContext, ReactNode, useEffect, useRef, useState } from "react";
 
 export type UserStoreApi = ReturnType<typeof createUserStore>;
 
@@ -83,14 +76,4 @@ export const UserStoreProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </UserStoreContext.Provider>
   );
-};
-
-export const useUserStore = () => {
-  const context = useContext(UserStoreContext);
-
-  if (!context) {
-    throw new Error("useUserStore must be used within a GameProvider");
-  }
-
-  return context;
 };

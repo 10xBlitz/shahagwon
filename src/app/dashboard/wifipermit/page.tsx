@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import CircularTabs from "@/components/common/CircularTabs";
-import ReleaseList from "@/components/wifipermit_page/ReleaseList";
-import RegisterAddress from "@/components/wifipermit_page/RegisterAddress";
+import ReleaseList from "@/components/page-components/wifipermit/ReleaseList";
+import RegisterAddress from "@/components/page-components/wifipermit/RegisterAddress";
 
 const wifiPermitTabs = [
   { label: "해제리스트", value: "release_list" },

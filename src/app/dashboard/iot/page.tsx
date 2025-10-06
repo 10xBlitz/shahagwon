@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useState } from "react";
 import { TabItem } from "@/types/types";
 import CircularTabs from "@/components/common/CircularTabs";
-import TurngateOperation from "@/components/iot_page/TurngateOperation";
-import IotOperation from "@/components/iot_page/IotOperation";
-import Sound from "@/components/iot_page/Sound";
-import OperationSchedule from "@/components/iot_page/OperationSchedule";
+import TurngateOperation from "@/components/page-components/iot/TurngateOperation";
+import IotOperation from "@/components/page-components/iot/IotOperation";
+import Sound from "@/components/page-components/iot/Sound";
+import OperationSchedule from "@/components/page-components/iot/OperationSchedule";
 
 const tabs: TabItem[] = [
   { label: "턴게이트 작동", value: "turngate_operation" },

@@ -4,10 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 import { coachingTabs } from "@/etc/tabs";
 import CircularTabs from "@/components/common/CircularTabs";
-import MentorMessageBox from "@/components/mentor_page/MessageBox";
-import CoachingReport from "@/components/mentor_page/CoachingReport";
-import CoachingHistory from "@/components/mentor_page/CoachingHistory";
-import CoachingManagement from "@/components/mentor_page/CoachingManagement";
+import MentorMessageBox from "@/components/page-components/mentor/MessageBox";
+import CoachingReport from "@/components/page-components/mentor/CoachingReport";
+import CoachingHistory from "@/components/page-components/mentor/CoachingHistory";
+import CoachingManagement from "@/components/page-components/mentor/CoachingManagement";
 
 export default function MenteeChatRoomPage() {
   const [selectedCoachingTab, setSelectedCoachingTab] = useState(coachingTabs[0].value);

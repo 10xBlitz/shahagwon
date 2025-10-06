@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import BigCalendar from "@/components/alarm_page/BigCalendar";
+import BigCalendar from "@/components/page-components/alarm/BigCalendar";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Button from "@/components/common/Button";
-import ScheduleSubmissionForm from "@/components/alarm_page/ScheduleSubmissionForm";
-import PenaltyRecordTable from "@/components/alarm_page/PenaltyRecordTable";
+import ScheduleSubmissionForm from "@/components/page-components/alarm/ScheduleSubmissionForm";
+import PenaltyRecordTable from "@/components/page-components/alarm/PenaltyRecordTable";
 
 export default function AttendanceRecordPage() {
   const today = new Date();

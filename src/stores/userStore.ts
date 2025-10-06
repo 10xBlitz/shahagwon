@@ -11,6 +11,7 @@ export type UserProfileState = {
 export type UserProfileActions = {
   setUser: (user: UserProfile) => void;
   updateUser: (user: Partial<UserProfile>) => void;
+  clearUser: () => void;
 };
 
 export type UserProfileStore = UserProfileState & UserProfileActions;
@@ -27,5 +28,6 @@ export const createUserStore = (
           ? { ...state.user, ...profileData }
           : (profileData as UserProfile),
       })),
+    clearUser: () => set({ user: null }),
   }));
 };

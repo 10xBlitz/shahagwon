@@ -1,10 +1,10 @@
-import Header from "../../../components/entry_page/LoginHeader";
-import LoginForm from "../../../components/entry_page/LogInForm";
+import LoginForm from "@/components/page-components/entry/LogInForm";
+import LoginHeader from "@/components/page-components/entry/LoginHeader";
 
 export default function LoginPage() {
   return (
     <main>
-      <Header />
+      <LoginHeader />
       <div className="w-full px-[20px]">
         <h1 className="mx-auto mt-[32px] block text-xl font-medium sm:hidden">
           이제 쉽고 간편하게 <span className="block">로그인하세요!</span>

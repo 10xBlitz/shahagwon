@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { useState } from "react";
 import CircularTabs from "@/components/common/CircularTabs";
-import RegistrationFeeSettings from "@/components/money_page/RegistrationFeeSettings";
-import AbsenceStatus from "@/components/money_page/AbsenceStatus";
-import ContentMenuManagement from "@/components/money_page/ContentMenuManagement";
-import AdditionalItemSettings from "@/components/money_page/AdditionalItemSettings";
+import RegistrationFeeSettings from "@/components/page-components/money/RegistrationFeeSettings";
+import AbsenceStatus from "@/components/page-components/money/AbsenceStatus";
+import ContentMenuManagement from "@/components/page-components/money/ContentMenuManagement";
+import AdditionalItemSettings from "@/components/page-components/money/AdditionalItemSettings";
 
 const paymentManagementTabs = [
   { label: "걸제 현황", value: "absence_status" },

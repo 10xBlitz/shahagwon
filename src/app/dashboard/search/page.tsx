@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { useState } from "react";
 import CircularTabs from "@/components/common/CircularTabs";
-import MySuggestions from "@/components/search_page/MySuggestions";
-import WriteSuggestion from "@/components/search_page/WriteSuggestion";
-import AllSuggestions from "@/components/search_page/AllSuggestions";
+import MySuggestions from "@/components/page-components/search/MySuggestions";
+import WriteSuggestion from "@/components/page-components/search/WriteSuggestion";
+import AllSuggestions from "@/components/page-components/search/AllSuggestions";
 
 const tabs = [
   {

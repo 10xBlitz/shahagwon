@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { TabItem } from "@/types/types";
-import PageView from "@/components/circle_check_page/PageView";
+import PageView from "@/components/page-components/circle-check/PageView";
 import BorderlessTabs from "@/components/common/BorderlessTabs";
-import TodoTable from "@/components/circle_check_page/TodoTable";
-import RecurringTodo from "@/components/circle_check_page/RecurringTodo";
-import RecurringKakao from "@/components/circle_check_page/RecurringKakao";
-import PhoneManagement from "@/components/circle_check_page/PhoneManagement";
+import TodoTable from "@/components/page-components/circle-check/TodoTable";
+import RecurringTodo from "@/components/page-components/circle-check/RecurringTodo";
+import RecurringKakao from "@/components/page-components/circle-check/RecurringKakao";
+import PhoneManagement from "@/components/page-components/circle-check/PhoneManagement";
 
 const tabs: TabItem[] = [
   { label: "TODO 테이블", value: "todo_table" },

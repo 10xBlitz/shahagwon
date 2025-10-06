@@ -3,11 +3,11 @@
 import Image from "next/image";
 import { useState } from "react";
 import CircularTabs from "@/components/common/CircularTabs";
-import ApplyForLunchBox from "@/components/restaurant_page/ApplyForLunchBox";
-import LunchBoxManagement from "@/components/restaurant_page/LunchBoxManagement";
-import TotalLunchBoxStatus from "@/components/question_page/TotalLunchBoxStatus";
-import LunchBoxApplicationStatus from "@/components/restaurant_page/LunchBoxApplicationStatus";
-import ChargingApplicationStatus from "@/components/restaurant_page/ChargingApplicationStatus";
+import ApplyForLunchBox from "@/components/page-components/restaurant/ApplyForLunchBox";
+import LunchBoxManagement from "@/components/page-components/restaurant/LunchBoxManagement";
+import TotalLunchBoxStatus from "@/components/page-components/restaurant/TotalLunchBoxStatus";
+import LunchBoxApplicationStatus from "@/components/page-components/restaurant/LunchBoxApplicationStatus";
+import ChargingApplicationStatus from "@/components/page-components/restaurant/ChargingApplicationStatus";
 
 const restaurantTabs = [
   {

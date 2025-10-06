@@ -3,10 +3,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import CircularTabs from "@/components/common/CircularTabs";
-import ReservationList from "@/components/booking_page/ReservationList";
-import AvailableTimeManagement from "@/components/booking_page/AvailableTimeManagement";
-import SetConsultationTime from "@/components/booking_page/SetConsultationTime";
-import InfoSessionReservationList from "@/components/booking_page/InfoSessionReservationList";
+import ReservationList from "@/components/page-components/booking/ReservationList";
+import AvailableTimeManagement from "@/components/page-components/booking/AvailableTimeManagement";
+import SetConsultationTime from "@/components/page-components/booking/SetConsultationTime";
+import InfoSessionReservationList from "@/components/page-components/booking/InfoSessionReservationList";
 
 const consultationTabs = [
   { label: "예약리스트", value: "reservation_list" },

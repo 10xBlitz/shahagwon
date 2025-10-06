@@ -3,11 +3,11 @@
 import Image from "next/image";
 import { useState } from "react";
 import CircularTabs from "@/components/common/CircularTabs";
-import MathQuestions from "@/components/question_page/MathQuestions";
-import KoreanQuestions from "@/components/question_page/KoreanQuestions";
-import EnglishQuestions from "@/components/question_page/EnglishQuestions";
-import OfflineApplication from "@/components/question_page/OfflineApplication";
-import ExplorationQuestions from "@/components/question_page/ExplorationQuestions";
+import MathQuestions from "@/components/page-components/question/MathQuestions";
+import KoreanQuestions from "@/components/page-components/question/KoreanQuestions";
+import EnglishQuestions from "@/components/page-components/question/EnglishQuestions";
+import OfflineApplication from "@/components/page-components/question/OfflineApplication";
+import ExplorationQuestions from "@/components/page-components/question/ExplorationQuestions";
 
 const editTabs = [
   {

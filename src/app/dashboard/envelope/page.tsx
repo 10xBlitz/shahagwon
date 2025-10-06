@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import MessageBox from "@/components/envelope_page/MessageBox";
-import AllMessages from "@/components/envelope_page/AllMessages";
-import SendToGroup from "@/components/envelope_page/SendToGroup";
-import CallTextMessage from "@/components/envelope_page/CallTextMessage";
+import MessageBox from "@/components/page-components/envelope/MessageBox";
+import AllMessages from "@/components/page-components/envelope/AllMessages";
+import SendToGroup from "@/components/page-components/envelope/SendToGroup";
+import CallTextMessage from "@/components/page-components/envelope/CallTextMessage";
 import CircularTabs from "@/components/common/CircularTabs";
 
 const tabs = [

@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { noticeTemp } from "@/etc/temp";
 import NoticeCard from "@/components/common/NoticeCard";
-import StudyScheduleCard from "@/components/home_page/StudyScheduleCard";
-import StudyTimeDialogue from "@/components/home_page/StudyTimeDialogue";
+import StudyScheduleCard from "@/components/page-components/home/StudyScheduleCard";
+import StudyTimeDialogue from "@/components/page-components/home/StudyTimeDialogue";
 
 export default function Dashboard() {
   const firstFourNotice = noticeTemp.slice(0, 4);

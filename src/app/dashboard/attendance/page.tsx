@@ -3,12 +3,12 @@
 import Image from "next/image";
 import { useState } from "react";
 import CircularTabs from "@/components/common/CircularTabs";
-import AllWorkReport from "@/components/attendance_page/AllWorkReport";
-import TodayWorkReport from "@/components/attendance_page/TodayWorkReport";
-import DaechiSuspiciousList from "@/components/attendance_page/DaechiSuspiciousList";
-import WorkScheduleAnalysis from "@/components/attendance_page/WorkScheduleAnalysis";
-import AntConsultationManagement from "@/components/attendance_page/AntConsultationManagement";
-import Attendance from "@/components/attendance_page/Attendance";
+import AllWorkReport from "@/components/page-components/attendance/AllWorkReport";
+import TodayWorkReport from "@/components/page-components/attendance/TodayWorkReport";
+import DaechiSuspiciousList from "@/components/page-components/attendance/DaechiSuspiciousList";
+import WorkScheduleAnalysis from "@/components/page-components/attendance/WorkScheduleAnalysis";
+import AntConsultationManagement from "@/components/page-components/attendance/AntConsultationManagement";
+import Attendance from "@/components/page-components/attendance/Attendance";
 
 const tabs = [
   { label: "오늘 업무보고", value: "today_work_report" },

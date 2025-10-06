@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useState } from "react";
 import { TabItem } from "@/types/types";
 import CircularTabs from "@/components/common/CircularTabs";
-import MockExamApplication from "@/components/contents_page/MockExamApplication";
-import MyApplicationStatus from "@/components/contents_page/MyApplicationStatus";
-import MockExamMenuManagement from "@/components/contents_page/MockExamMenuManagement";
-import OverallApplicationStatus from "@/components/contents_page/OverallApplicationStatus";
+import MockExamApplication from "@/components/page-components/contents/MockExamApplication";
+import MyApplicationStatus from "@/components/page-components/contents/MyApplicationStatus";
+import MockExamMenuManagement from "@/components/page-components/contents/MockExamMenuManagement";
+import OverallApplicationStatus from "@/components/page-components/contents/OverallApplicationStatus";
 
 const contentsTabs: TabItem[] = [
   { label: "모의고사 신청", value: "mock_exam_application" },

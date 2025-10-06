@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import DateTimePickerProvider from "@/components/providers/DateTimePickerProvider";
+import DateTimePickerProvider from "@/app/providers/DateTimePickerProvider";
 import { UserStoreProvider } from "@/providers/userStoreProvider";
 
 const geistSans = Geist({

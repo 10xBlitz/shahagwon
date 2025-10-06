@@ -3,13 +3,13 @@
 import Image from "next/image";
 import { useState } from "react";
 import CircularTabs from "@/components/common/CircularTabs";
-import SeatingChart from "@/components/avatar_page/SeatingChart";
-import AllStudentInfo from "@/components/avatar_page/AllStudentInfo";
-import ViewPenaltyHistory from "@/components/avatar_page/ViewPenaltyHistory";
-import WinterSeatManagement from "@/components/avatar_page/WinterSeatManagement";
-import WaitingListManagement from "@/components/avatar_page/WaitingListManagement";
-import NewWithdrawalSeatChange from "@/components/avatar_page/NewWithdrawalSeatChange";
-import RegularScheduleManagement from "@/components/avatar_page/RegularScheduleManagement";
+import SeatingChart from "@/components/page-components/avatar/SeatingChart";
+import AllStudentInfo from "@/components/page-components/avatar/AllStudentInfo";
+import ViewPenaltyHistory from "@/components/page-components/avatar/ViewPenaltyHistory";
+import WinterSeatManagement from "@/components/page-components/avatar/WinterSeatManagement";
+import WaitingListManagement from "@/components/page-components/avatar/WaitingListManagement";
+import NewWithdrawalSeatChange from "@/components/page-components/avatar/NewWithdrawalSeatChange";
+import RegularScheduleManagement from "@/components/page-components/avatar/RegularScheduleManagement";
 
 const studentInfoTabs = [
   { label: "전체 학생정보", value: "all_student-info" },

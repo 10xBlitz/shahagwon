@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import CircularTabs from "@/components/common/CircularTabs";
-import AllTestRecords from "@/components/text_page/AllTestRecords";
-import AssignmentPerformanceHistory from "@/components/text_page/AssignmentPerformanceHistory";
+import AllTestRecords from "@/components/page-components/text/AllTestRecords";
+import AssignmentPerformanceHistory from "@/components/page-components/text/AssignmentPerformanceHistory";
 
 const tabs = [
   {

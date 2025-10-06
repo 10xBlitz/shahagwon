@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useState } from "react";
 import CircularTabs from "@/components/common/CircularTabs";
 import SmallCalendar from "@/components/common/SmallCalendar";
-import ReasonInputCard from "@/components/edit_page/ReasonInput";
-import StatusSelector from "@/components/edit_page/StatusSelector";
-import TotalSubmissions from "@/components/edit_page/TotalSubmissions";
-import SubmittedReasonsCard from "@/components/edit_page/SubmittedReasonsCard";
+import ReasonInputCard from "@/components/page-components/edit/ReasonInput";
+import StatusSelector from "@/components/page-components/edit/StatusSelector";
+import TotalSubmissions from "@/components/page-components/edit/TotalSubmissions";
+import SubmittedReasonsCard from "@/components/page-components/edit/SubmittedReasonsCard";
 
 const editTabs = [
   {
