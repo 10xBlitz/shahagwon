@@ -7,13 +7,11 @@ import { useUserStore } from "@/hooks/useUserStore";
 
 export default function DashboardHeader() {
   const user = useUserStore((s) => s.user);
-  const clearUser = useUserStore((s) => s.clearUser);
 
   const router = useRouter();
 
   const handleLogout = () => {
     signOut();
-    clearUser();
 
     router.replace("/auth/login");
   };

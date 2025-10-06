@@ -19,44 +19,10 @@ export const UserStoreProvider = ({ children }: { children: ReactNode }) => {
   const supabase = createClient();
 
   useEffect(() => {
-    let mounted = true;
-
     const initalizeStore = async () => {
-      let initialDataForStore: UserProfileState = { user: null };
+      const initialDataForStore: UserProfileState = { user: null };
 
-      try {
-        const {
-          data: { session },
-          error: sessionError,
-        } = await supabase.auth.getSession();
-
-        if (sessionError) {
-          console.error("Error getting initial session:", sessionError.message);
-          return;
-        }
-
-        if (session?.user) {
-          const { data: userProfile, error } = await supabase
-            .from("user_profiles")
-            .select("*")
-            .eq("user_id", session.user.id)
-            .single();
-
-          if (error) {
-            console.error("Error loading user profile:", error.message);
-          } else {
-            initialDataForStore = { user: userProfile as UserProfile };
-          }
-        }
-      } catch (error: unknown) {
-        if (error instanceof Error) {
-          console.log(error.message);
-        } else {
-          console.log("Unexpected error:", error);
-        }
-      }
-
-      if (mounted) {
+      if (!storeRef.current) {
         storeRef.current = createUserStore(initialDataForStore);
         setIsReady(true);
       }
@@ -64,10 +30,34 @@ export const UserStoreProvider = ({ children }: { children: ReactNode }) => {
 
     initalizeStore();
 
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        if (!session) {
+          storeRef.current?.getState().clearUser();
+        }
+
+        if (event === "SIGNED_IN" || event == "INITIAL_SESSION") {
+          const { data: userProfile, error } = await supabase
+            .from("user_profiles")
+            .select("*")
+            .eq("user_id", session?.user.id)
+            .single();
+
+          if (error) {
+            console.log("Error loading user profile:", error.message);
+          } else {
+            storeRef.current?.getState().setUser(userProfile as UserProfile);
+          }
+        } else if (event === "SIGNED_OUT") {
+          storeRef.current?.getState().clearUser();
+        }
+      },
+    );
+
     return () => {
-      mounted = false;
+      authListener.subscription.unsubscribe();
     };
-  }, [supabase.auth, supabase]);
+  }, [supabase]);
 
   if (!isReady) return null;
 
