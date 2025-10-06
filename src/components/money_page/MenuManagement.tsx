@@ -1,7 +1,7 @@
 import Table from "../common/Table";
 import Input from "../common/Input";
 import Button from "../common/Button";
-import { menuManagementTableConfig } from "@/etc/table_config";
+import { menuManagementTableConfig } from "@/etc/tableConfig";
 
 export default function MenuManagement() {
   return (

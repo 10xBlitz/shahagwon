@@ -5,7 +5,7 @@ import { useState } from "react";
 import Button from "@/components/common/Button";
 import SquareTabs from "@/components/common/SquareTabs";
 import Table from "@/components/common/Table";
-import { todoTableConfig } from "@/etc/table_config";
+import { todoTableConfig } from "@/etc/tableConfig";
 import Input from "@/components/common/Input";
 
 const checkStatusTabs = [

@@ -4,7 +4,7 @@ import { branchTabs } from "@/etc/tabs";
 import Button from "../common/Button";
 import { CalendarDays } from "lucide-react";
 import { requestStatusTemp } from "@/etc/temp";
-import { requestStatusTableConfig } from "@/etc/table_config";
+import { requestStatusTableConfig } from "@/etc/tableConfig";
 
 export default function RequestStatus() {
   const [selectedTab, setSelectedTab] = useState(branchTabs[0].value);

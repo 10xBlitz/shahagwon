@@ -1,6 +1,6 @@
 import Table from "../common/Table";
 import Button from "../common/Button";
-import { mockExamTableConfig } from "@/etc/table_config";
+import { mockExamTableConfig } from "@/etc/tableConfig";
 
 export default function MyApplicationStatus() {
   return (

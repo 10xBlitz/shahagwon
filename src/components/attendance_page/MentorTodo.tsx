@@ -1,7 +1,7 @@
 import {
   mentorTodoDetailTableConfig,
   mentorTodoOverviewTableConfig,
-} from "@/etc/table_config";
+} from "@/etc/tableConfig";
 import Table from "../common/Table";
 import Button from "../common/Button";
 import DateRangePicker from "../common/DateRangePicker";

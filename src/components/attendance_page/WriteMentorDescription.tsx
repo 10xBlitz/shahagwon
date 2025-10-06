@@ -1,6 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { mentorFormQuestions } from "@/etc/mentor_questions";
+import { mentorFormQuestions } from "@/etc/mentorQuestions";
 import Button from "../common/Button";
 
 export default function WriteMentorDescription() {

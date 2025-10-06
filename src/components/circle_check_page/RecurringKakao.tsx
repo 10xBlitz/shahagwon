@@ -4,7 +4,7 @@ import Button from "../common/Button";
 import { ChevronDown } from "lucide-react";
 import SquareTabs from "../common/SquareTabs";
 import Table from "../common/Table";
-import { viewPenaltyHistoryTableConfig } from "@/etc/table_config";
+import { viewPenaltyHistoryTableConfig } from "@/etc/tableConfig";
 
 const tabs = [
   { label: "전체", value: "all" },

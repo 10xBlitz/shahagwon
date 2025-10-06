@@ -4,7 +4,7 @@ import Table from "../common/Table";
 import Button from "../common/Button";
 import { branchTabs } from "@/etc/tabs";
 import SquareTabs from "../common/SquareTabs";
-import { overallMockExamTableConfig } from "@/etc/table_config";
+import { overallMockExamTableConfig } from "@/etc/tableConfig";
 import { ChevronDown } from "lucide-react";
 
 export default function OverallApplicationStatus() {

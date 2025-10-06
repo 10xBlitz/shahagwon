@@ -3,7 +3,7 @@ import Button from "../common/Button";
 import { branchTabs } from "@/etc/tabs";
 import SquareTabs from "../common/SquareTabs";
 import Table from "../common/Table";
-import { wifiReleaseListTableConfig } from "@/etc/table_config";
+import { wifiReleaseListTableConfig } from "@/etc/tableConfig";
 import DateRangePicker from "../common/DateRangePicker";
 
 export default function ReleaseList() {

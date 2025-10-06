@@ -3,7 +3,7 @@ import Table from "../common/Table";
 import { branchTabs } from "@/etc/tabs";
 import SquareTabs from "../common/SquareTabs";
 import { paymentStatusTemp } from "@/etc/temp";
-import { paymentStatusTableConfig } from "@/etc/table_config";
+import { paymentStatusTableConfig } from "@/etc/tableConfig";
 import SearchBar from "../common/SearchBar";
 
 export default function AbsenceStatus() {

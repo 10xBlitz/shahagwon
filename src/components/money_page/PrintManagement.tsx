@@ -3,7 +3,7 @@ import SquareTabs from "../common/SquareTabs";
 import { branchTabs } from "@/etc/tabs";
 import Button from "../common/Button";
 import Table from "../common/Table";
-import { printManagementTableConfig } from "@/etc/table_config";
+import { printManagementTableConfig } from "@/etc/tableConfig";
 import DateRangePicker from "../common/DateRangePicker";
 
 const paymentStatusTabs = [

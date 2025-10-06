@@ -5,7 +5,7 @@ import { lunchOrderTemp } from "@/etc/temp";
 import SquareTabs from "../common/SquareTabs";
 import { branchTabs, lunchSubTabs } from "@/etc/tabs";
 import DateRangePicker from "../common/DateRangePicker";
-import { lunchOrderTableConfig } from "@/etc/table_config";
+import { lunchOrderTableConfig } from "@/etc/tableConfig";
 
 export default function TotalLunchBoxStatus() {
   const [selectedBranchTab, setSelectedBranchTab] = useState(branchTabs[0].value);

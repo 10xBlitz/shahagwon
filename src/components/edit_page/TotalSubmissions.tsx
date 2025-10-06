@@ -4,7 +4,7 @@ import { branchTabs } from "@/etc/tabs";
 import SquareTabs from "../common/SquareTabs";
 import { totalSubmissionsTemp } from "@/etc/temp";
 import DateRangePicker from "../common/DateRangePicker";
-import { totalSubmissionsTableConfig } from "@/etc/table_config";
+import { totalSubmissionsTableConfig } from "@/etc/tableConfig";
 import Button from "../common/Button";
 import Input from "../common/Input";
 

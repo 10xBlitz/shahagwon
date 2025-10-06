@@ -6,7 +6,7 @@ import Table from "../common/Table";
 import Button from "../common/Button";
 import { branchTabs } from "@/etc/tabs";
 import SquareTabs from "../common/SquareTabs";
-import { allStudentInfoTableConfig } from "@/etc/table_config";
+import { allStudentInfoTableConfig } from "@/etc/tableConfig";
 
 const enrollmentStatusTabs = [
   { label: "재원생", value: "current_student" },

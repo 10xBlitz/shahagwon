@@ -1,6 +1,6 @@
 import Table from "../common/Table";
 import Button from "../common/Button";
-import { optionManagementTableConfig } from "@/etc/table_config";
+import { optionManagementTableConfig } from "@/etc/tableConfig";
 
 export default function OptionManagement() {
   return (

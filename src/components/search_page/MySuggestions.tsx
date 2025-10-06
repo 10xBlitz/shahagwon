@@ -1,6 +1,6 @@
 import { mySuggestionTemp } from "@/etc/temp";
 import Table from "../common/Table";
-import { mySuggestionTableConfig } from "@/etc/table_config";
+import { mySuggestionTableConfig } from "@/etc/tableConfig";
 
 export default function MySuggestions() {
   return (

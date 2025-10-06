@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "../common/Button";
 import SquareTabs from "../common/SquareTabs";
 import Table from "../common/Table";
-import { recurringTodoTableConfig } from "@/etc/table_config";
+import { recurringTodoTableConfig } from "@/etc/tableConfig";
 
 const recurringTodoTabs = [
   { label: "전체", value: "all" },

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DateNavigator from "../common/DateNavigator";
 import Table from "../common/Table";
-import { entryExitRecordTableConfig } from "@/etc/table_config";
+import { entryExitRecordTableConfig } from "@/etc/tableConfig";
 import { entryExitRecordTemp } from "@/etc/temp";
 import Input from "../common/Input";
 

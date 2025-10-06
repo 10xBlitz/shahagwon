@@ -3,7 +3,7 @@ import Table from "../common/Table";
 import { branchTabs } from "@/etc/tabs";
 import SquareTabs from "../common/SquareTabs";
 import { allSuggestionTemp } from "@/etc/temp";
-import { allSuggestionTableConfig } from "@/etc/table_config";
+import { allSuggestionTableConfig } from "@/etc/tableConfig";
 
 export default function AllSuggestions() {
   const [selectedBranchTab, setSelectedBranchTab] = useState(branchTabs[0].value);

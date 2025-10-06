@@ -1,4 +1,4 @@
-import { viewPenaltyHistoryTableConfig } from "@/etc/table_config";
+import { viewPenaltyHistoryTableConfig } from "@/etc/tableConfig";
 import Input from "../common/Input";
 import Table from "../common/Table";
 

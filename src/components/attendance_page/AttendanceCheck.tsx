@@ -13,7 +13,7 @@ import {
   textPhoneTableConfig,
   reasonSubmissionTableConfig,
   penaltyMemoTableConfig,
-} from "@/etc/table_config";
+} from "@/etc/tableConfig";
 import { attendanceCheckTemp } from "@/etc/temp";
 import Input from "../common/Input";
 

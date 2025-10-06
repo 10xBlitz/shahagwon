@@ -8,7 +8,7 @@ import {
   patrolScheduleTableConfig,
   todayWorkReportTableConfig,
   workCompletionTableConfig,
-} from "@/etc/table_config";
+} from "@/etc/tableConfig";
 import DateNavigator from "../common/DateNavigator";
 
 const statusTabs = [

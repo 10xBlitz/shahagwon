@@ -1,4 +1,4 @@
-import { restaurantMenuTableConfig } from "@/etc/table_config";
+import { restaurantMenuTableConfig } from "@/etc/tableConfig";
 import Table from "../common/Table";
 import { restaurantMenuTemp } from "@/etc/temp";
 import Button from "../common/Button";

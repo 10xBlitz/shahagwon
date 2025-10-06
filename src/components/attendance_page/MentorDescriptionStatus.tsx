@@ -1,4 +1,4 @@
-import { mentorDescriptionStatusTableConfig } from "@/etc/table_config";
+import { mentorDescriptionStatusTableConfig } from "@/etc/tableConfig";
 import Table from "../common/Table";
 import { mentorDescriptionStatusTemp } from "@/etc/temp";
 

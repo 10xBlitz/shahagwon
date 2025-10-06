@@ -5,7 +5,7 @@ import Button from "../common/Button";
 import SquareTabs from "../common/SquareTabs";
 import { historyTabs, reservationBranchTabs } from "@/etc/tabs";
 import Table from "../common/Table";
-import { reservationListTableConfig } from "@/etc/table_config";
+import { reservationListTableConfig } from "@/etc/tableConfig";
 
 export default function ReservationList() {
   const [selectedHistoryTab, setSelectedHistoryTab] =

@@ -6,7 +6,7 @@ import Input from "../common/Input";
 import Table from "../common/Table";
 import SquareTabs from "../common/SquareTabs";
 import { depositHistoryTemp } from "@/etc/temp";
-import { depositHistoryTableConfig } from "@/etc/table_config";
+import { depositHistoryTableConfig } from "@/etc/tableConfig";
 import Button from "../common/Button";
 
 const subTabs = [

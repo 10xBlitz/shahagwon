@@ -3,7 +3,7 @@ import Table from "../common/Table";
 import { branchTabs } from "@/etc/tabs";
 import { groupSendTemp } from "@/etc/temp";
 import SquareTabs from "../common/SquareTabs";
-import { groupSendTableConfig } from "@/etc/table_config";
+import { groupSendTableConfig } from "@/etc/tableConfig";
 import Input from "../common/Input";
 
 const userTabs = [

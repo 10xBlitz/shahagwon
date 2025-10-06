@@ -7,7 +7,7 @@ import { taskCompletionTemp, weeklyScheduleTemp } from "@/etc/temp";
 import {
   taskCompletionTableConfig,
   weeklyScheduleTableConfig,
-} from "@/etc/table_config";
+} from "@/etc/tableConfig";
 import DateNavigator from "../common/DateNavigator";
 
 export default function AllWorkReport() {

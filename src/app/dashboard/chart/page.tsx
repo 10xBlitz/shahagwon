@@ -6,7 +6,7 @@ import Input from "@/components/common/Input";
 import Table from "@/components/common/Table";
 import Button from "@/components/common/Button";
 import { ChevronDown, Printer } from "lucide-react";
-import { chartTableConfig } from "@/etc/table_config";
+import { chartTableConfig } from "@/etc/tableConfig";
 import SquareTabs from "@/components/common/SquareTabs";
 
 const buttons = [

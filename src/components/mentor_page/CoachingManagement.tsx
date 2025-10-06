@@ -1,7 +1,7 @@
 import Input from "../common/Input";
 import Table from "../common/Table";
 import Button from "../common/Button";
-import { coachingManagementTableConfig } from "@/etc/table_config";
+import { coachingManagementTableConfig } from "@/etc/tableConfig";
 
 export default function CoachingManagement() {
   return (

@@ -1,6 +1,6 @@
 import Table from "../common/Table";
 import { attendanceTimeTemp } from "@/etc/temp";
-import { attendanceTimeTableConfig } from "@/etc/table_config";
+import { attendanceTimeTableConfig } from "@/etc/tableConfig";
 import DatePicker from "../common/DatePicker";
 
 export default function NetStudyTime() {

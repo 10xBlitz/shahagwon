@@ -8,7 +8,7 @@ import { branchTabs } from "@/etc/tabs";
 import SquareTabs from "../common/SquareTabs";
 import { assignmentPerformanceTemp } from "@/etc/temp";
 import DateRangePicker from "../common/DateRangePicker";
-import { assignmentPerformanceTableConfig } from "@/etc/table_config";
+import { assignmentPerformanceTableConfig } from "@/etc/tableConfig";
 
 const statusTabs = [
   { label: "전체", value: "all" },

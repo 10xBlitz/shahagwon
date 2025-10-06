@@ -5,7 +5,7 @@ import Table from "../common/Table";
 import { branchTabs } from "@/etc/tabs";
 import SquareTabs from "../common/SquareTabs";
 import { allTestRecordsTemp } from "@/etc/temp";
-import { allTestRecordsTableConfig } from "@/etc/table_config";
+import { allTestRecordsTableConfig } from "@/etc/tableConfig";
 import DateRangePicker from "../common/DateRangePicker";
 import Button from "../common/Button";
 import Input from "../common/Input";

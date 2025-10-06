@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Table from "../common/Table";
 import DateNavigator from "../common/DateNavigator";
-import { suspiciousListTableConfig } from "@/etc/table_config";
+import { suspiciousListTableConfig } from "@/etc/tableConfig";
 import { suspiciousListTemp } from "@/etc/temp";
 
 export default function DaechiSuspiciousList() {

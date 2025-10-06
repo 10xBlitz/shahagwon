@@ -3,7 +3,7 @@ import Input from "../common/Input";
 import Table from "../common/Table";
 import SquareTabs from "../common/SquareTabs";
 import { chargeApplicationTemp } from "@/etc/temp";
-import { chargeApplicationTableConfig } from "@/etc/table_config";
+import { chargeApplicationTableConfig } from "@/etc/tableConfig";
 
 const subTabs = [
   {

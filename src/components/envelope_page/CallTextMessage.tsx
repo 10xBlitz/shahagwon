@@ -3,7 +3,7 @@ import Table from "../common/Table";
 import { branchTabs } from "@/etc/tabs";
 import SquareTabs from "../common/SquareTabs";
 import { callTextMessageTemp } from "@/etc/temp";
-import { callTextMessageTableConfig } from "@/etc/table_config";
+import { callTextMessageTableConfig } from "@/etc/tableConfig";
 
 const communicationTabs = [
   {

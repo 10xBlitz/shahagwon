@@ -1,6 +1,6 @@
 import { refundTemp } from "@/etc/temp";
 import Table from "../common/Table";
-import { refundTableConfig } from "@/etc/table_config";
+import { refundTableConfig } from "@/etc/tableConfig";
 
 export default function Refund() {
   return (

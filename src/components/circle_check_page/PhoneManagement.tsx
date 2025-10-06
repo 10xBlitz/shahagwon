@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SquareTabs from "../common/SquareTabs";
 import Table from "../common/Table";
-import { phoneManagementTableConfig } from "@/etc/table_config";
+import { phoneManagementTableConfig } from "@/etc/tableConfig";
 import Input from "../common/Input";
 
 const locationTabs = [

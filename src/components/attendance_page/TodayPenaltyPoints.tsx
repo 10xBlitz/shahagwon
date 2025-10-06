@@ -6,7 +6,7 @@ import {
   studentParentInfoTableConfig,
   todayPenaltyPointsTableConfig,
   penaltyReasonExampleTableConfig,
-} from "@/etc/table_config";
+} from "@/etc/tableConfig";
 import Table from "../common/Table";
 import Button from "../common/Button";
 import DateNavigator from "../common/DateNavigator";

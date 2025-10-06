@@ -1,6 +1,6 @@
 import Table from "../common/Table";
 import Button from "../common/Button";
-import { registrationFeeApplicationPeriodTableConfig } from "@/etc/table_config";
+import { registrationFeeApplicationPeriodTableConfig } from "@/etc/tableConfig";
 
 export default function RegistrationFeeSetup() {
   return (

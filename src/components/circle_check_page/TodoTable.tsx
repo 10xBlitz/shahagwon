@@ -5,7 +5,7 @@ import Table from "../common/Table";
 import {
   circleCheckTodoTableConfig,
   todoManagementTableConfig,
-} from "@/etc/table_config";
+} from "@/etc/tableConfig";
 
 const statusTabs = [
   { label: "미완료", value: "incomplete" },

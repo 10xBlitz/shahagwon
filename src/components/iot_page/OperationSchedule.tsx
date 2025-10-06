@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button from "../common/Button";
 import SquareTabs from "../common/SquareTabs";
 import Table from "../common/Table";
-import { operationScheduleTableConfig } from "@/etc/table_config";
+import { operationScheduleTableConfig } from "@/etc/tableConfig";
 
 const activeTabs = [
   { label: "활성", value: "active" },

@@ -1,4 +1,4 @@
-import { infoSessionReservationTableConfig } from "@/etc/table_config";
+import { infoSessionReservationTableConfig } from "@/etc/tableConfig";
 import Table from "../common/Table";
 
 export default function InfoSessionReservationList() {

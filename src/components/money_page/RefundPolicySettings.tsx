@@ -1,6 +1,6 @@
 import Table from "../common/Table";
 import Button from "../common/Button";
-import { refundPolicyTableConfig } from "@/etc/table_config";
+import { refundPolicyTableConfig } from "@/etc/tableConfig";
 
 export default function RefundPolicySettings() {
   return (

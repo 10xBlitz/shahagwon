@@ -1,6 +1,6 @@
 import Table from "../common/Table";
 import { allMessagesTemp } from "@/etc/temp";
-import { allMessagesTableConfig } from "@/etc/table_config";
+import { allMessagesTableConfig } from "@/etc/tableConfig";
 
 export default function AllMessages() {
   return (
