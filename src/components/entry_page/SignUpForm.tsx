@@ -66,7 +66,15 @@ export default function SignUpForm() {
     setIsLoading(true);
 
     try {
-      await signUpWithEmail(name, email, password);
+      await signUpWithEmail(
+        name,
+        email,
+        password,
+        phoneNumber,
+        selectedType,
+        verificationPassword,
+        isCertificationOpen ? phoneNumber : undefined,
+      );
       router.push("/dashboard");
     } catch (error) {
       if (error instanceof Error) {
