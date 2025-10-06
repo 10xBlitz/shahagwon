@@ -21,7 +21,12 @@ export default function Sidebar() {
         <p className="text-lg font-semibold text-[#818181]">외출중</p>
       </div>
       <div className="mb-2 flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-[#EAEAEA]">
-        <Image src="/images/sidebar/just_logo.webp" alt="Logo" width={36} height={46} />
+        <Image
+          src="/images/sidebar/just_logo.webp"
+          alt="Logo"
+          width={36}
+          height={46}
+        />
       </div>
       <p className="text-lg font-medium tracking-tighter">
         수능선배 본사 (직원용)

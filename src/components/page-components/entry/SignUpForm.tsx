@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Button from "@/components/common/Button";
 import { TextField } from "@/components/common/TextField";
-import { signUpWithEmail } from "@/lib/supabase/auth";
+import { signOut, signUpWithEmail } from "@/lib/supabase/auth";
 
 export default function SignUpForm() {
   const router = useRouter();
@@ -75,7 +75,10 @@ export default function SignUpForm() {
         verificationPassword,
         isCertificationOpen ? phoneNumber : undefined,
       );
-      router.push("/dashboard");
+
+      await signOut();
+
+      router.push("/auth/login");
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);

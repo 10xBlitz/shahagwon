@@ -21,8 +21,8 @@ export default function SidebarItemTile({
           <Image
             src={`${isActive ? `/images/sidebar/on/${sidebarItem.icon}_on.svg` : `/images/sidebar/off/${sidebarItem.icon}_off.svg`}`}
             alt={`${sidebarItem.label} icon`}
-            width={22}
-            height={22}
+            width={`${sidebarItem.icon === "diagnosis" ? 16 : 24}`}
+            height={`${sidebarItem.icon === "diagnosis" ? 16 : 24}`}
             className="object-contain"
           />
         </div>
