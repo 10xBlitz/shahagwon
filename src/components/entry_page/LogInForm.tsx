@@ -13,24 +13,39 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
+    setError("");
+
+    if (!email.trim()) {
+      setError("이메일 주소를 입력해주세요");
+      return;
+    }
+    if (!password.trim()) {
+      setError("비밀번호를 입력해주세요");
+      return;
+    }
+
+    setIsLoading(true);
 
     try {
-      const data = await signInWithEmail(
-        "shahagwon_admin@gmail.com",
-        "qwertyuiop",
-      );
-
+      await signInWithEmail(email, password);
       router.replace("/dashboard");
     } catch (error: unknown) {
       if (error instanceof Error) {
-        console.log(error);
+        if (error.message === "Invalid login credentials") {
+          setError("이메일 또는 비밀번호가 올바르지 않습니다.");
+        } else {
+          setError(error.message || "로그인에 실패했습니다");
+        }
       } else {
-        console.log("Something went wrong!");
+        setError("로그인에 실패했습니다");
       }
     } finally {
+      setIsLoading(false);
     }
   };
 
@@ -83,11 +98,13 @@ export default function LoginForm() {
         className="mt-[28px] hidden sm:block"
         labelClassName="text-[#606060] text-lg font-medium"
       />
+      {error && <p className="mt-2 w-full text-sm text-red-500">{error}</p>}
       <button
         onClick={handleLogin}
-        className="mt-[18px] flex w-full items-center justify-around rounded-none bg-[#343953] py-[24px] font-bold text-white hover:cursor-pointer sm:mt-[40px] sm:rounded-4xl sm:bg-[#3D51B0] sm:py-[16px] sm:text-xl"
+        disabled={isLoading}
+        className="mt-[18px] flex w-full items-center justify-around rounded-none bg-[#343953] py-[24px] font-bold text-white hover:cursor-pointer disabled:opacity-50 sm:mt-[40px] sm:rounded-4xl sm:bg-[#3D51B0] sm:py-[16px] sm:text-xl"
       >
-        로그인
+        {isLoading ? "로그인 중..." : "로그인"}
       </button>
       <p
         className="mt-[18px] block self-start hover:cursor-pointer sm:hidden"

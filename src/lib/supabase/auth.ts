@@ -19,6 +19,12 @@ export async function signUpWithEmail(
 
   if (error) throw error;
 
+  // if (data.session) {
+  //   await supabase.auth.signOut();
+  // }
+
+  // return data.user;
+
   return data;
 }
 
