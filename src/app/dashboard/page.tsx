@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { noticeTemp } from "@/etc/temp";
 import NoticeCard from "@/components/common/NoticeCard";
 import StudyScheduleCard from "@/components/page-components/home/StudyScheduleCard";
 import StudyTimeDialogue from "@/components/page-components/home/StudyTimeDialogue";
@@ -14,7 +13,6 @@ export default function Dashboard() {
     data: Tables<"announcements">[];
   };
 
-  // const firstFourNotice = noticeTemp.slice(0, 4);
   const [dialogueTitle, setDialogueTitle] = useState<string | null>(null);
 
   return (
@@ -32,13 +30,7 @@ export default function Dashboard() {
       <p className="mb-[20px] text-[22px] font-extrabold">최근 공지사항</p>
       <ul className="flex flex-row gap-[18px]">
         {announcements.map((each, index) => (
-          <NoticeCard
-            key={index}
-            image={each.images?.[0]}
-            title={each.title}
-            description={each.content}
-            date={each.created_at ?? ""}
-          />
+          <NoticeCard key={index} notice={each} />
         ))}
       </ul>
       {dialogueTitle && (

@@ -1,12 +1,17 @@
-import Image from "next/image";
-import { noticeTemp } from "@/etc/temp";
-import NoticeCard from "@/components/common/NoticeCard";
-import Button from "@/components/common/Button";
-import { Pencil } from "lucide-react";
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
+import { Pencil } from "lucide-react";
+import { Tables } from "@/types/supabase";
+import Button from "@/components/common/Button";
+import NoticeCard from "@/components/common/NoticeCard";
+import { useAnnouncements } from "@/queries/announcements";
 
 export default function AnnouncementsPage() {
-  const firstEightNotice = noticeTemp.slice(0, 8);
+  const { data: announcements = [] } = useAnnouncements() as {
+    data: Tables<"announcements">[];
+  };
 
   return (
     <div className="h-full bg-[#F5F5F5] p-[48px]">
@@ -20,14 +25,8 @@ export default function AnnouncementsPage() {
         <h1 className="text-[22px] font-extrabold">최근 공지사항</h1>
       </div>
       <ul className="grid max-w-[1170px] grid-cols-4 grid-rows-2 gap-x-[18px] gap-y-[40px]">
-        {firstEightNotice.map((each, index) => (
-          <NoticeCard
-            key={index}
-            image={each.image}
-            title={each.title}
-            description={each.description}
-            date={each.date}
-          />
+        {announcements.map((each, index) => (
+          <NoticeCard key={index} notice={each} />
         ))}
       </ul>
       <Button
