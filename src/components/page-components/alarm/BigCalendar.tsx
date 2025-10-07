@@ -9,6 +9,7 @@ import {
   startOfWeek,
   startOfMonth,
   eachDayOfInterval,
+  addDays,
 } from "date-fns";
 import React from "react";
 
@@ -23,7 +24,16 @@ export default function BigCalendar({ year, month }: BigCalendarProps) {
   const startDate = startOfWeek(monthStart, { weekStartsOn: 0 }); // Sunday
   const endDate = endOfWeek(monthEnd, { weekStartsOn: 0 });
 
+  // Get all visible days
   const days = eachDayOfInterval({ start: startDate, end: endDate });
+
+  // Always make exactly 42 days (6 weeks × 7 days)
+  if (days.length < 42) {
+    const extraDays = 42 - days.length;
+    for (let i = 1; i <= extraDays; i++) {
+      days.push(addDays(endDate, i));
+    }
+  }
 
   // chunk into weeks (arrays of 7 days)
   const weeks: Date[][] = [];
@@ -55,14 +65,16 @@ export default function BigCalendar({ year, month }: BigCalendarProps) {
         {dayNames.map((d, i) => (
           <div
             key={i}
-            className={`${d === "일" ? "text-red-500" : ""} flex h-[49px] w-[146px] items-center justify-center border border-gray-100`}
+            className={`flex h-[49px] w-[146px] items-center justify-center border border-gray-100 ${
+              i === 0 ? "text-red-500" : ""
+            }`}
           >
             {d}
           </div>
         ))}
       </div>
 
-      {/* weeks — each row forced to grid with inline style to avoid CSS collisions */}
+      {/* calendar body */}
       <div>
         {weeks.map((week, wi) => (
           <div
@@ -83,7 +95,6 @@ export default function BigCalendar({ year, month }: BigCalendarProps) {
                   data-year={dayYear}
                   data-month={dayMonth}
                   data-day={dayNumber}
-                  // note: use border + box-sizing to keep lines consistent
                   className={`flex h-[114px] w-[146px] items-start justify-start border border-gray-100 p-2 ${
                     isCurrentMonth ? "bg-white" : "bg-slate-50"
                   }`}
