@@ -1,34 +1,30 @@
 "use client";
 
-import { ChevronRight, Plus, RefreshCcw } from "lucide-react";
 import React from "react";
 
-interface ButtonProps {
-  onClick: () => void;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  className?: string;
-  hasCycle?: boolean;
-  hasPlus?: boolean;
-  hasArrow?: boolean;
+  icon?: React.ReactNode;
+  iconPosition?: "left" | "right";
+  pointer?: boolean;
 }
 
 export default function Button({
-  onClick,
   children,
   className,
-  hasCycle,
-  hasPlus,
-  hasArrow,
+  icon,
+  iconPosition = "right",
+  pointer = true,
+  ...props
 }: ButtonProps) {
   return (
     <button
-      onClick={onClick}
-      className={`${className} flex items-center justify-around hover:cursor-pointer`}
+      className={`${className} flex items-center justify-around ${pointer ? "hover:cursor-pointer" : ""}`}
+      {...props}
     >
-      {hasCycle && <RefreshCcw color="#FFFFFF" size={18} />}
-      {hasPlus && <Plus color="#FFFFFF" size={18} />}
+      {icon && iconPosition === "left" && icon}
       <span>{children}</span>
-      {hasArrow && <ChevronRight color="#566FE7" />}
+      {icon && iconPosition === "right" && icon}
     </button>
   );
 }

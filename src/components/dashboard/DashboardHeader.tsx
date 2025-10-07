@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { signOut } from "@/lib/supabase/auth";
 import { useUserStore } from "@/hooks/useUserStore";
-import { useEffect } from "react";
 
 export default function DashboardHeader() {
   const user = useUserStore((s) => s.user);
@@ -16,10 +15,6 @@ export default function DashboardHeader() {
 
     router.replace("/auth/login");
   };
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   return (
     <header className="flex w-full flex-row items-center justify-between bg-[#3D51AF] px-[46px] py-[22px]">
@@ -41,8 +36,8 @@ export default function DashboardHeader() {
           <Image
             src="/images/header/avatarG.svg"
             alt="Avatar Icon"
-            width={24}
-            height={24}
+            width={16}
+            height={16}
             className="object-contain"
           />
         </div>

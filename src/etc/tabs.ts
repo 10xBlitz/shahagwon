@@ -12,7 +12,7 @@ export const subTabs = [
 ];
 
 export const branchTabs = [
-  { label: "전체 ", value: "all" },
+  { label: "전체", value: "all" },
   { label: "강남점", value: "gangnam_branch" },
   { label: "강남2호점 ", value: "gangnam_2nd_branch" },
   { label: "대치점 ", value: "confrontation_point" },

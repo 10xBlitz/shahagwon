@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Input from "@/components/common/Input";
 import Button from "@/components/common/Button";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Plus } from "lucide-react";
 import SquareTabs from "@/components/common/SquareTabs";
 import Table from "@/components/common/Table";
 import { viewPenaltyHistoryTableConfig } from "@/etc/tableConfig";
@@ -22,7 +22,8 @@ export default function RecurringKakao() {
         <p className="text-lg font-bold">반복 카카오 등록 내역</p>
         <Button
           onClick={() => {}}
-          hasPlus
+          icon={<Plus color="#FFFFFF" size={18} />}
+          iconPosition="left"
           className="gap-2 rounded-lg bg-[#0C6CCB] px-[12px] py-[6px] text-sm font-bold text-white"
         >
           추가하기

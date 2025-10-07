@@ -3,6 +3,7 @@ import Button from "@/components/common/Button";
 import SquareTabs from "@/components/common/SquareTabs";
 import Table from "@/components/common/Table";
 import { recurringTodoTableConfig } from "@/etc/tableConfig";
+import { Plus } from "lucide-react";
 
 const recurringTodoTabs = [
   { label: "전체", value: "all" },
@@ -49,7 +50,8 @@ export default function RecurringTodo() {
         <p className="text-lg font-bold">반복 TODO 등록 내역</p>
         <Button
           onClick={() => {}}
-          hasPlus
+          icon={<Plus color="#FFFFFF" size={18} />}
+          iconPosition="left"
           className="gap-2 rounded-lg bg-[#0C6CCB] px-[12px] py-[6px] text-sm font-bold text-white"
         >
           추가하기

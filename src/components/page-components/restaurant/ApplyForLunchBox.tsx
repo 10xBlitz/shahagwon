@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "@/components/common/Button";
 import SmallCalendar from "@/components/common/SmallCalendar";
 import FoodCard from "./FoodCard";
+import { ChevronRight } from "lucide-react";
 
 export default function ApplyForLunchBox() {
   const [meal, setMeal] = useState("lunch");
@@ -51,7 +52,8 @@ export default function ApplyForLunchBox() {
           </p>
           <Button
             onClick={() => {}}
-            hasArrow
+            icon={<ChevronRight color="#566FE7" />}
+            iconPosition="right"
             className="gap-[2px] rounded-3xl border border-[#566FE7] px-[20px] py-[6px] font-medium text-[#566FE7]"
           >
             충전하기

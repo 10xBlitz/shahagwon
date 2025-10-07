@@ -7,6 +7,7 @@ import SquareTabs from "@/components/common/SquareTabs";
 import Table from "@/components/common/Table";
 import { todoTableConfig } from "@/etc/tableConfig";
 import Input from "@/components/common/Input";
+import { Plus } from "lucide-react";
 
 const checkStatusTabs = [
   { label: "미완료", value: "incomplete" },
@@ -32,7 +33,8 @@ export default function TodoPage() {
           <h1 className="text-[22px] font-extrabold">ToDo</h1>
           <Button
             onClick={() => {}}
-            hasPlus
+            icon={<Plus color="#FFFFFF" size={18} />}
+            iconPosition="left"
             className="gap-2 rounded bg-[#0C6CCB] px-[12px] py-[8px] text-sm font-bold text-white"
           >
             새로운 ToDo

@@ -1,6 +1,7 @@
 import Table from "@/components/common/Table";
 import Button from "@/components/common/Button";
 import { mockExamTableConfig } from "@/etc/tableConfig";
+import { ChevronRight } from "lucide-react";
 
 export default function MyApplicationStatus() {
   return (
@@ -12,7 +13,8 @@ export default function MyApplicationStatus() {
         <Button
           onClick={() => {}}
           className="gap-2 rounded bg-[#E2EEFB] px-[18px] py-[6px] text-sm font-semibold text-[#12467A] hover:bg-[#C5E0F7]"
-          hasArrow
+          icon={<ChevronRight color="#566FE7" />}
+          iconPosition="right"
         >
           충전하기
         </Button>

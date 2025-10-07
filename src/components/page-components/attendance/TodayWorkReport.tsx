@@ -10,6 +10,7 @@ import {
   workCompletionTableConfig,
 } from "@/etc/tableConfig";
 import DateNavigator from "@/components/common/DateNavigator";
+import { Plus } from "lucide-react";
 
 const statusTabs = [
   {
@@ -79,7 +80,8 @@ export default function TodayWorkReport() {
         <Button
           onClick={() => {}}
           className="gap-2 rounded-lg bg-[#0C6CCB] px-[10px] py-[4px] text-base font-bold text-white"
-          hasPlus
+          icon={<Plus color="#FFFFFF" size={18} />}
+          iconPosition="left"
         >
           추가하기
         </Button>

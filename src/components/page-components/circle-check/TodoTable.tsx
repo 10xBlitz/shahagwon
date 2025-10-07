@@ -6,6 +6,7 @@ import {
   circleCheckTodoTableConfig,
   todoManagementTableConfig,
 } from "@/etc/tableConfig";
+import { Plus, RefreshCcw } from "lucide-react";
 
 const statusTabs = [
   { label: "미완료", value: "incomplete" },
@@ -84,7 +85,8 @@ export default function TodoTable() {
         <p className="text-lg font-bold">업무 전달사항</p>
         <Button
           onClick={() => {}}
-          hasPlus
+          icon={<Plus color="#FFFFFF" size={18} />}
+          iconPosition="left"
           className="gap-2 rounded-lg bg-[#0C6CCB] px-[12px] py-[6px] text-sm font-bold text-white"
         >
           추가하기
@@ -127,14 +129,16 @@ export default function TodoTable() {
         <p className="font-bold">TODO</p>
         <Button
           onClick={() => {}}
-          hasPlus
+          icon={<Plus color="#FFFFFF" size={18} />}
+          iconPosition="left"
           className="gap-2 rounded-lg bg-[#0C6CCB] px-[12px] py-[6px] text-sm font-bold text-white"
         >
           추가하기
         </Button>
         <Button
           onClick={() => {}}
-          hasCycle
+          icon={<RefreshCcw color="#FFFFFF" size={18} />}
+          iconPosition="left"
           className="gap-2 rounded-lg bg-[#0C6CCB] px-[12px] py-[6px] text-sm font-bold text-white"
         >
           새로고침

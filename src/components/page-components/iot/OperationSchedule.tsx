@@ -4,6 +4,7 @@ import Button from "@/components/common/Button";
 import SquareTabs from "@/components/common/SquareTabs";
 import Table from "@/components/common/Table";
 import { operationScheduleTableConfig } from "@/etc/tableConfig";
+import { Plus } from "lucide-react";
 
 const activeTabs = [
   { label: "활성", value: "active" },
@@ -20,7 +21,8 @@ export default function OperationSchedule() {
         <p className="font-extrabold">반복 창문 작동 통록</p>
         <Button
           onClick={() => {}}
-          hasPlus
+          icon={<Plus color="#FFFFFF" size={18} />}
+          iconPosition="left"
           className="gap-2 rounded-lg bg-[#0C6CCB] px-[12px] py-[6px] text-sm font-bold text-white"
         >
           추가하기

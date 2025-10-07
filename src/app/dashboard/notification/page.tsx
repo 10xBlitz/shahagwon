@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { noticeTemp } from "@/etc/temp";
 import NoticeCard from "@/components/common/NoticeCard";
+import Button from "@/components/common/Button";
+import { Pencil } from "lucide-react";
+import Link from "next/link";
 
 export default function AnnouncementsPage() {
   const firstEightNotice = noticeTemp.slice(0, 8);
@@ -27,6 +30,15 @@ export default function AnnouncementsPage() {
           />
         ))}
       </ul>
+      <Button
+        icon={
+          <Pencil strokeWidth={1.5} size={18} fill="#FFFFFF" stroke="#303030" />
+        }
+        iconPosition="left"
+        className="fixed right-4 bottom-4 gap-2 rounded-3xl bg-[#303030] px-[24px] py-[12px] font-semibold text-[#FFFFFF]"
+      >
+        <Link href="/dashboard/notification/write">신규 게시물 작성</Link>
+      </Button>
     </div>
   );
 }
