@@ -1,5 +1,6 @@
 "use client";
 
+import { convertToYYYYMMDD } from "@/lib/utils/timeUtils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -57,7 +58,9 @@ export default function NoticeCard({
               NEW
             </span>
           )}
-          <span className="ml-auto text-sm font-medium">{date}</span>
+          <span className="ml-auto text-sm font-medium">
+            {convertToYYYYMMDD(date)}
+          </span>
         </div>
       </div>
     </div>

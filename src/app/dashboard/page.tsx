@@ -6,8 +6,15 @@ import NoticeCard from "@/components/common/NoticeCard";
 import StudyScheduleCard from "@/components/page-components/home/StudyScheduleCard";
 import StudyTimeDialogue from "@/components/page-components/home/StudyTimeDialogue";
 
+import { Tables } from "@/types/supabase";
+import { useAnnouncements } from "@/queries/announcements";
+
 export default function Dashboard() {
-  const firstFourNotice = noticeTemp.slice(0, 4);
+  const { data: announcements = [] } = useAnnouncements(4) as {
+    data: Tables<"announcements">[];
+  };
+
+  // const firstFourNotice = noticeTemp.slice(0, 4);
   const [dialogueTitle, setDialogueTitle] = useState<string | null>(null);
 
   return (
@@ -24,13 +31,13 @@ export default function Dashboard() {
       </div>
       <p className="mb-[20px] text-[22px] font-extrabold">최근 공지사항</p>
       <ul className="flex flex-row gap-[18px]">
-        {firstFourNotice.map((each, index) => (
+        {announcements.map((each, index) => (
           <NoticeCard
             key={index}
-            image={each.image}
+            image={each.images?.[0]}
             title={each.title}
-            description={each.description}
-            date={each.date}
+            description={each.content}
+            date={each.created_at ?? ""}
           />
         ))}
       </ul>

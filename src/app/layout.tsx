@@ -1,8 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import DateTimePickerProvider from "@/app/providers/DateTimePickerProvider";
 import { UserStoreProvider } from "@/providers/userStoreProvider";
+import DateTimePickerProvider from "@/providers/DateTimePickerProvider";
+import CustomQueryClientProvider from "@/providers/QueryClientProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,9 +30,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <UserStoreProvider>
-          <DateTimePickerProvider>{children}</DateTimePickerProvider>
-        </UserStoreProvider>
+        <CustomQueryClientProvider>
+          <UserStoreProvider>
+            <DateTimePickerProvider>{children}</DateTimePickerProvider>
+          </UserStoreProvider>
+        </CustomQueryClientProvider>
       </body>
     </html>
   );

@@ -1,4 +1,3 @@
-// src/lib/DatePickerProvider.tsx (example for Next.js App Router)
 "use client";
 
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
