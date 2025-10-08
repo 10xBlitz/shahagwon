@@ -72,10 +72,11 @@ export function useCreateAnnouncement(
 
       if (error) {
         console.error("Insert failed:", error.message);
-        return;
+        throw error;
       }
 
       console.log("✅ Announcement created:", data);
+      return data;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["announcements"] });

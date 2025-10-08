@@ -2,16 +2,13 @@
 
 import { useState } from "react";
 import NoticeCard from "@/components/common/NoticeCard";
+import { useAnnouncements } from "@/queries/announcements";
 import StudyScheduleCard from "@/components/page-components/home/StudyScheduleCard";
 import StudyTimeDialogue from "@/components/page-components/home/StudyTimeDialogue";
 
-import { Tables } from "@/types/supabase";
-import { useAnnouncements } from "@/queries/announcements";
-
 export default function Dashboard() {
-  const { data: announcements = [] } = useAnnouncements(4) as {
-    data: Tables<"announcements">[];
-  };
+  const { data } = useAnnouncements(1, 4);
+  const announcements = data?.data ?? [];
 
   const [dialogueTitle, setDialogueTitle] = useState<string | null>(null);
 

@@ -8,17 +8,28 @@ import { supabaseClient } from "@/lib/supabase/client";
 
 type Announcement = Tables<"announcements">;
 
-export function useAnnouncements(limit = 20) {
+// branch = "전체"
+
+export function useAnnouncements(page = 1, limit = 20, orderBy = "created_at") {
   return useQuery({
-    queryKey: ["announcements", limit],
+    queryKey: ["announcements", page, limit],
     queryFn: async () => {
-      const { data, error } = await supabaseClient
+      const from = (page - 1) * limit;
+      const to = from + limit - 1;
+
+      const { data, error, count } = await supabaseClient
         .from("announcements")
-        .select("*")
-        .limit(limit);
+        .select("*", { count: "exact" })
+        .order(orderBy, { ascending: false })
+        .range(from, to);
 
       if (error) throw error;
-      return data as Announcement[];
+
+      return {
+        data: data as Announcement[],
+        count: count ?? 0,
+        totalPages: Math.ceil((count ?? 0) / limit),
+      };
     },
   });
 }

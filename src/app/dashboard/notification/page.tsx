@@ -2,16 +2,19 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import { Pencil } from "lucide-react";
-import { Tables } from "@/types/supabase";
 import Button from "@/components/common/Button";
 import NoticeCard from "@/components/common/NoticeCard";
+import Pagination from "@/components/common/Pagination";
 import { useAnnouncements } from "@/queries/announcements";
 
 export default function AnnouncementsPage() {
-  const { data: announcements = [] } = useAnnouncements() as {
-    data: Tables<"announcements">[];
-  };
+  const [currentPage, setCurrentPage] = useState(1);
+  const { data: announcementsData } = useAnnouncements(currentPage, 8);
+
+  const announcements = announcementsData?.data ?? [];
+  const totalPages = announcementsData?.totalPages ?? 1;
 
   return (
     <div className="h-full bg-[#F5F5F5] p-[48px]">
@@ -24,11 +27,21 @@ export default function AnnouncementsPage() {
         />
         <h1 className="text-[22px] font-extrabold">최근 공지사항</h1>
       </div>
-      <ul className="grid max-w-[1170px] grid-cols-4 grid-rows-2 gap-x-[18px] gap-y-[40px]">
-        {announcements.map((each, index) => (
-          <NoticeCard key={index} notice={each} />
-        ))}
-      </ul>
+      <div className="max-w-[1170px]">
+        <ul className="grid grid-cols-4 grid-rows-2 gap-x-[18px] gap-y-[40px]">
+          {announcements.map((each, index) => (
+            <NoticeCard key={index} notice={each} />
+          ))}
+        </ul>
+        <div className="mt-[24px]">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        </div>
+      </div>
+
       <Button
         icon={
           <Pencil strokeWidth={1.5} size={18} fill="#FFFFFF" stroke="#303030" />

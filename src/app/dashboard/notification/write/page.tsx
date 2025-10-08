@@ -148,7 +148,9 @@ export default function WriteAnnouncementPage() {
           />
           <div className="flex justify-end gap-[12px]">
             <Button
-              onClick={() => {}}
+              onClick={() => {
+                router.back();
+              }}
               className="rounded-md border border-[#8EB5E3] px-[18px] py-[8px] text-sm font-bold text-[#1C75D2] hover:border-[#1C75D2] hover:bg-[#EBF0F3]"
             >
               담기

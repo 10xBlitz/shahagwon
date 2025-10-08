@@ -6,15 +6,22 @@ import Button from "@/components/common/Button";
 import { SquarePen, Trash2 } from "lucide-react";
 import { useAnnouncement } from "@/queries/announcement";
 import { convertToYYYYMMDD } from "@/lib/utils/timeUtils";
+import { useUserProfile } from "@/queries/user";
 
 export default function NotificationDetail() {
   const { id } = useParams();
   const router = useRouter();
 
-  const { data: announcement, isLoading } = useAnnouncement(id as string);
+  const { data: announcement, isLoading: announcementLoading } =
+    useAnnouncement(id as string);
+  const { data: author, isLoading: authorLoading } = useUserProfile(
+    announcement?.author_id as string,
+  );
+
+  const isLoading = announcementLoading || authorLoading;
 
   const handleBack = () => {
-    router.replace("/dashboard/notification");
+    router.back();
   };
 
   return (
@@ -49,7 +56,7 @@ export default function NotificationDetail() {
         </div>
         <div className="flex flex-row items-center gap-[30px]">
           <p className="font-medium">작성자</p>
-          <p className="font-medium">Ito&apos;y placeholder</p>
+          <p className="font-medium">{isLoading ? "" : author?.name}</p>
         </div>
       </div>
       <div className="flex flex-col gap-[16px] pt-[30px]">
