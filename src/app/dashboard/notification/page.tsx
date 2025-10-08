@@ -41,7 +41,6 @@ export default function AnnouncementsPage() {
           />
         </div>
       </div>
-
       <Button
         icon={
           <Pencil strokeWidth={1.5} size={18} fill="#FFFFFF" stroke="#303030" />
