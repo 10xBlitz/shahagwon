@@ -3,23 +3,30 @@
 import Image from "next/image";
 import { branchTabs } from "@/etc/tabs";
 import { useRef, useState } from "react";
-import { ImagePlus, X, Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import Button from "@/components/common/Button";
 import { useUserStore } from "@/hooks/useUserStore";
-import { supabaseClient } from "@/lib/supabase/client";
-// import { useRouter } from "next/navigation";
+import { ImagePlus, X, Loader2 } from "lucide-react";
+import { useCreateAnnouncement } from "@/queries/announcement";
 
 export default function WriteAnnouncementPage() {
   const user = useUserStore((s) => s.user);
-  // const router = useRouter();
+  const router = useRouter();
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [selectedBranch, setSelectedBranch] = useState("전체");
+  const [selectedBranch, setSelectedBranch] = useState(branchTabs[0].label);
   const [files, setFiles] = useState<File[]>([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const createAnnouncement = useCreateAnnouncement(
+    title,
+    content,
+    selectedBranch,
+    user?.user_id ?? "",
+    files,
+  );
 
   const handleFileUploadClick = () => {
     fileInputRef.current?.click();
@@ -41,143 +48,12 @@ export default function WriteAnnouncementPage() {
   };
 
   const handleSaveClick = async () => {
-    setIsSubmitting(true);
-
-    try {
-      console.log("🟢 Starting save...");
-
-      const uploadedUrls: string[] = [];
-
-      for (const file of files) {
-        const filePath = `announcement-${Date.now()}-${file.name}`;
-        console.log("Uploading:", filePath);
-
-        const { error } = await supabaseClient.storage
-          .from("announcement_images")
-          .upload(filePath, file);
-
-        if (error) {
-          console.error("Upload failed:", error.message);
-          continue;
-        }
-
-        const { data: imageData } = supabaseClient.storage
-          .from("announcement_images")
-          .getPublicUrl(filePath);
-
-        uploadedUrls.push(imageData.publicUrl);
-      }
-
-      console.log("Uploading announcement...");
-
-      const { data, error } = await supabaseClient
-        .from("announcements")
-        .insert({
-          title: title.trim(),
-          content: content.trim(),
-          branch: selectedBranch,
-          author_id: user?.user_id,
-          images: uploadedUrls,
-        })
-        .select();
-
-      if (error) {
-        console.error("Insert failed:", error.message);
-        return;
-      }
-
-      console.log("✅ Announcement created:", data);
-      // router.back();
-    } finally {
-      setIsSubmitting(false);
-    }
+    createAnnouncement.mutate(undefined, {
+      onSuccess: () => {
+        router.replace("/dashboard/notification");
+      },
+    });
   };
-
-  // const [imageUrls, setImageUrls] = useState<string[]>([]);
-
-  // const handleFilesChange = async (
-  //   event: React.ChangeEvent<HTMLInputElement>,
-  // ) => {
-  //   const files = event.target.files;
-  //   if (!files) return;
-
-  //   console.log("📁 Selected files:", files);
-
-  //   const uploadPromises = Array.from(files).map(async (file, i) => {
-  //     const filePath = `announcement-${Date.now()}-${file.name}`;
-  //     console.log(`🚀 [${i}] Starting upload for:`, filePath);
-
-  //     const start = performance.now();
-
-  //     const { data: uploadData, error } = await supabaseClient.storage
-  //       .from("announcement_images")
-  //       .upload(filePath, file);
-
-  //     const end = performance.now();
-  //     const elapsed = ((end - start) / 1000).toFixed(2);
-
-  //     if (error) {
-  //       console.error(`❌ [${i}] Upload failed (${elapsed}s):`, error.message);
-  //       return null;
-  //     }
-
-  //     console.log(`✅ [${i}] Upload complete in ${elapsed}s:`, uploadData);
-
-  //     const { data: publicData } = supabaseClient.storage
-  //       .from("announcement_images")
-  //       .getPublicUrl(filePath);
-
-  //     console.log(`🌐 [${i}] Public URL:`, publicData.publicUrl);
-
-  //     return publicData.publicUrl;
-  //   });
-
-  //   console.log("📤 Waiting for all uploads...");
-  //   const uploadedUrls = (await Promise.all(uploadPromises)).filter(
-  //     (url): url is string => !!url,
-  //   );
-
-  //   console.log("📸 Uploaded URLs:", uploadedUrls);
-
-  //   setImageUrls((prev) => [...prev, ...uploadedUrls]);
-  //   console.log("🧠 Final state of imageUrls:", [
-  //     ...imageUrls,
-  //     ...uploadedUrls,
-  //   ]);
-  // };
-
-  // const handleSaveClick = async () => {
-  //   if (!title.trim() && !content.trim()) {
-  //     console.warn("⚠️ Title or content is empty. Skipping save.");
-  //     return;
-  //   }
-
-  //   console.log("🟢 Starting save...");
-  //   console.log("📦 Announcement payload:", {
-  //     title,
-  //     content,
-  //     branch: selectedBranch,
-  //     author_id: user?.user_id,
-  //     images: imageUrls,
-  //   });
-
-  //   const { data, error } = await supabaseClient
-  //     .from("announcements")
-  //     .insert({
-  //       title,
-  //       content,
-  //       branch: selectedBranch,
-  //       author_id: user?.user_id,
-  //       images: imageUrls,
-  //     })
-  //     .select();
-
-  //   if (error) {
-  //     console.error("❌ Insert failed:", error.message);
-  //   } else {
-  //     console.log("✅ Announcement created successfully:", data);
-  //   }
-  // };
 
   return (
     <div className="h-full overflow-y-auto bg-[#F5F5F5] p-[48px]">
@@ -279,17 +155,21 @@ export default function WriteAnnouncementPage() {
             </Button>
             <Button
               onClick={handleSaveClick}
-              disabled={!title.trim() || !content.trim() || isSubmitting}
+              disabled={
+                !title.trim() || !content.trim() || createAnnouncement.isPending
+              }
               className={`${
-                title.trim() && content.trim() && !isSubmitting
+                title.trim() && content.trim() && !createAnnouncement.isPending
                   ? "border-[#8EB5E3] text-[#1C75D2] hover:border-[#1C75D2] hover:bg-[#EBF0F3]"
                   : "border-[#D7D7D7] text-[#B6B6B6]"
               } flex items-center justify-center gap-2 rounded-md border px-[18px] py-[8px] text-sm font-bold`}
               pointer={
-                title.trim() && content.trim() && !isSubmitting ? true : false
+                title.trim() && content.trim() && !createAnnouncement.isPending
+                  ? true
+                  : false
               }
             >
-              {isSubmitting ? (
+              {createAnnouncement.isPending ? (
                 <Loader2 className="animate-spin" size={20} />
               ) : (
                 "내용 업로드"
