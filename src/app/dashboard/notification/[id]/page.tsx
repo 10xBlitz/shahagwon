@@ -13,10 +13,10 @@ export default function NotificationDetail() {
   const router = useRouter();
 
   const { data: announcement, isLoading: announcementLoading } =
-    useAnnouncement(id as string);
-  const { data: author, isLoading: authorLoading } = useUserProfile(
-    announcement?.author_id as string,
-  );
+    useAnnouncement({ id: id as string });
+  const { data: author, isLoading: authorLoading } = useUserProfile({
+    id: announcement?.author_id as string,
+  });
 
   const isLoading = announcementLoading || authorLoading;
 

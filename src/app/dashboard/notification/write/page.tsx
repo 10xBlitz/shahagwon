@@ -17,13 +17,13 @@ export default function WriteAnnouncementPage() {
   const [selectedBranch, setSelectedBranch] = useState(branchTabs[0].label);
   const [files, setFiles] = useState<File[]>([]);
 
-  const createAnnouncement = useCreateAnnouncement(
+  const createAnnouncement = useCreateAnnouncement({
     title,
     content,
     selectedBranch,
-    user?.user_id ?? "",
-    files,
-  );
+    authorId: user?.user_id ?? "",
+    imageFiles: files,
+  });
 
   const handleSaveClick = async () => {
     createAnnouncement.mutate(undefined, {

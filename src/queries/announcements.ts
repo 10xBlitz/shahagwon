@@ -4,11 +4,20 @@ import { supabaseClient } from "@/lib/supabase/client";
 
 export type Announcement = Tables<"announcements">;
 
+export interface AnnouncementsResponse {
+  data: Announcement[];
+  count: number;
+  totalPages: number;
+}
+
 /**
  *  Fetches the details about a single announcement
  */
-
-export function useAnnouncement(id: string) {
+export function useAnnouncement({
+  id,
+}: {
+  id: string;
+}): ReturnType<typeof useQuery<Announcement, Error>> {
   return useQuery({
     queryKey: ["announcement", id],
     queryFn: async () => {
@@ -27,12 +36,15 @@ export function useAnnouncement(id: string) {
 /**
  *  Fetches a list of announcements
  */
-
 export function useAnnouncements({
   page = 1,
   limit = 20,
   orderBy = "created_at",
-} = {}) {
+}: {
+  page?: number;
+  limit?: number;
+  orderBy?: string;
+} = {}): ReturnType<typeof useQuery<AnnouncementsResponse, Error>> {
   return useQuery({
     queryKey: ["announcements", page, limit],
     queryFn: async () => {
@@ -56,17 +68,23 @@ export function useAnnouncements({
   });
 }
 
-export function useCreateAnnouncement(
-  title: string,
-  content: string,
-  selectedBranch: string,
-  authorId: string,
-  imageFiles: File[],
-) {
+export function useCreateAnnouncement({
+  title,
+  content,
+  selectedBranch,
+  authorId,
+  imageFiles,
+}: {
+  title: string;
+  content: string;
+  selectedBranch: string;
+  authorId: string;
+  imageFiles: File[];
+}): ReturnType<typeof useMutation<Announcement, Error, void, unknown>> {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async () => {
+    mutationFn: async (): Promise<Announcement> => {
       const uploadedUrls: string[] = [];
 
       for (const file of imageFiles) {
@@ -100,7 +118,8 @@ export function useCreateAnnouncement(
           author_id: authorId,
           images: uploadedUrls,
         })
-        .select();
+        .select()
+        .single();
 
       if (error) {
         console.error("Insert failed:", error.message);
@@ -108,7 +127,7 @@ export function useCreateAnnouncement(
       }
 
       console.log("✅ Announcement created:", data);
-      return data;
+      return data as Announcement;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["announcements"] });

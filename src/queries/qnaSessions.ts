@@ -4,11 +4,21 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export type QnaSession = Tables<"qna_sessions">;
 
+export interface QnaSessionsResponse {
+  data: QnaSession[];
+  count: number;
+  totalPages: number;
+}
+
 export function useQnaSessions({
   page = 1,
   limit = 20,
   orderBy = "created_at",
-} = {}) {
+}: {
+  page?: number;
+  limit?: number;
+  orderBy?: string;
+} = {}): ReturnType<typeof useQuery<QnaSessionsResponse, Error>> {
   return useQuery({
     queryKey: ["qna_sessions", page, limit],
     queryFn: async () => {
@@ -32,17 +42,23 @@ export function useQnaSessions({
   });
 }
 
-export function useCreateQnaSession(
-  title: string,
-  description: string,
-  selectedBranch: string,
-  hostId: string,
-  scheduledDate: string,
-) {
+export function useCreateQnaSession({
+  title,
+  description,
+  selectedBranch,
+  hostId,
+  scheduledDate,
+}: {
+  title: string;
+  description: string;
+  selectedBranch: string;
+  hostId: string;
+  scheduledDate: string;
+}) {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async () => {
+    mutationFn: async (): Promise<QnaSession> => {
       const { data, error } = await supabaseClient
         .from("qna_sessions")
         .insert({
@@ -52,7 +68,8 @@ export function useCreateQnaSession(
           host_id: hostId,
           scheduled_date: scheduledDate,
         })
-        .select();
+        .select()
+        .single();
 
       if (error) {
         console.error("Insert failed:", error.message);
@@ -60,7 +77,7 @@ export function useCreateQnaSession(
       }
 
       console.log("✅ Q&A session created:", data);
-      return data;
+      return data as QnaSession;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["qna_sessions"] });

@@ -18,13 +18,13 @@ export default function WriteQNA() {
   const [content, setContent] = useState("");
   const [files, setFiles] = useState<File[]>([]);
 
-  const createQnaPost = useCreateQnaPost(
+  const createQnaPost = useCreateQnaPost({
     title,
     content,
-    user?.user_id ?? "",
-    selectedSubject,
-    files,
-  );
+    authorId: user?.user_id ?? "",
+    category: selectedSubject,
+    imageFiles: files,
+  });
 
   const handleSaveClick = async () => {
     console.log("Initiating Q&A post submission...");

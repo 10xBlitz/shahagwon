@@ -3,13 +3,19 @@ import { supabaseClient } from "@/lib/supabase/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export type QnaPost = Tables<"qna_posts"> & {
-  user_profile: Tables<"user_profiles">;
+  user_profiles: Tables<"user_profiles">;
   qna_posts_comments: QnaPostComment[];
 };
 
 export type QnaPostComment = Tables<"qna_posts_comments"> & {
   user_profile: Tables<"user_profiles">;
 };
+
+export interface QnaPostsResponse {
+  data: QnaPost[];
+  count: number;
+  totalPages: number;
+}
 
 export function useQnaPosts({
   page = 1,
@@ -18,7 +24,14 @@ export function useQnaPosts({
   filter = "all",
   currentUuid = "",
   orderBy = "created_at",
-}) {
+}: {
+  page?: number;
+  limit?: number;
+  category?: string;
+  filter?: string;
+  currentUuid?: string;
+  orderBy?: string;
+}): ReturnType<typeof useQuery<QnaPostsResponse, Error>> {
   return useQuery({
     queryKey: ["qna_posts", page, limit, category, filter, currentUuid],
     queryFn: async () => {
@@ -28,18 +41,18 @@ export function useQnaPosts({
       let query = supabaseClient.from("qna_posts").select(
         `
           *,
+          user_profiles!qna_posts_author_id_fkey (
+            name
+          ),
           qna_posts_comments (
             id,
             content,
             author_id,
             created_at,
-            images, 
+            images,
             user_profiles!qna_posts_comments_author_id_fkey (
               name
             )
-          ),
-          user_profiles!qna_posts_author_id_fkey (
-            name
           )
         `,
         { count: "exact" },
@@ -68,17 +81,23 @@ export function useQnaPosts({
   });
 }
 
-export function useCreateQnaPost(
-  title: string,
-  content: string,
-  authorId: string,
-  category?: string,
-  imageFiles: File[] = [],
-) {
+export function useCreateQnaPost({
+  title,
+  content,
+  authorId,
+  category,
+  imageFiles = [],
+}: {
+  title: string;
+  content: string;
+  authorId: string;
+  category?: string;
+  imageFiles?: File[];
+}): ReturnType<typeof useMutation<QnaPost, Error, void, unknown>> {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async () => {
+    mutationFn: async (): Promise<QnaPost> => {
       const uploadedUrls: string[] = [];
 
       for (const file of imageFiles) {
@@ -112,7 +131,8 @@ export function useCreateQnaPost(
           category: category?.trim(),
           images: uploadedUrls.length > 0 ? uploadedUrls : null,
         })
-        .select();
+        .select()
+        .single();
 
       if (error) {
         console.error("Insert failed:", error.message);
@@ -120,7 +140,71 @@ export function useCreateQnaPost(
       }
 
       console.log("Q&A post created:", data);
-      return data;
+      return data as QnaPost;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["qna_posts"] });
+    },
+  });
+}
+
+export function useCreateQnaPostComment({
+  content,
+  postId,
+  authorId,
+  imageFiles = [],
+}: {
+  content: string;
+  postId: string;
+  authorId: string;
+  imageFiles?: File[];
+}): ReturnType<typeof useMutation<QnaPostComment, Error, void, unknown>> {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (): Promise<QnaPostComment> => {
+      const uploadedUrls: string[] = [];
+
+      for (const file of imageFiles) {
+        const filePath = `qna-comment-${Date.now()}-${file.name}`;
+        console.log("Uploading:", filePath);
+
+        const { error } = await supabaseClient.storage
+          .from("qna_posts_images")
+          .upload(filePath, file);
+
+        if (error) {
+          console.error("Upload failed:", error.message);
+          continue;
+        }
+
+        const { data: imageData } = supabaseClient.storage
+          .from("qna_posts_images")
+          .getPublicUrl(filePath);
+
+        uploadedUrls.push(imageData.publicUrl);
+      }
+
+      console.log("Creating Q&A post comment...");
+
+      const { data, error } = await supabaseClient
+        .from("qna_posts_comments")
+        .insert({
+          content: content.trim(),
+          post_id: postId,
+          author_id: authorId,
+          images: uploadedUrls.length > 0 ? uploadedUrls : null,
+        })
+        .select()
+        .single();
+
+      if (error) {
+        console.error("Insert failed:", error.message);
+        throw error;
+      }
+
+      console.log("Q&A post comment created:", data);
+      return data as QnaPostComment;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["qna_posts"] });

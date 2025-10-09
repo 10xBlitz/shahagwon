@@ -4,7 +4,7 @@ import { supabaseClient } from "@/lib/supabase/client";
 
 type UserProfile = Tables<"user_profiles">;
 
-export function useUserProfile(id: string) {
+export function useUserProfile({ id }: { id: string }): ReturnType<typeof useQuery<UserProfile | null, Error>> {
   return useQuery({
     queryKey: ["userProfile", id],
     queryFn: async () => {

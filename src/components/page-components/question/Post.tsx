@@ -19,7 +19,7 @@ export default function Post({ post, likesCount = 0 }: PostProps) {
       <div className="mb-6 flex items-center gap-4">
         <Avatar />
         <div className="flex flex-col">
-          <h3 className="text-lg font-semibold">{post.user_profile?.name}</h3>
+          <h3 className="text-lg font-semibold">{post.user_profiles?.name}</h3>
           <p className="text-xs text-gray-500">
             {convertToYYYYMMDDWithTime(post.created_at)}
           </p>
