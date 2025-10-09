@@ -2,7 +2,7 @@ import { Tables } from "@/types/supabase";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabaseClient } from "@/lib/supabase/client";
 
-type Announcement = Tables<"announcements">;
+export type Announcement = Tables<"announcements">;
 
 /**
  *  Fetches the details about a single announcement
@@ -28,7 +28,11 @@ export function useAnnouncement(id: string) {
  *  Fetches a list of announcements
  */
 
-export function useAnnouncements(page = 1, limit = 20, orderBy = "created_at") {
+export function useAnnouncements({
+  page = 1,
+  limit = 20,
+  orderBy = "created_at",
+} = {}) {
   return useQuery({
     queryKey: ["announcements", page, limit],
     queryFn: async () => {

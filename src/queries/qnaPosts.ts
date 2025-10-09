@@ -1,19 +1,59 @@
 import { Tables } from "@/types/supabase";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabaseClient } from "@/lib/supabase/client";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-type QnaPost = Tables<"qna_posts">;
+export type QnaPost = Tables<"qna_posts"> & {
+  user_profile: Tables<"user_profiles">;
+  qna_posts_comments: QnaPostComment[];
+};
 
-export function useQnaPosts(page = 1, limit = 5, orderBy = "created_at") {
+export type QnaPostComment = Tables<"qna_posts_comments"> & {
+  user_profile: Tables<"user_profiles">;
+};
+
+export function useQnaPosts({
+  page = 1,
+  limit = 5,
+  category = "all",
+  filter = "all",
+  currentUuid = "",
+  orderBy = "created_at",
+}) {
   return useQuery({
-    queryKey: ["qna_posts", page, limit],
+    queryKey: ["qna_posts", page, limit, category, filter, currentUuid],
     queryFn: async () => {
       const from = (page - 1) * limit;
       const to = from + limit - 1;
 
-      const { data, error, count } = await supabaseClient
-        .from("qna_posts")
-        .select("*", { count: "exact" })
+      let query = supabaseClient.from("qna_posts").select(
+        `
+          *,
+          qna_posts_comments (
+            id,
+            content,
+            author_id,
+            created_at,
+            images, 
+            user_profiles!qna_posts_comments_author_id_fkey (
+              name
+            )
+          ),
+          user_profiles!qna_posts_author_id_fkey (
+            name
+          )
+        `,
+        { count: "exact" },
+      );
+
+      if (category && category !== "all") {
+        query = query.eq("category", category);
+      }
+
+      if (filter === "my" && currentUuid) {
+        query = query.eq("author_id", currentUuid);
+      }
+
+      const { data, error, count } = await query
         .order(orderBy, { ascending: false })
         .range(from, to);
 
@@ -33,7 +73,7 @@ export function useCreateQnaPost(
   content: string,
   authorId: string,
   category?: string,
-  imageFiles: File[] = []
+  imageFiles: File[] = [],
 ) {
   const queryClient = useQueryClient();
 

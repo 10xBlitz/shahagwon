@@ -2,39 +2,30 @@
 
 import React from "react";
 import Avatar from "./Avatar";
+import { QnaPostComment } from "@/queries/qnaPosts";
+import { convertToYYYYMMDDWithTime } from "@/lib/utils/timeUtils";
 
 interface CommentProps {
-  username: string;
-  userTitle?: string;
-  content: string;
-  timestamp: string;
-  avatarSrc?: string;
+  comment: QnaPostComment;
 }
 
-export default function Comment({
-  username,
-  userTitle,
-  content,
-  timestamp,
-  avatarSrc,
-}: CommentProps) {
+export default function Comment({ comment }: CommentProps) {
   return (
     <div className="p-4">
       <div className="mb-3 flex items-center gap-3">
-        <Avatar src={avatarSrc} size={40} />
+        <Avatar size={40} />
         <div>
           <div className="flex items-center gap-2">
-            <h4 className="text-base font-semibold">{username}</h4>
-            {userTitle && (
-              <span className="text-sm text-gray-600">({userTitle})</span>
-            )}
+            <h4 className="text-base font-semibold">
+              {comment.user_profile.name}
+            </h4>
           </div>
         </div>
       </div>
-      
-      <p className="mb-2 text-sm leading-relaxed">{content}</p>
-      
-      <p className="text-xs text-gray-500">{timestamp}</p>
+      <p className="mb-2 text-sm leading-relaxed">{comment.content}</p>
+      <p className="text-xs text-gray-500">
+        {convertToYYYYMMDDWithTime(comment.created_at)}
+      </p>
     </div>
   );
 }

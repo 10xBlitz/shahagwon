@@ -11,7 +11,7 @@ import { useAnnouncements } from "@/queries/announcements";
 
 export default function AnnouncementsPage() {
   const [currentPage, setCurrentPage] = useState(1);
-  const { data: announcementsData } = useAnnouncements(currentPage, 8);
+  const { data: announcementsData } = useAnnouncements({ page: currentPage, limit: 8 });
 
   const announcements = announcementsData?.data ?? [];
   const totalPages = announcementsData?.totalPages ?? 1;

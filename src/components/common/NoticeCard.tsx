@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { Tables } from "@/types/supabase";
 import { useRouter } from "next/navigation";
 import { convertToYYYYMMDD } from "@/lib/utils/timeUtils";
+import { Announcement } from "@/queries/announcements";
 
 interface NoticeCardProps {
-  notice: Tables<"announcements">;
+  notice: Announcement;
   isNew?: boolean;
 }
 

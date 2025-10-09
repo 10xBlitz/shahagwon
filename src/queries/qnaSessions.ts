@@ -2,9 +2,13 @@ import { Tables } from "@/types/supabase";
 import { supabaseClient } from "@/lib/supabase/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-type QnaSession = Tables<"qna_sessions">;
+export type QnaSession = Tables<"qna_sessions">;
 
-export function useQnaSessions(page = 1, limit = 20, orderBy = "created_at") {
+export function useQnaSessions({
+  page = 1,
+  limit = 20,
+  orderBy = "created_at",
+} = {}) {
   return useQuery({
     queryKey: ["qna_sessions", page, limit],
     queryFn: async () => {

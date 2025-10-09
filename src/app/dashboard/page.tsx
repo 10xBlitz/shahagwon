@@ -7,7 +7,7 @@ import StudyScheduleCard from "@/components/page-components/home/StudyScheduleCa
 import StudyTimeDialogue from "@/components/page-components/home/StudyTimeDialogue";
 
 export default function Dashboard() {
-  const { data } = useAnnouncements(1, 4);
+  const { data } = useAnnouncements({ page: 1, limit: 4 });
   const announcements = data?.data ?? [];
 
   const [dialogueTitle, setDialogueTitle] = useState<string | null>(null);
