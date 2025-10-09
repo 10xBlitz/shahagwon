@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
 import Button from "@/components/common/Button";
-import { SquarePen, Trash2 } from "lucide-react";
-import { useAnnouncement } from "@/queries/announcement";
-import { convertToYYYYMMDD } from "@/lib/utils/timeUtils";
 import { useUserProfile } from "@/queries/user";
+import { SquarePen, Trash2 } from "lucide-react";
+import { useParams, useRouter } from "next/navigation";
+import { useAnnouncement } from "@/queries/announcements";
+import { convertToYYYYMMDD } from "@/lib/utils/timeUtils";
 
 export default function NotificationDetail() {
   const { id } = useParams();

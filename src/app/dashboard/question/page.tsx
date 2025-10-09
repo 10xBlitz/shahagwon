@@ -5,9 +5,9 @@ import { useState } from "react";
 import CircularTabs from "@/components/common/CircularTabs";
 import MathQuestions from "@/components/page-components/question/MathQuestions";
 import KoreanQuestions from "@/components/page-components/question/KoreanQuestions";
+import ScienceQuestions from "@/components/page-components/question/ScienceQuestions";
 import EnglishQuestions from "@/components/page-components/question/EnglishQuestions";
 import OfflineApplication from "@/components/page-components/question/OfflineApplication";
-import ExplorationQuestions from "@/components/page-components/question/ExplorationQuestions";
 
 const editTabs = [
   {
@@ -28,7 +28,7 @@ const editTabs = [
   },
   {
     label: "탐구 질의응답방",
-    value: "explorationQuestions",
+    value: "scienceQuestions",
   },
 ];
 
@@ -59,7 +59,7 @@ export default function QuestionPage() {
       {selectedTab === "koreanQuestions" && <KoreanQuestions />}
       {selectedTab === "mathQuestions" && <MathQuestions />}
       {selectedTab === "englishQuestions" && <EnglishQuestions />}
-      {selectedTab === "explorationQuestions" && <ExplorationQuestions />}
+      {selectedTab === "scienceQuestions" && <ScienceQuestions />}
     </div>
   );
 }

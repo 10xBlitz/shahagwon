@@ -1,24 +1,21 @@
 "use client";
 
-import Image from "next/image";
 import { branchTabs } from "@/etc/tabs";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Button from "@/components/common/Button";
 import { useUserStore } from "@/hooks/useUserStore";
-import { ImagePlus, X, Loader2 } from "lucide-react";
-import { useCreateAnnouncement } from "@/queries/announcement";
+import FileUpload from "@/components/common/FileUpload";
+import FormButtons from "@/components/common/FormButtons";
+import { useCreateAnnouncement } from "@/queries/announcements";
 
 export default function WriteAnnouncementPage() {
-  const user = useUserStore((s) => s.user);
   const router = useRouter();
+  const user = useUserStore((s) => s.user);
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [selectedBranch, setSelectedBranch] = useState(branchTabs[0].label);
   const [files, setFiles] = useState<File[]>([]);
-
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const createAnnouncement = useCreateAnnouncement(
     title,
@@ -28,29 +25,10 @@ export default function WriteAnnouncementPage() {
     files,
   );
 
-  const handleFileUploadClick = () => {
-    fileInputRef.current?.click();
-  };
-
-  const handleFilesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
-    if (!files) return;
-
-    const newFiles = Array.from(files);
-
-    setFiles((prevFiles) => [...prevFiles, ...newFiles]);
-
-    event.target.value = "";
-  };
-
-  const handleRemoveFile = (index: number) => {
-    setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
-  };
-
   const handleSaveClick = async () => {
     createAnnouncement.mutate(undefined, {
       onSuccess: () => {
-        router.replace("/dashboard/notification");
+        router.replace("/dashboard/question");
       },
     });
   };
@@ -105,90 +83,22 @@ export default function WriteAnnouncementPage() {
             className="w-full resize-none rounded-md border border-[#D9D9D9] bg-white px-[16px] py-[12px] text-base outline-none hover:border-[#212121] focus:border-[#1B76D3]"
           />
         </div>
-        {/* Image Upload Button */}
-        <div className="mb-[16px] flex flex-row gap-4">
-          {files.map((file, index) => {
-            const imageUrl = URL.createObjectURL(file);
-            return (
-              <div key={index} className="flex flex-row items-center gap-1">
-                {/* <p className="text-[10px]">{file.name}</p> */}
-                <div className="relative inline-block">
-                  <Image
-                    src={imageUrl}
-                    alt={file.name}
-                    width={100}
-                    height={100}
-                    className="rounded object-contain"
-                  />
-                  <div
-                    onClick={() => {
-                      handleRemoveFile(index);
-                    }}
-                    className="absolute top-1.5 right-1.5 rounded-full bg-red-600 p-[2px] shadow-lg hover:scale-110"
-                  >
-                    <X
-                      stroke="#FFFFFF"
-                      strokeWidth={2}
-                      size={10}
-                      className="hover:cursor-pointer"
-                    />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        <div className="mb-[16px] flex flex-row items-center justify-between">
-          <ImagePlus
-            size={24}
-            strokeWidth={1.5}
-            color="#808080"
-            className="hover:cursor-pointer"
-            onClick={handleFileUploadClick}
-          />
-          <div className="flex justify-end gap-[12px]">
-            <Button
-              onClick={() => {
-                router.back();
-              }}
-              className="rounded-md border border-[#8EB5E3] px-[18px] py-[8px] text-sm font-bold text-[#1C75D2] hover:border-[#1C75D2] hover:bg-[#EBF0F3]"
-            >
-              담기
-            </Button>
-            <Button
-              onClick={handleSaveClick}
-              disabled={
-                !title.trim() || !content.trim() || createAnnouncement.isPending
-              }
-              className={`${
-                title.trim() && content.trim() && !createAnnouncement.isPending
-                  ? "border-[#8EB5E3] text-[#1C75D2] hover:border-[#1C75D2] hover:bg-[#EBF0F3]"
-                  : "border-[#D7D7D7] text-[#B6B6B6]"
-              } flex items-center justify-center gap-2 rounded-md border px-[18px] py-[8px] text-sm font-bold`}
-              pointer={
-                title.trim() && content.trim() && !createAnnouncement.isPending
-                  ? true
-                  : false
-              }
-            >
-              {createAnnouncement.isPending ? (
-                <Loader2 className="animate-spin" size={20} />
-              ) : (
-                "내용 업로드"
-              )}
-            </Button>
-          </div>
-        </div>
+        {/* File Upload Component */}
+        <FileUpload
+          files={files}
+          onFilesChange={setFiles}
+          className="mb-[16px]"
+        />
+        {/* Form Buttons */}
+        <FormButtons
+          onCancel={() => router.back()}
+          onSubmit={handleSaveClick}
+          isSubmitDisabled={
+            !title.trim() || !content.trim() || createAnnouncement.isPending
+          }
+          isSubmitting={createAnnouncement.isPending}
+        />
       </div>
-      {/* Invisible file upload that gets triggered via ref */}
-      <input
-        ref={fileInputRef}
-        type="file"
-        accept="image/*"
-        multiple
-        onChange={handleFilesChange}
-        className="hidden"
-      />
     </div>
   );
 }

@@ -50,6 +50,125 @@ export type Database = {
         }
         Relationships: []
       }
+      qna_posts: {
+        Row: {
+          author_id: string | null
+          category: string | null
+          content: string | null
+          created_at: string
+          id: number
+          images: string[] | null
+          title: string | null
+        }
+        Insert: {
+          author_id?: string | null
+          category?: string | null
+          content?: string | null
+          created_at?: string
+          id?: number
+          images?: string[] | null
+          title?: string | null
+        }
+        Update: {
+          author_id?: string | null
+          category?: string | null
+          content?: string | null
+          created_at?: string
+          id?: number
+          images?: string[] | null
+          title?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "qna_posts_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["user_id"]
+          },
+        ]
+      }
+      qna_posts_comments: {
+        Row: {
+          author_id: string | null
+          content: string | null
+          created_at: string
+          id: number
+          images: string[] | null
+          post_id: number | null
+        }
+        Insert: {
+          author_id?: string | null
+          content?: string | null
+          created_at?: string
+          id?: number
+          images?: string[] | null
+          post_id?: number | null
+        }
+        Update: {
+          author_id?: string | null
+          content?: string | null
+          created_at?: string
+          id?: number
+          images?: string[] | null
+          post_id?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "qna_posts_comments_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "qna_posts_comments_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "qna_posts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      qna_sessions: {
+        Row: {
+          branch: string | null
+          created_at: string
+          date: string | null
+          id: number
+          location: string | null
+          student_affiliation: string | null
+          subject: string | null
+          teacher_name: string | null
+          time: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          branch?: string | null
+          created_at?: string
+          date?: string | null
+          id?: number
+          location?: string | null
+          student_affiliation?: string | null
+          subject?: string | null
+          teacher_name?: string | null
+          time?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          branch?: string | null
+          created_at?: string
+          date?: string | null
+          id?: number
+          location?: string | null
+          student_affiliation?: string | null
+          subject?: string | null
+          teacher_name?: string | null
+          time?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       user_profiles: {
         Row: {
           account_type: string | null
@@ -57,13 +176,12 @@ export type Database = {
           created_at: string
           email_address: string | null
           employee_registration_password: string | null
-          id: number
           name: string | null
           phone_number: string | null
           student_phone_number: string | null
           student_registration_password: string | null
           updated_at: string | null
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           account_type?: string | null
@@ -71,13 +189,12 @@ export type Database = {
           created_at?: string
           email_address?: string | null
           employee_registration_password?: string | null
-          id?: number
           name?: string | null
           phone_number?: string | null
           student_phone_number?: string | null
           student_registration_password?: string | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id: string
         }
         Update: {
           account_type?: string | null
@@ -85,13 +202,12 @@ export type Database = {
           created_at?: string
           email_address?: string | null
           employee_registration_password?: string | null
-          id?: number
           name?: string | null
           phone_number?: string | null
           student_phone_number?: string | null
           student_registration_password?: string | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: []
       }

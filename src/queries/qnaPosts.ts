@@ -1,35 +1,39 @@
-/**
- *  For a SINGLE announcement
- */
-
 import { Tables } from "@/types/supabase";
-import { supabaseClient } from "@/lib/supabase/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { supabaseClient } from "@/lib/supabase/client";
 
-type Announcement = Tables<"announcements">;
+type QnaPost = Tables<"qna_posts">;
 
-export function useAnnouncement(id: string) {
+export function useQnaPosts(page = 1, limit = 5, orderBy = "created_at") {
   return useQuery({
-    queryKey: ["announcement", id],
+    queryKey: ["qna_posts", page, limit],
     queryFn: async () => {
-      const { data, error } = await supabaseClient
-        .from("announcements")
-        .select("*")
-        .eq("id", id)
-        .single();
+      const from = (page - 1) * limit;
+      const to = from + limit - 1;
+
+      const { data, error, count } = await supabaseClient
+        .from("qna_posts")
+        .select("*", { count: "exact" })
+        .order(orderBy, { ascending: false })
+        .range(from, to);
 
       if (error) throw error;
-      return data as Announcement;
+
+      return {
+        data: data as QnaPost[],
+        count: count ?? 0,
+        totalPages: Math.ceil((count ?? 0) / limit),
+      };
     },
   });
 }
 
-export function useCreateAnnouncement(
+export function useCreateQnaPost(
   title: string,
   content: string,
-  selectedBranch: string,
   authorId: string,
-  imageFiles: File[],
+  category?: string,
+  imageFiles: File[] = []
 ) {
   const queryClient = useQueryClient();
 
@@ -38,11 +42,11 @@ export function useCreateAnnouncement(
       const uploadedUrls: string[] = [];
 
       for (const file of imageFiles) {
-        const filePath = `announcement-${Date.now()}-${file.name}`;
+        const filePath = `qna-post-${Date.now()}-${file.name}`;
         console.log("Uploading:", filePath);
 
         const { error } = await supabaseClient.storage
-          .from("announcement_images")
+          .from("qna_post_images")
           .upload(filePath, file);
 
         if (error) {
@@ -51,22 +55,22 @@ export function useCreateAnnouncement(
         }
 
         const { data: imageData } = supabaseClient.storage
-          .from("announcement_images")
+          .from("qna_post_images")
           .getPublicUrl(filePath);
 
         uploadedUrls.push(imageData.publicUrl);
       }
 
-      console.log("Uploading announcement...");
+      console.log("Creating Q&A post...");
 
       const { data, error } = await supabaseClient
-        .from("announcements")
+        .from("qna_posts")
         .insert({
           title: title.trim(),
           content: content.trim(),
-          branch: selectedBranch,
           author_id: authorId,
-          images: uploadedUrls,
+          category: category?.trim(),
+          images: uploadedUrls.length > 0 ? uploadedUrls : null,
         })
         .select();
 
@@ -75,11 +79,11 @@ export function useCreateAnnouncement(
         throw error;
       }
 
-      console.log("✅ Announcement created:", data);
+      console.log(" Q&A post created:", data);
       return data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["announcements"] });
+      queryClient.invalidateQueries({ queryKey: ["qna_posts"] });
     },
   });
 }
