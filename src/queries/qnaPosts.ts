@@ -8,7 +8,7 @@ export type QnaPost = Tables<"qna_posts"> & {
 };
 
 export type QnaPostComment = Tables<"qna_posts_comments"> & {
-  user_profile: Tables<"user_profiles">;
+  user_profiles: Tables<"user_profiles">;
 };
 
 export interface QnaPostsResponse {
@@ -155,7 +155,7 @@ export function useCreateQnaPostComment({
   imageFiles = [],
 }: {
   content: string;
-  postId: string;
+  postId: number;
   authorId: string;
   imageFiles?: File[];
 }): ReturnType<typeof useMutation<QnaPostComment, Error, void, unknown>> {

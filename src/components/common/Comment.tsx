@@ -17,7 +17,7 @@ export default function Comment({ comment }: CommentProps) {
         <div>
           <div className="flex items-center gap-2">
             <h4 className="text-base font-semibold">
-              {comment.user_profile.name}
+              {comment.user_profiles.name}
             </h4>
           </div>
         </div>
