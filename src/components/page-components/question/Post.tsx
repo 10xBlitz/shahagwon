@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { ThumbsUp } from "lucide-react";
 import Avatar from "@/components/common/Avatar";
 import Comment from "@/components/common/Comment";
@@ -27,16 +28,23 @@ export default function Post({ post, likesCount = 0 }: PostProps) {
       <div className="mb-6 h-px bg-[#D9D9D9]" />
       <h2 className="mb-4 text-xl font-medium">{post.title}</h2>
       <p className="mb-6">{post.content}</p>
-      {/* {imageSrc && (
-        <div className="relative mb-[18px] flex h-[400px] w-full items-center rounded-2xl bg-[#F3F3F3]">
-          <Image
-            alt=""
-            fill
-            src={imageSrc}
-            className="h-auto rounded-lg border object-contain"
-          />
+      {post.images && post.images.length > 0 && (
+        <div className="mb-[18px] grid grid-cols-1 gap-4">
+          {post.images.map((image, index) => (
+            <div
+              key={index}
+              className="relative h-[400px] w-full rounded-2xl bg-[#F3F3F3]"
+            >
+              <Image
+                alt={`Post image ${index + 1}`}
+                fill
+                src={image}
+                className="h-auto rounded-lg border object-contain"
+              />
+            </div>
+          ))}
         </div>
-      )} */}
+      )}
       <div className="mb-6 flex w-auto items-center gap-2 hover:cursor-pointer">
         <ThumbsUp size={16} color="#707070" />
         <p className="text-sm text-[#9F9F9F]">

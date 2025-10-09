@@ -13,7 +13,7 @@ export type QnaPostComment = Tables<"qna_posts_comments"> & {
 
 export function useQnaPosts({
   page = 1,
-  limit = 5,
+  limit = 6,
   category = "all",
   filter = "all",
   currentUuid = "",
@@ -86,7 +86,7 @@ export function useCreateQnaPost(
         console.log("Uploading:", filePath);
 
         const { error } = await supabaseClient.storage
-          .from("qna_post_images")
+          .from("qna_posts_images")
           .upload(filePath, file);
 
         if (error) {
@@ -95,7 +95,7 @@ export function useCreateQnaPost(
         }
 
         const { data: imageData } = supabaseClient.storage
-          .from("qna_post_images")
+          .from("qna_posts_images")
           .getPublicUrl(filePath);
 
         uploadedUrls.push(imageData.publicUrl);
@@ -119,7 +119,7 @@ export function useCreateQnaPost(
         throw error;
       }
 
-      console.log(" Q&A post created:", data);
+      console.log("Q&A post created:", data);
       return data;
     },
     onSuccess: () => {

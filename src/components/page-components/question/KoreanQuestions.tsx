@@ -7,14 +7,17 @@ import Button from "@/components/common/Button";
 import { useQnaPosts } from "@/queries/qnaPosts";
 import { useUserStore } from "@/hooks/useUserStore";
 import SquareTabs from "@/components/common/SquareTabs";
+import Pagination from "@/components/common/Pagination";
 
 export default function KoreanQuestions() {
   const router = useRouter();
   const user = useUserStore((s) => s.user);
 
   const [selectedTab, setSelectedTab] = useState(subTabs[0].value);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const { data: koreanQuestions, isPending } = useQnaPosts({
+    page: currentPage,
     category: "국어",
     filter: selectedTab,
     currentUuid: user?.user_id,
@@ -23,6 +26,10 @@ export default function KoreanQuestions() {
   useEffect(() => {
     console.log("Korean Questions:", koreanQuestions?.data);
   }, [koreanQuestions]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedTab]);
 
   return (
     <div className="flex flex-col items-center">
@@ -42,9 +49,20 @@ export default function KoreanQuestions() {
               <Loader2 className="animate-spin" size={40} />
             </div>
           ) : (
-            koreanQuestions?.data.map((post) => (
-              <Post key={post.id} post={post} />
-            ))
+            <>
+              {koreanQuestions?.data.map((post) => (
+                <Post key={post.id} post={post} />
+              ))}
+              {koreanQuestions && koreanQuestions.totalPages > 1 && (
+                <div className="mt-8 flex justify-center">
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={koreanQuestions.totalPages}
+                    onPageChange={setCurrentPage}
+                  />
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>

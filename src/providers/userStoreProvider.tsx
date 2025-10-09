@@ -15,8 +15,7 @@ export const UserStoreContext = createContext<UserStoreApi | undefined>(
 );
 
 const defaultUserProfile: UserProfile = {
-  id: 0,
-  user_id: null,
+  user_id: "",
   email_address: "",
   name: "",
   phone_number: "",
@@ -60,7 +59,6 @@ export const UserStoreProvider = ({ children }: { children: ReactNode }) => {
         if (userProfile) {
           initialDataForStore = {
             user: {
-              id: userProfile.id,
               user_id: userProfile.user_id,
               email_address: userProfile.email_address,
               name: userProfile.name,
