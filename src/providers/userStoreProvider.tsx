@@ -26,6 +26,8 @@ const defaultUserProfile: UserProfile = {
   employee_registration_password: "",
   created_at: new Date(0).toISOString(),
   updated_at: "",
+  user_avatar: "",
+  subjects: [],
 };
 
 export const UserStoreProvider = ({ children }: { children: ReactNode }) => {
@@ -72,6 +74,8 @@ export const UserStoreProvider = ({ children }: { children: ReactNode }) => {
                 userProfile.employee_registration_password,
               created_at: userProfile.created_at,
               updated_at: userProfile.updated_at,
+              user_avatar: userProfile.user_avatar,
+              subjects: userProfile.subjects,
             },
           };
         } else {

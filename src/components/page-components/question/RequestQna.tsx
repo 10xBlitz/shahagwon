@@ -37,6 +37,7 @@ export default function RequestQna() {
           <div className="h-px bg-[#D7D7D7]" />
         </div>
       ))}
+      {/** Pop up modals */}
       {openModal === "register_qna" && (
         <RegisterQnaDialogue
           onClose={() => {
@@ -44,9 +45,7 @@ export default function RequestQna() {
           }}
         />
       )}
-      {/**
-       *  Floating buttons
-       */}
+      {/** Floating buttons */}
       <div className="fixed right-10 bottom-4 flex flex-col gap-2">
         <Button
           onClick={() => {

@@ -2,11 +2,13 @@
 
 import dayjs, { Dayjs } from "dayjs";
 import { branchTabs } from "@/etc/tabs";
-import { tempTeachers } from "@/etc/temp";
 import { ChevronDown } from "lucide-react";
+import { useTeacher } from "@/queries/user";
 import { useEffect, useState } from "react";
 import { TimePicker } from "@mui/x-date-pickers";
+import { useUserStore } from "@/hooks/useUserStore";
 import DatePicker from "@/components/common/DatePicker";
+import { useCreateQnaSession } from "@/queries/qnaSessions";
 import { renderTimeViewClock } from "@mui/x-date-pickers/timeViewRenderers";
 
 interface RegisterQnaDialogueProps {
@@ -16,30 +18,42 @@ interface RegisterQnaDialogueProps {
 export default function RegisterQnaDialogue({
   onClose,
 }: RegisterQnaDialogueProps) {
+  const { data: teachers } = useTeacher();
+  const user = useUserStore((s) => s.user);
+
   const [selectedBranch, setSelectedBranch] = useState(branchTabs[0].value);
-  const [selectedTeacher, setSelectedTeacher] = useState(tempTeachers[0]);
+  const [selectedTeacher, setSelectedTeacher] = useState<string | null>(null);
   const [subject, setSubject] = useState("");
   const [location, setLocation] = useState("");
   const [date, setDate] = useState<Date>(new Date());
   const [startTime, setStartTime] = useState<Dayjs | null>(dayjs());
   const [endTime, setEndTime] = useState<Dayjs | null>(dayjs());
 
-  useEffect(() => {
-    console.log(date);
-  }, [date]);
+  const createQnaSession = useCreateQnaSession({
+    branch: selectedBranch,
+    date: date,
+    time: startTime as Dayjs,
+    teacher: selectedTeacher as string,
+    applicant: user?.user_id as string,
+    location: location,
+  });
 
   const handleSubmit = () => {
-    console.log({
-      selectedBranch,
-      selectedTeacher,
-      subject,
-      location,
-      date,
-      startTime,
-      endTime,
+    console.log("Initiating Q&A session submission...");
+
+    createQnaSession.mutate(undefined, {
+      onSuccess: () => {
+        console.log("✅ Q&A session submission successful");
+        onClose();
+      },
     });
-    onClose();
   };
+
+  useEffect(() => {
+    if (teachers && teachers.length > 0 && !selectedTeacher) {
+      setSelectedTeacher(teachers[0].user_id);
+    }
+  }, [teachers, selectedTeacher]);
 
   return (
     <div
@@ -85,16 +99,18 @@ export default function RegisterQnaDialogue({
             <h3 className="text-lg font-medium">선생님 선택</h3>
             <div className="relative mt-4 w-full">
               <select
-                value={selectedTeacher}
+                value={selectedTeacher || ""}
                 onChange={(e) => setSelectedTeacher(e.target.value)}
                 className="w-full appearance-none rounded border border-gray-300 bg-white px-4 py-3 text-base focus:border-[#5B6EC5] focus:outline-none"
               >
-                {tempTeachers.map((teacher, index) => (
-                  <option key={index} value={teacher}>
-                    {teacher}
+                <option value="" disabled>
+                  선생님을 선택하세요
+                </option>
+                {teachers?.map((teacher) => (
+                  <option key={teacher.user_id} value={teacher.user_id}>
+                    {teacher.name}
                   </option>
                 ))}
-                {/* Add more teachers as needed */}
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                 <ChevronDown className="h-4 w-4 text-gray-400" />

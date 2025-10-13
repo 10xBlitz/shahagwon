@@ -142,7 +142,7 @@ export type Database = {
           location: string | null
           student_affiliation: string | null
           subject: string | null
-          teacher_name: string | null
+          teacher: string | null
           time: string | null
           updated_at: string | null
         }
@@ -154,7 +154,7 @@ export type Database = {
           location?: string | null
           student_affiliation?: string | null
           subject?: string | null
-          teacher_name?: string | null
+          teacher?: string | null
           time?: string | null
           updated_at?: string | null
         }
@@ -166,7 +166,7 @@ export type Database = {
           location?: string | null
           student_affiliation?: string | null
           subject?: string | null
-          teacher_name?: string | null
+          teacher?: string | null
           time?: string | null
           updated_at?: string | null
         }
@@ -183,6 +183,7 @@ export type Database = {
           phone_number: string | null
           student_phone_number: string | null
           student_registration_password: string | null
+          subjects: string[] | null
           updated_at: string | null
           user_avatar: string | null
           user_id: string
@@ -197,6 +198,7 @@ export type Database = {
           phone_number?: string | null
           student_phone_number?: string | null
           student_registration_password?: string | null
+          subjects?: string[] | null
           updated_at?: string | null
           user_avatar?: string | null
           user_id: string
@@ -211,6 +213,7 @@ export type Database = {
           phone_number?: string | null
           student_phone_number?: string | null
           student_registration_password?: string | null
+          subjects?: string[] | null
           updated_at?: string | null
           user_avatar?: string | null
           user_id?: string

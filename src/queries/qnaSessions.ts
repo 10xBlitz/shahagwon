@@ -1,6 +1,7 @@
 import { Tables } from "@/types/supabase";
 import { supabaseClient } from "@/lib/supabase/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Dayjs } from "dayjs";
 
 export type QnaSession = Tables<"qna_sessions">;
 
@@ -42,31 +43,53 @@ export function useQnaSessions({
   });
 }
 
+/**
+ *  branch,
+ *  date,
+ *  time,
+ *  teacher,
+ *  applicant,
+ *  student_affiliation,
+ *  location
+ */
+
 export function useCreateQnaSession({
-  title,
-  description,
-  selectedBranch,
-  hostId,
-  scheduledDate,
+  branch,
+  date,
+  time,
+  teacher,
+  applicant,
+  location,
 }: {
-  title: string;
-  description: string;
-  selectedBranch: string;
-  hostId: string;
-  scheduledDate: string;
+  branch: string;
+  date: Date;
+  time: Dayjs;
+  teacher: string;
+  applicant: string;
+  location: string;
 }) {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async (): Promise<QnaSession> => {
+      console.log({
+        branch,
+        date,
+        time,
+        teacher,
+        applicant,
+        location,
+      });
+
       const { data, error } = await supabaseClient
         .from("qna_sessions")
         .insert({
-          title: title.trim(),
-          description: description.trim(),
-          branch: selectedBranch,
-          host_id: hostId,
-          scheduled_date: scheduledDate,
+          date: date,
+          time: time,
+          branch: branch,
+          teacher: teacher,
+          applicant: applicant,
+          location: location,
         })
         .select()
         .single();
