@@ -58,6 +58,7 @@ export type Database = {
           created_at: string
           id: number
           images: string[] | null
+          is_deleted: boolean | null
           title: string | null
         }
         Insert: {
@@ -67,6 +68,7 @@ export type Database = {
           created_at?: string
           id?: number
           images?: string[] | null
+          is_deleted?: boolean | null
           title?: string | null
         }
         Update: {
@@ -76,6 +78,7 @@ export type Database = {
           created_at?: string
           id?: number
           images?: string[] | null
+          is_deleted?: boolean | null
           title?: string | null
         }
         Relationships: [
@@ -95,6 +98,7 @@ export type Database = {
           created_at: string
           id: number
           images: string[] | null
+          is_deleted: boolean | null
           post_id: number | null
         }
         Insert: {
@@ -103,6 +107,7 @@ export type Database = {
           created_at?: string
           id?: number
           images?: string[] | null
+          is_deleted?: boolean | null
           post_id?: number | null
         }
         Update: {
@@ -111,6 +116,7 @@ export type Database = {
           created_at?: string
           id?: number
           images?: string[] | null
+          is_deleted?: boolean | null
           post_id?: number | null
         }
         Relationships: [
@@ -181,6 +187,7 @@ export type Database = {
           student_phone_number: string | null
           student_registration_password: string | null
           updated_at: string | null
+          user_avatar: string | null
           user_id: string
         }
         Insert: {
@@ -194,6 +201,7 @@ export type Database = {
           student_phone_number?: string | null
           student_registration_password?: string | null
           updated_at?: string | null
+          user_avatar?: string | null
           user_id: string
         }
         Update: {
@@ -207,6 +215,7 @@ export type Database = {
           student_phone_number?: string | null
           student_registration_password?: string | null
           updated_at?: string | null
+          user_avatar?: string | null
           user_id?: string
         }
         Relationships: []

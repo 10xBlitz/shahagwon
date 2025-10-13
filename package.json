@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "supabase:types": "npx supabase gen types typescript --project-id oolwpppuqnknpzewdwch --schema public > src/types/supabase.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

@@ -68,6 +68,10 @@ export function useQnaPosts({
 
       const { data, error, count } = await query
         .order(orderBy, { ascending: false })
+        .order("created_at", {
+          referencedTable: "qna_posts_comments",
+          ascending: true,
+        })
         .range(from, to);
 
       if (error) throw error;
@@ -205,6 +209,59 @@ export function useCreateQnaPostComment({
 
       console.log("Q&A post comment created:", data);
       return data as QnaPostComment;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["qna_posts"] });
+    },
+  });
+}
+
+export function useDeleteQnaPostComment({
+  commentId,
+}: {
+  commentId: number;
+}): ReturnType<typeof useMutation<void, Error, void, unknown>> {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (): Promise<void> => {
+      const { error } = await supabaseClient
+        .from("qna_posts_comments")
+        .delete()
+        .eq("id", commentId);
+
+      if (error) {
+        console.error("Delete failed:", error.message);
+        throw error;
+      }
+
+      console.log("Q&A post comment deleted:", commentId);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["qna_posts"] });
+    },
+  });
+}
+
+export function useDeleteQnaPost({
+  postId,
+}: {
+  postId: number;
+}): ReturnType<typeof useMutation<void, Error, void, unknown>> {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (): Promise<void> => {
+      const { error } = await supabaseClient
+        .from("qna_posts")
+        .delete()
+        .eq("id", postId);
+
+      if (error) {
+        console.error("Delete failed:", error.message);
+      }
+
+      console.log("Post deleted:", postId);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["qna_posts"] });

@@ -5,10 +5,15 @@ import { useRef, useState, ChangeEvent } from "react";
 import Avatar from "@/components/common/Avatar";
 import Button from "@/components/common/Button";
 import Comment from "@/components/common/Comment";
-import { Paperclip, ThumbsUp, X } from "lucide-react";
+import { Loader2, Paperclip, ThumbsUp, Trash2, X } from "lucide-react";
 import { useUserStore } from "@/hooks/useUserStore";
 import { convertToYYYYMMDDWithTime } from "@/lib/utils/timeUtils";
-import { QnaPost, useCreateQnaPostComment } from "@/queries/qnaPosts";
+import {
+  QnaPost,
+  useCreateQnaPostComment,
+  useDeleteQnaPost,
+} from "@/queries/qnaPosts";
+import { Dialog } from "@/components/common/Dialog";
 
 interface PostProps {
   post: QnaPost;
@@ -24,11 +29,17 @@ export default function Post({ post, likesCount = 0 }: PostProps) {
   const [isFocused, setIsFocused] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
 
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+
   const createQnaPostComment = useCreateQnaPostComment({
-    content: commentInput,
+    content: commentInput.trim(),
     postId: post.id,
     authorId: user?.user_id as string,
     imageFiles: files,
+  });
+
+  const deleteQnaPost = useDeleteQnaPost({
+    postId: post.id,
   });
 
   const handleTextAreaChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -58,28 +69,54 @@ export default function Post({ post, likesCount = 0 }: PostProps) {
     fileInputRef.current?.click();
   };
 
-  const handleSubmitClick = () => {
+  const handleDeletePostClick = () => {
+    setShowDeleteDialog(true);
+  };
+
+  const handleCancelDelete = () => {
+    setShowDeleteDialog(false);
+  };
+
+  const handleConfirmDelete = () => {
+    deleteQnaPost.mutate();
+    setShowDeleteDialog(false);
+  };
+
+  const handleSubmitCommentClick = () => {
     createQnaPostComment.mutate(undefined, {
       onSuccess: () => {
-        console.log("Alright!");
+        setFiles([]);
+        setCommentInput("");
       },
     });
   };
 
   return (
     <div className="min-h-auto w-[800px] rounded-lg bg-white p-[30px]">
-      <div className="mb-6 flex items-center gap-4">
-        <Avatar />
-        <div className="flex flex-col">
-          <h3 className="text-lg font-semibold">{post.user_profiles?.name}</h3>
-          <p className="text-xs text-gray-500">
-            {convertToYYYYMMDDWithTime(post.created_at)}
-          </p>
+      <div className="mb-6 flex items-center justify-between">
+        <div className="flex flex-row items-center gap-4">
+          <Avatar />
+          <div className="flex flex-col">
+            <h3 className="text-lg font-semibold">
+              {post.user_profiles?.name}
+            </h3>
+            <p className="text-xs text-gray-500">
+              {convertToYYYYMMDDWithTime(post.created_at)}
+            </p>
+          </div>
         </div>
+        {user?.user_id === post.author_id && (
+          <Trash2
+            size={20}
+            strokeWidth={1.25}
+            className={`text-black transition-all duration-200 hover:scale-110 hover:cursor-pointer hover:text-red-600`}
+            onClick={handleDeletePostClick}
+          />
+        )}
       </div>
       <div className="mb-6 h-px bg-[#D9D9D9]" />
       <h2 className="mb-4 text-xl font-medium">{post.title}</h2>
-      <p className="mb-6">{post.content}</p>
+      <p className="mb-6 whitespace-pre-line">{post.content}</p>
       {post.images && post.images.length > 0 && (
         <div className="mb-[18px] grid grid-cols-1 gap-4">
           {post.images.map((image, index) => (
@@ -107,16 +144,15 @@ export default function Post({ post, likesCount = 0 }: PostProps) {
         <div>
           <div className="mb-6 h-px bg-[#D9D9D9]" />
           <div className="mb-6 space-y-4">
-            {post.qna_posts_comments.map((comment, index) => (
-              <Comment key={index} comment={comment} />
-            ))}
+            {post.qna_posts_comments.map((comment, index) => {
+              return <Comment key={index} comment={comment} />;
+            })}
           </div>
         </div>
       )}
       <div className="mb-6 h-px bg-[#D9D9D9]" />
-      {/* Expanding Input */}
+      {/* Comment area w/ expanding input */}
       <div className="relative overflow-hidden rounded border border-[#D9D9D9]">
-        {/* Textarea */}
         <textarea
           value={commentInput}
           onChange={(e) => handleTextAreaChange(e)}
@@ -166,11 +202,17 @@ export default function Post({ post, likesCount = 0 }: PostProps) {
                 <Paperclip size={18} strokeWidth={1.25} />
               </Button>
               <Button
-                onClick={handleSubmitClick}
-                disabled={!commentInput.trim()}
-                className="rounded-lg bg-[#3D51AF] px-2 py-1 font-semibold text-white disabled:cursor-not-allowed disabled:bg-[#F3F4F8] disabled:text-[#BEBEBE]"
+                onClick={handleSubmitCommentClick}
+                disabled={
+                  !commentInput.trim() || createQnaPostComment.isPending
+                }
+                className={`rounded-lg bg-[#3D51AF] px-2 py-1 font-semibold text-white disabled:cursor-not-allowed disabled:bg-[#F3F4F8] disabled:text-[#BEBEBE]`}
               >
-                전송
+                {createQnaPostComment.isPending ? (
+                  <Loader2 className="animate-spin" size={20} />
+                ) : (
+                  "전송"
+                )}
               </Button>
             </div>
           </div>
@@ -183,6 +225,16 @@ export default function Post({ post, likesCount = 0 }: PostProps) {
         multiple={true}
         onChange={handleFilesChange}
         className="hidden"
+      />
+      <Dialog
+        title="댓글 삭제"
+        message="이 댓글을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다."
+        isOpen={showDeleteDialog}
+        onCancel={handleCancelDelete}
+        onConfirm={handleConfirmDelete}
+        confirmText="삭제"
+        cancelText="취소"
+        variant="danger"
       />
     </div>
   );
