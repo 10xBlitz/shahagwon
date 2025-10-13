@@ -268,3 +268,46 @@ export function useDeleteQnaPost({
     },
   });
 }
+
+export function useTogglePostUnderstood({
+  postId,
+}: {
+  postId: number;
+}): ReturnType<typeof useMutation<QnaPost, Error, void, unknown>> {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (): Promise<QnaPost> => {
+      const { data: currentPost, error: fetchError } = await supabaseClient
+        .from("qna_posts")
+        .select("is_understood")
+        .eq("id", postId)
+        .single();
+
+      if (fetchError) {
+        console.error("Fetch failed:", fetchError.message);
+        throw fetchError;
+      }
+
+      const { data, error } = await supabaseClient
+        .from("qna_posts")
+        .update({
+          is_understood: !currentPost.is_understood,
+        })
+        .eq("id", postId)
+        .select()
+        .single();
+
+      if (error) {
+        console.error("Toggle understood failed:", error.message);
+        throw error;
+      }
+
+      console.log("Post understood status toggled:", data);
+      return data as QnaPost;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["qna_posts"] });
+    },
+  });
+}

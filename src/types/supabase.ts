@@ -58,7 +58,7 @@ export type Database = {
           created_at: string
           id: number
           images: string[] | null
-          is_deleted: boolean | null
+          is_understood: boolean | null
           title: string | null
         }
         Insert: {
@@ -68,7 +68,7 @@ export type Database = {
           created_at?: string
           id?: number
           images?: string[] | null
-          is_deleted?: boolean | null
+          is_understood?: boolean | null
           title?: string | null
         }
         Update: {
@@ -78,7 +78,7 @@ export type Database = {
           created_at?: string
           id?: number
           images?: string[] | null
-          is_deleted?: boolean | null
+          is_understood?: boolean | null
           title?: string | null
         }
         Relationships: [
@@ -98,7 +98,6 @@ export type Database = {
           created_at: string
           id: number
           images: string[] | null
-          is_deleted: boolean | null
           post_id: number | null
         }
         Insert: {
@@ -107,7 +106,6 @@ export type Database = {
           created_at?: string
           id?: number
           images?: string[] | null
-          is_deleted?: boolean | null
           post_id?: number | null
         }
         Update: {
@@ -116,7 +114,6 @@ export type Database = {
           created_at?: string
           id?: number
           images?: string[] | null
-          is_deleted?: boolean | null
           post_id?: number | null
         }
         Relationships: [

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
 import Button from "@/components/common/Button";
 import { TextField } from "@/components/common/TextField";
 import { signOut, signUpWithEmail } from "@/lib/supabase/auth";
@@ -235,9 +236,16 @@ export default function SignUpForm() {
       <button
         onClick={handleSignUp}
         disabled={isLoading}
-        className="mt-[32px] w-full rounded-xl bg-[#3D51AF] py-[20px] text-lg font-bold text-white disabled:opacity-50 sm:rounded-4xl sm:py-[18px]"
+        className="mt-[32px] flex w-full items-center justify-center gap-2 rounded-xl bg-[#3D51AF] py-[20px] text-lg font-bold text-white disabled:opacity-50 sm:rounded-4xl sm:py-[18px]"
       >
-        {isLoading ? "가입 중..." : "가입하기"}
+        {isLoading ? (
+          <>
+            <Loader2 className="animate-spin" size={20} />
+            가입 중...
+          </>
+        ) : (
+          "가입하기"
+        )}
       </button>
       <div className="mt-[24px] mb-[24px] hidden h-px w-full bg-gray-300 sm:block" />
       <p className="hidden self-center text-xl font-medium sm:block">

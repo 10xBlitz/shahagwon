@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
 import { TextField } from "@/components/common/TextField";
 import { signInWithEmail } from "@/lib/supabase/auth";
 import ForgotPasswordDialogue from "./ForgotPasswordDialogue";
@@ -102,9 +103,16 @@ export default function LoginForm() {
       <button
         onClick={handleLogin}
         disabled={isLoading}
-        className="mt-[18px] flex w-full items-center justify-around rounded-none bg-[#343953] py-[24px] font-bold text-white hover:cursor-pointer disabled:opacity-50 sm:mt-[40px] sm:rounded-4xl sm:bg-[#3D51B0] sm:py-[16px] sm:text-xl"
+        className="mt-[18px] flex w-full items-center justify-center gap-2 rounded-none bg-[#343953] py-[24px] font-bold text-white hover:cursor-pointer disabled:opacity-50 sm:mt-[40px] sm:rounded-4xl sm:bg-[#3D51B0] sm:py-[16px] sm:text-xl"
       >
-        {isLoading ? "로그인 중..." : "로그인"}
+        {isLoading ? (
+          <>
+            <Loader2 className="animate-spin" size={20} />
+            로그인 중...
+          </>
+        ) : (
+          "로그인"
+        )}
       </button>
       <p
         className="mt-[18px] block self-start hover:cursor-pointer sm:hidden"

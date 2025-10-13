@@ -12,15 +12,15 @@ import {
   QnaPost,
   useCreateQnaPostComment,
   useDeleteQnaPost,
+  useTogglePostUnderstood,
 } from "@/queries/qnaPosts";
 import { Dialog } from "@/components/common/Dialog";
 
 interface PostProps {
   post: QnaPost;
-  likesCount?: number;
 }
 
-export default function Post({ post, likesCount = 0 }: PostProps) {
+export default function Post({ post }: PostProps) {
   const user = useUserStore((s) => s.user);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -39,6 +39,10 @@ export default function Post({ post, likesCount = 0 }: PostProps) {
   });
 
   const deleteQnaPost = useDeleteQnaPost({
+    postId: post.id,
+  });
+
+  const togglePostUnderstood = useTogglePostUnderstood({
     postId: post.id,
   });
 
@@ -91,6 +95,10 @@ export default function Post({ post, likesCount = 0 }: PostProps) {
     });
   };
 
+  const handleToggleUnderstood = () => {
+    togglePostUnderstood.mutate();
+  };
+
   return (
     <div className="min-h-auto w-[800px] rounded-lg bg-white p-[30px]">
       <div className="mb-6 flex items-center justify-between">
@@ -134,11 +142,25 @@ export default function Post({ post, likesCount = 0 }: PostProps) {
           ))}
         </div>
       )}
-      <div className="mb-6 flex w-auto items-center gap-2 hover:cursor-pointer">
-        <ThumbsUp size={16} color="#707070" />
-        <p className="text-sm text-[#9F9F9F]">
-          {likesCount > 0 ? `+${likesCount} ` : ""}이해됐어요
+      <div
+        {...(user?.user_id === post.author_id && {
+          onClick: handleToggleUnderstood,
+        })}
+        className={`mb-6 flex w-auto items-center gap-2 ${user?.user_id === post.author_id ? "hover:cursor-pointer" : ""}`}
+      >
+        <ThumbsUp
+          size={16}
+          color={post.is_understood ? "#3D51AF" : "#707070"}
+          fill={post.is_understood ? "#3D51AF" : "none"}
+        />
+        <p
+          className={`text-sm ${post.is_understood ? "font-medium text-[#3D51AF]" : "text-[#9F9F9F]"}`}
+        >
+          이해됐어요
         </p>
+        {togglePostUnderstood.isPending && (
+          <Loader2 className="animate-spin" size={12} />
+        )}
       </div>
       {post.qna_posts_comments && post.qna_posts_comments.length > 0 && (
         <div>
