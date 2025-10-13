@@ -21,7 +21,7 @@ export default function RegisterQnaDialogue({
   const { data: teachers } = useTeacher();
   const user = useUserStore((s) => s.user);
 
-  const [selectedBranch, setSelectedBranch] = useState(branchTabs[0].value);
+  const [selectedBranch, setSelectedBranch] = useState(branchTabs[1].label);
   const [selectedTeacher, setSelectedTeacher] = useState<string | null>(null);
   const [subject, setSubject] = useState("");
   const [location, setLocation] = useState("");
@@ -48,6 +48,8 @@ export default function RegisterQnaDialogue({
       },
     });
   };
+
+  const slicedBranchTabs = branchTabs.slice(1, branchTabs.length);
 
   useEffect(() => {
     if (teachers && teachers.length > 0 && !selectedTeacher) {
@@ -76,16 +78,16 @@ export default function RegisterQnaDialogue({
           <div>
             <h3 className="mb-2 text-base font-medium">호점 선택</h3>
             <div className="grid grid-cols-4 gap-3">
-              {branchTabs.map((branch) => (
+              {slicedBranchTabs.map((branch) => (
                 <label
-                  key={branch.value}
+                  key={branch.label}
                   className="flex cursor-pointer items-center gap-2"
                 >
                   <input
                     type="radio"
                     name="branch"
-                    value={branch.value}
-                    checked={selectedBranch === branch.value}
+                    value={branch.label}
+                    checked={selectedBranch === branch.label}
                     onChange={(e) => setSelectedBranch(e.target.value)}
                     className="h-4 w-4 cursor-pointer"
                   />

@@ -135,42 +135,57 @@ export type Database = {
       }
       qna_sessions: {
         Row: {
+          applicant: string | null
           branch: string | null
           created_at: string
           date: string | null
           id: number
           location: string | null
           student_affiliation: string | null
-          subject: string | null
           teacher: string | null
           time: string | null
           updated_at: string | null
         }
         Insert: {
+          applicant?: string | null
           branch?: string | null
           created_at?: string
           date?: string | null
           id?: number
           location?: string | null
           student_affiliation?: string | null
-          subject?: string | null
           teacher?: string | null
           time?: string | null
           updated_at?: string | null
         }
         Update: {
+          applicant?: string | null
           branch?: string | null
           created_at?: string
           date?: string | null
           id?: number
           location?: string | null
           student_affiliation?: string | null
-          subject?: string | null
           teacher?: string | null
           time?: string | null
           updated_at?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "qna_sessions_applicant_fkey"
+            columns: ["applicant"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "qna_sessions_teacher_fkey"
+            columns: ["teacher"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["user_id"]
+          },
+        ]
       }
       user_profiles: {
         Row: {

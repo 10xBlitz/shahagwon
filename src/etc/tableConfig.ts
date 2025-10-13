@@ -1,17 +1,41 @@
 /* These config names are subject to change once we know more about the specifics of the functionalities*/
 
 import { GridColDef } from "@mui/x-data-grid";
+import { formatDateKorean } from "@/lib/utils/timeUtils";
 
-/* /dashboard/question */
-export const requestStatusTableConfig: GridColDef[] = [
-  { field: "teacher", headerName: "선생님", width: 180 },
-  { field: "hojeom", headerName: "호점", width: 72 },
-  { field: "date", headerName: "날짜", width: 72 },
-  { field: "hour", headerName: "시간", width: 112 },
-  { field: "proposer", headerName: "신청자", width: 154 },
+/**
+ *  Row types
+ */
+
+export const qnaSessionConfig: GridColDef[] = [
+  {
+    field: "teacher",
+    headerName: "선생님",
+    width: 180,
+    renderCell: (params) => params.row.teacher?.name ?? "",
+  },
+  { field: "branch", headerName: "호점", width: 72 },
+  {
+    field: "date",
+    headerName: "날짜",
+    width: 72,
+    valueFormatter: (params) => formatDateKorean(params),
+  },
+  { field: "time", headerName: "시간", width: 112 },
+  {
+    field: "applicant",
+    headerName: "신청자",
+    width: 154,
+    renderCell: (params) => params.row.applicant?.name ?? "",
+  },
   { field: "student_affiliation", headerName: "학생 소속", width: 88 },
   { field: "location", headerName: "위치", width: 162 },
-  { field: "subjects", headerName: "과목", flex: 1 },
+  {
+    field: "subjects",
+    headerName: "과목",
+    flex: 1,
+    renderCell: (params) => params.row.teacher?.subjects ?? "",
+  },
 ];
 
 export const requestStatusSecondaryTableConfig: GridColDef[] = [

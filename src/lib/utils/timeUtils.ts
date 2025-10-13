@@ -11,7 +11,9 @@ export function convertToYYYYMMDD(dateInput?: string | Date | null): string {
   return `${year}/${month}/${day}`;
 }
 
-export function convertToYYYYMMDDWithTime(dateInput?: string | Date | null): string {
+export function convertToYYYYMMDDWithTime(
+  dateInput?: string | Date | null,
+): string {
   if (!dateInput) return "";
 
   const date = dateInput instanceof Date ? dateInput : new Date(dateInput);
@@ -26,7 +28,7 @@ export function convertToYYYYMMDDWithTime(dateInput?: string | Date | null): str
   const minutes = String(date.getMinutes()).padStart(2, "0");
 
   // Determine AM/PM
-  const period = hours >= 12 ? 'PM' : 'AM';
+  const period = hours >= 12 ? "PM" : "AM";
 
   // Convert to 12-hour format
   hours = hours % 12;
@@ -35,4 +37,41 @@ export function convertToYYYYMMDDWithTime(dateInput?: string | Date | null): str
   const formattedHours = String(hours).padStart(2, "0");
 
   return `${year}/${month}/${day} ${formattedHours}:${minutes} ${period.toLowerCase()}`;
+}
+
+export function getUtcRangeForLocalDay(startDate: Date, endDate: Date) {
+  const startUTC = new Date(
+    Date.UTC(
+      startDate.getFullYear(),
+      startDate.getMonth(),
+      startDate.getDate(),
+      0,
+      0,
+      0,
+      0,
+    ),
+  );
+  const endUTC = new Date(
+    Date.UTC(
+      endDate.getFullYear(),
+      endDate.getMonth(),
+      endDate.getDate(),
+      23,
+      59,
+      59,
+      999,
+    ),
+  );
+  return { startUTC, endUTC };
+}
+
+export function formatDateKorean(dateString: string): string {
+  if (!dateString) return "";
+
+  const date = new Date(dateString);
+
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+
+  return `${month}월 ${day}일`;
 }

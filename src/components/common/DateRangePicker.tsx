@@ -4,9 +4,14 @@ import { useState } from "react";
 import { format } from "date-fns";
 import SmallCalendar from "./SmallCalendar";
 
-export default function DateRangePicker() {
-  const today = new Date();
+interface DateRangePickerProps {
+  onDateRangeChange?: (startDate: Date | null, endDate: Date | null) => void;
+}
 
+export default function DateRangePicker({
+  onDateRangeChange,
+}: DateRangePickerProps) {
+  const today = new Date();
   const [startDate, setStartDate] = useState<Date | null>(today);
   const [endDate, setEndDate] = useState<Date | null>(today);
 
@@ -15,6 +20,16 @@ export default function DateRangePicker() {
 
   const formatDate = (date: Date | null) =>
     date ? format(date, "yyyy.MM.dd") : "";
+
+  const updateStartDate = (date: Date | null) => {
+    setStartDate(date);
+    onDateRangeChange?.(date, endDate);
+  };
+
+  const updateEndDate = (date: Date | null) => {
+    setEndDate(date);
+    onDateRangeChange?.(startDate, date);
+  };
 
   return (
     <div className="relative flex items-center gap-4">
@@ -34,7 +49,7 @@ export default function DateRangePicker() {
           <div className="absolute top-full z-50 mt-2 shadow-lg">
             <SmallCalendar
               onDateSelect={(date) => {
-                setStartDate(date);
+                updateStartDate(date);
                 setShowStartCalendar(false);
               }}
               defaultDate={startDate || new Date()}
@@ -60,7 +75,7 @@ export default function DateRangePicker() {
           <div className="absolute top-full z-50 mt-2 shadow-lg">
             <SmallCalendar
               onDateSelect={(date) => {
-                setEndDate(date);
+                updateEndDate(date);
                 setShowEndCalendar(false);
               }}
               defaultDate={endDate || new Date()}
